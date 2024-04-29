@@ -10,6 +10,8 @@ import { AdsModule } from './ads/ads.module';
 import { CategoriesModule } from './categories/categories.module';
 import { QuizesModule } from './quizes/quizes.module';
 import { ExaminationsModule } from './examinations/examinations.module';
+import { QuizQuestionsModule } from './quiz_questions/quiz_questions.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -23,6 +25,8 @@ import { ExaminationsModule } from './examinations/examinations.module';
     CategoriesModule,
     QuizesModule,
     ExaminationsModule,
+    UsersModule,
+    QuizQuestionsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
