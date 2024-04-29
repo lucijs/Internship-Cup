@@ -7,6 +7,7 @@ import { CitiesModule } from './cities/cities.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { InstitutionsModule } from './institutions/institutions.module';
 import { AdsModule } from './ads/ads.module';
+import { CategoriesModule } from './categories/categories.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { AdsModule } from './ads/ads.module';
     PrismaModule,
     InstitutionsModule,
     AdsModule,
+    CategoriesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
