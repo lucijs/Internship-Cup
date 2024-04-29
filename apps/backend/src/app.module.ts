@@ -6,6 +6,7 @@ import { AppService } from './app.service';
 import { CitiesModule } from './cities/cities.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { InstitutionsModule } from './institutions/institutions.module';
+import { AdsModule } from './ads/ads.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { InstitutionsModule } from './institutions/institutions.module';
     CitiesModule,
     PrismaModule,
     InstitutionsModule,
+    AdsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
