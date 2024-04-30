@@ -4,6 +4,7 @@ import { AdsController } from './ads.controller';
 import { PrismaModule } from 'src/prisma/prisma.module';
 
 @Module({
+  imports: [PrismaModule],
   controllers: [AdsController],
   providers: [AdsService, PrismaModule],
 })
