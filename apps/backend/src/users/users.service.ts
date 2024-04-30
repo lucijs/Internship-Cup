@@ -10,6 +10,9 @@ export class UsersService {
     return this.prisma.user.create({ data: createUserDto });
   }
 
+  //register
+  //login
+
   findAll() {
     return this.prisma.user.findMany();
   }
