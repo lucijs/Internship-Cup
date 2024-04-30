@@ -13,129 +13,135 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model City{
-  cityId Int @id @default(autoincrement())
-  name String @unique
+model City {
+  cityId             Int                @id @default(autoincrement())
+  name               String             @unique
   institutionsInCity Institution_City[]
-  ads Ad_City[]
+  ads                Ad_City[]
 }
 
-model Institution{
-  institutionId Int @id @default(autoincrement())
-  name String @unique
+model Institution {
+  institutionId         Int                @id @default(autoincrement())
+  name                  String             @unique
   citiesInstitutionIsIn Institution_City[]
-  examinations Examination[]
+  examinations          Examination[]
 }
 
-model Institution_City{
-  cityId Int
+model Institution_City {
+  cityId        Int
   institutionId Int
-  city City @relation(fields: [cityId], references: [cityId])
-  institution Institution @relation(fields: [institutionId], references: [institutionId])
+  city          City        @relation(fields: [cityId], references: [cityId])
+  institution   Institution @relation(fields: [institutionId], references: [institutionId])
+
   @@id([cityId, institutionId])
 }
 
-model Ad{
-  adId Int @id @default(autoincrement())
-  name String @unique
+model Ad {
+  adId        Int           @id @default(autoincrement())
+  name        String        @unique
   description String?
-  price Float
-  discount Int
-  image String
-  cities Ad_City[]
-  categories Ad_Category[]
+  price       Float
+  discount    Int
+  image       String
+  cities      Ad_City[]
+  categories  Ad_Category[]
 }
 
-model Ad_City{
+model Ad_City {
   cityId Int
-  adId Int
-  city City @relation(fields: [cityId], references: [cityId])
-  ad Ad @relation(fields: [adId], references: [adId])
+  adId   Int
+  city   City @relation(fields: [cityId], references: [cityId])
+  ad     Ad   @relation(fields: [adId], references: [adId])
+
   @@id([cityId, adId])
 }
 
-model Category{
-  categoryId Int @id @default(autoincrement())
-  name String @unique
-  ads Ad_Category[]
-  quizzes Quiz_Category[]
+model Category {
+  categoryId   Int                    @id @default(autoincrement())
+  name         String                 @unique
+  ads          Ad_Category[]
+  quizzes      Quiz_Category[]
   examinations Examination_Category[]
 }
 
-model Ad_Category{
+model Ad_Category {
   categoryId Int
-  adId Int
-  category Category @relation(fields: [categoryId], references: [categoryId])
-  ad Ad @relation(fields: [adId], references: [adId])
+  adId       Int
+  category   Category @relation(fields: [categoryId], references: [categoryId])
+  ad         Ad       @relation(fields: [adId], references: [adId])
+
   @@id([categoryId, adId])
 }
 
-model Quiz{
-  quizId Int @id @default(autoincrement())
-  name String @unique
-  points Int
+model Quiz {
+  quizId     Int             @id @default(autoincrement())
+  name       String          @unique
+  points     Int
   categories Quiz_Category[]
-  users Quiz_User[]
+  users      Quiz_User[]
 }
 
-model Quiz_Category{
+model Quiz_Category {
   categoryId Int
-  quizId Int
-  category Category @relation(fields: [categoryId], references: [categoryId])
-  quiz Quiz @relation(fields: [quizId], references: [quizId])
+  quizId     Int
+  category   Category @relation(fields: [categoryId], references: [categoryId])
+  quiz       Quiz     @relation(fields: [quizId], references: [quizId])
+
   @@id([categoryId, quizId])
 }
 
-model Examination{
-  examinationId Int @id @default(autoincrement())
-  name String
+model Examination {
+  examinationId Int                    @id @default(autoincrement())
+  name          String
   institutionId Int
-  institution Institution @relation(fields: [institutionId], references: [institutionId])
-  price Float
-  discount Int
-  description String?
-  image String
-  categories Examination_Category[]
+  institution   Institution            @relation(fields: [institutionId], references: [institutionId])
+  price         Float
+  discount      Int
+  description   String?
+  image         String
+  categories    Examination_Category[]
 }
 
-model Examination_Category{
-  categoryId Int
+model Examination_Category {
+  categoryId    Int
   examinationId Int
-  category Category @relation(fields: [categoryId], references: [categoryId])
-  examination Examination @relation(fields: [examinationId], references: [examinationId])
+  category      Category    @relation(fields: [categoryId], references: [categoryId])
+  examination   Examination @relation(fields: [examinationId], references: [examinationId])
+
   @@id([categoryId, examinationId])
 }
 
-model Code{
-  codeId Int @id @default(autoincrement())
+model Code {
+  codeId            Int     @id @default(autoincrement())
   autenticationCode String
-  used Boolean
+  used              Boolean
 }
 
-model User{
-  userId Int @id @default(autoincrement())
-  name String
-  surname String
-  dateOfBirth DateTime
-  points Int
-  streak Int
-  email String
-  password String
-  lastStreakDate DateTime @updatedAt
-  quizzes Quiz_User[]
+model User {
+  userId         Int         @id @default(autoincrement())
+  name           String
+  surname        String
+  dateOfBirth    DateTime
+  points         Int
+  streak         Int
+  email          String
+  password       String
+  lastStreakDate DateTime    @updatedAt
+  quizzes        Quiz_User[]
 }
 
-model Quiz_User{
-  userId Int
-  quizId Int
-  user User @relation(fields: [userId], references: [userId])
-  quiz Quiz @relation(fields: [quizId], references: [quizId])
-  @@id([userId, quizId])
+model Quiz_User {
+  userId    Int
+  quizId    Int
+  user      User    @relation(fields: [userId], references: [userId])
+  quiz      Quiz    @relation(fields: [quizId], references: [quizId])
   completed Boolean
+
+  @@id([userId, quizId])
 }
 
-model QuizQuestions{
-  questionId Int @id @default(autoincrement())
-  question String
-  answer String
+model QuizQuestions {
+  questionId Int    @id @default(autoincrement())
+  question   String
+  answer     String
 }

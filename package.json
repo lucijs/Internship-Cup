@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "prisma": "^5.13.0",
     "turbo": "^1.13.3"
   },
   "scripts": {
@@ -11,6 +12,6 @@
     "apps/*"
   ],
   "dependencies": {
-    "prisma": "^5.13.0"
+    "@prisma/client": "^5.13.0"
   }
 }
