@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import FillInQuestion from './components/Questions/FillInQuestion';
 
 function App() {
   const [greeting, setGreeting] = useState('');
@@ -21,6 +22,7 @@ function App() {
         </a>
       </div>
      <h1>{greeting}</h1>
+     <FillInQuestion/>
     </>
   )
 }
