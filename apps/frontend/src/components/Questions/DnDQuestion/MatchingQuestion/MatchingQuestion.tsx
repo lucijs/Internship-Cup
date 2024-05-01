@@ -35,7 +35,11 @@ const MatchingQuestion = () => {
 
   const getParentContent = (idDrop: string) => {
     const id = parents[idDrop];
-    return id !== null ? id.map((idDrag)=>draggable(idDrag.toString())): 'Drop here';
+    return id !== null ? id.map((idDrag, index) => (
+      <div key={`${idDrop}-${index}`}>
+        {draggable(idDrag.toString())}
+      </div>
+    )) : 'Drop here';
   };
 
   // Droppable items
@@ -56,38 +60,60 @@ const MatchingQuestion = () => {
     if (over) {
       const droppableId: string = String(over.id);
       if (parents[droppableId] === null) {
+        console.log("over i prazan")
+        const update = parents[String(draggedId)]?.filter((item) => item !== String(drag)) ?? null;
+
         setDragged((prev) => ({
           ...prev,
           [String(drag)]: droppableId,
         }));
+        
         setParents((prevParents) => ({
-            ...prevParents,
-            [droppableId]: [String(drag)],
-            [String(draggedId)]: null,
-          }));
-      } else {
-        const updatedParents: string[] = Array.isArray(parents[droppableId])
-        ? [...parents[droppableId]!, String(drag)] // Use '!' to assert non-null
-        : [String(drag)];
+          ...prevParents,
+          [droppableId]: [String(drag)],
+          [String(draggedId)]: update,
+        }));
 
-      setDragged((prev) => ({
-        ...prev,
-        [String(drag)]: droppableId,
-      }));
-      setParents((prevParents) => ({
-        ...prevParents,
-        [droppableId]: updatedParents,
-      }));
+      } else {
+        console.log("over i nije prazan");
+        const updatedParents = Object.fromEntries(
+          Object.entries(parents).map(([key, value]) => [
+            key,
+            Array.isArray(value) && key === droppableId
+              ? [...value, String(drag)]
+              : value?.filter((item) => item !== String(drag)) || null, // Ensure value is always string[] or null
+          ])
+        );
+        console.log(updatedParents);
+        setDragged((prev) => ({
+          ...prev,
+          [String(drag)]: droppableId,
+        }));
+        
+        setParents(updatedParents);
+        console.log(draggedId);
+        console.log(String(drag));
+        console.log(updatedParents);
+        
       }
     } else {
-      setDragged((prev) => ({
-        ...prev,
-        [String(drag)]: null,
-      }));
-      setParents((prevParents) => ({
-        ...prevParents,
-        [String(draggedId)]: null,
-      }));
+        //tu je greska, moran namistit da parents ne izbrise sve
+        console.log("nije over")
+        setDragged((prev) => ({
+          ...prev,
+          [String(drag)]: null,
+        }));
+        
+        const updatedParents = Object.fromEntries(
+          Object.entries(parents).map(([key, value]) => [
+            key,
+            Array.isArray(value) && key === draggedId ? value.filter((item) => item !== String(drag)) : value,
+          ])
+        );
+        console.log(draggedId)
+        console.log(String(drag))
+        console.log(updatedParents)
+        setParents(updatedParents); 
     }
     setDrag(null);
   }
@@ -100,6 +126,23 @@ const MatchingQuestion = () => {
 
   return (
     <>
+        drag: {drag}
+        <br></br>
+        parents na prvom: {parents['droppable1']}
+        <br></br>
+        parents na drugom: {parents['droppable2']}
+        <br></br>
+        dragged 1:  {dragged['draggable1']}
+        <br></br>
+        dragged 2:  {dragged['draggable2']}
+        <br></br>
+        dragged 3:  {dragged['draggable3']}
+        <br></br>
+        dragged 4:  {dragged['draggable4']}
+        <br></br>
+        dragged 5:  {dragged['draggable5']}
+        <br></br>
+        dragged 6:  {dragged['draggable6']}
         <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
             <div className={classes.container}>
             <div className={classes.dragHere}>
