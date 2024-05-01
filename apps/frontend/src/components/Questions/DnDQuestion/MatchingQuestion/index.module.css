@@ -1,0 +1,16 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 170px;
+}
+
+.dragHere{
+    width: 150px;
+}
+
+.answers{
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
