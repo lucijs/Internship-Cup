@@ -1,15 +1,15 @@
 import { useState } from 'react';
-import Draggable from '../Draggable';
-import Droppable from '../Droppable';
+import Draggable from '../../Draggable';
+import Droppable from '../../Droppable';
 import { DndContext } from '@dnd-kit/core';
 import { Over } from '@dnd-kit/core';
-import classes from './index.module.css'
+import classes from './index.module.css';
 
 const FillInQuestion = () => {
   const text1 = "Prvi dio teksta";
-  const text2 = "Prvi dio teksta";
-  const text3 = "Prvi dio teksta";
-  const text4 = "Prvi dio teksta";
+  const text2 = "Drugi dio teksta";
+  const text3 = "Treci dio teksta";
+  const text4 = "Cetvrti dio teksta";
 
   // Collects where each item has been dropped
   const [parents, setParents] = useState<{ [key: string]: string | null }>({
@@ -89,27 +89,33 @@ const FillInQuestion = () => {
     setDrag(null);
   }
 
+  //za bodove samo triba provjeravat iz baze s parents jel dobro i za jedno 
+  //logika je skroz ista
+
+  //za prikaz kad se spaja triba vidit kako napravit da se ne miće ovoliko
+  //kad draggas, ne znan jel nan okej ovako, al mislin da može bit bolje
+
   return (
     <>
-      <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
-        <div className={classes.question}>
+        <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
+          <div className={classes.questionFillIn}>
             <div className={classes.text}>
-                {text1}
-                {droppable('droppable1')}
-                {text2}
-                {droppable('droppable2')}
-                {text3}
-                {droppable('droppable3')}
-                {text4}
+              {text1}
+              {droppable('droppable1')}
+              {text2}1
+              {droppable('droppable2')}
+              {text3}
+              {droppable('droppable3')}
+              {text4}
             </div>
-            <div className={classes.answer}>
-                {dragged.draggable1 === null ? draggable('draggable1') : null}
-                {dragged.draggable2 === null ? draggable('draggable2') : null}
-                {dragged.draggable3 === null ? draggable('draggable3') : null}
+            <div className={classes.answerFillIn}>
+              {dragged.draggable1 === null ? draggable('draggable1') : null}
+              {dragged.draggable2 === null ? draggable('draggable2') : null}
+              {dragged.draggable3 === null ? draggable('draggable3') : null}
             </div>
-        </div>
-      </DndContext>
-    </>
+          </div>
+        </DndContext>
+      </>
   );
 };
 
