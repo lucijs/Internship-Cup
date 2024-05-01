@@ -12,6 +12,7 @@
     "apps/*"
   ],
   "dependencies": {
+    "@dnd-kit/core": "^6.1.0",
     "@prisma/client": "^5.13.0"
   }
 }
