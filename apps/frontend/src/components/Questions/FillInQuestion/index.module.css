@@ -1,0 +1,17 @@
+.question{
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+}
+
+.text{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.answer{
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
