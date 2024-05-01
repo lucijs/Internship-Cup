@@ -1,0 +1,45 @@
+.questionFillIn{
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+}
+
+.text{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    height: 50px;
+    align-items: center;
+    width: 400px;
+    height: 100px;
+    flex-wrap:wrap;
+}
+
+.answerFillIn{
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.questionMatch{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+}
+
+.displayText{
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.displayMatches{
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+}
+
+
