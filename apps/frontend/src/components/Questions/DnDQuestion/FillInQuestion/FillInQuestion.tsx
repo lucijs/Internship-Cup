@@ -55,26 +55,19 @@ const FillInQuestion = () => {
 
   function handleDragEnd({ over }: { over: Over | null }) {
     const draggedId = dragged[String(drag)];
-    console.log("draggedid:",draggedId)
     if (over) {
       const droppableId: string = String(over.id);
-      console.log("droppableId:",droppableId);
       if (parents[droppableId] === null) {
-        console.log("usa u orvi if")
         setDragged((prev) => ({
           ...prev,
           [String(drag)]: droppableId,
         }));
-        console.log("dragged: ",dragged)
         setParents((prevParents) => ({
           ...prevParents,
           [droppableId]: String(drag),
           [String(draggedId)]: null,
         }));
-        console.log("parents: ",parents)
       } else {
-        console.log("usa u prvi else");
-        console.log("drag:", drag);
         if(parents['droppable1']!==null && parents['droppable2']!==null){
           setDragged((prev) => ({
             ...prev,
@@ -86,25 +79,9 @@ const FillInQuestion = () => {
             [droppableId]: String(drag),
             [String(draggedId)]: String(parents[droppableId]),
           }));
-          console.log("dragged: ",dragged)
-          console.log("parents: ",parents)
-        }else{
-          setDragged((prev) => ({
-            ...prev,
-            [String(parents[droppableId])]: null,
-            [String(drag)]: droppableId,
-          }));
-          setParents((prevParents) => ({
-            ...prevParents,
-            [droppableId]: String(drag),
-          }));
-          console.log("dragged: ",dragged)
-          console.log("parents: ",parents)
         }
       }
     } else {
-        console.log("usa u drugi else")
-        console.log(parents['droppable1'])
       setDragged((prev) => ({
         ...prev,
         [String(drag)]: null,
@@ -113,10 +90,8 @@ const FillInQuestion = () => {
         ...prevParents,
         [String(draggedId)]: null,
       }));
-    setDrag(null);
-    console.log("dragged: ",dragged)
-        console.log("parents: ",parents)
-      }
+      setDrag(null);
+    }
   }
 
   //za bodove samo triba provjeravat iz baze s parents jel dobro i za jedno 
@@ -127,42 +102,25 @@ const FillInQuestion = () => {
 
   return (
     <>
-        drag: {drag}
-        <br></br>
-        parents na prvom: {parents['droppable1']}
-        <br></br>
-        parents na drugom: {parents['droppable2']}
-        <br></br>
-        dragged 1:  {dragged['draggable1']}
-        <br></br>
-        dragged 2:  {dragged['draggable2']}
-        <br></br>
-        dragged 3:  {dragged['draggable3']}
-        <br></br>
-        dragged 4:  {dragged['draggable4']}
-        <br></br>
-        dragged 5:  {dragged['draggable5']}
-        <br></br>
-        dragged 6:  {dragged['draggable6']}
-        <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
-          <div className={classes.questionFillIn}>
-            <div className={classes.text}>
-              {text1}
-              {droppable('droppable1')}
-              {text2}1
-              {droppable('droppable2')}
-            </div>
-            <div className={classes.answerFillIn}>
-              {dragged.draggable1 === null ? draggable('draggable1') : null}
-              {dragged.draggable2 === null ? draggable('draggable2') : null}
-              {dragged.draggable3 === null ? draggable('draggable3') : null}
-              {dragged.draggable4 === null ? draggable('draggable4') : null}
-              {dragged.draggable5 === null ? draggable('draggable5') : null}
-              {dragged.draggable6 === null ? draggable('draggable6') : null}
-            </div>
+      <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
+        <div className={classes.questionFillIn}>
+          <div className={classes.text}>
+            {text1}
+            {droppable('droppable1')}
+            {text2}1
+            {droppable('droppable2')}
           </div>
-        </DndContext>
-      </>
+          <div className={classes.answerFillIn}>
+            {dragged.draggable1 === null ? draggable('draggable1') : null}
+            {dragged.draggable2 === null ? draggable('draggable2') : null}
+            {dragged.draggable3 === null ? draggable('draggable3') : null}
+            {dragged.draggable4 === null ? draggable('draggable4') : null}
+            {dragged.draggable5 === null ? draggable('draggable5') : null}
+            {dragged.draggable6 === null ? draggable('draggable6') : null}
+          </div>
+        </div>
+      </DndContext>
+    </>
   );
 };
 
