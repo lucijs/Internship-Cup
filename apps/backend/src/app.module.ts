@@ -12,6 +12,7 @@ import { QuizesModule } from './quizes/quizes.module';
 import { ExaminationsModule } from './examinations/examinations.module';
 import { QuizQuestionsModule } from './quiz_questions/quiz_questions.module';
 import { UsersModule } from './users/users.module';
+import { QuizCategoriesModule } from './quiz_categories/quiz_categories.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { UsersModule } from './users/users.module';
     ExaminationsModule,
     UsersModule,
     QuizQuestionsModule,
+    QuizCategoriesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

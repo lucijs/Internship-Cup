@@ -19,6 +19,13 @@ async function main() {
       name: 'Prehrana',
     },
   });
+
+  const quizCategory = await prisma.quiz_Category.create({
+    data: {
+      quizId: 1,
+      categoryId: 1,
+    },
+  });
 }
 
 main()
