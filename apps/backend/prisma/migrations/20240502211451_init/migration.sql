@@ -131,7 +131,7 @@ CREATE TABLE "Quiz_User" (
 );
 
 -- CreateTable
-CREATE TABLE "QuizQuestions" (
+CREATE TABLE "QuizQuestion" (
     "questionId" SERIAL NOT NULL,
     "question" TEXT NOT NULL,
     "possibleAnswers" TEXT[],
@@ -140,7 +140,7 @@ CREATE TABLE "QuizQuestions" (
     "type" TEXT NOT NULL,
     "quizId" INTEGER NOT NULL,
 
-    CONSTRAINT "QuizQuestions_pkey" PRIMARY KEY ("questionId")
+    CONSTRAINT "QuizQuestion_pkey" PRIMARY KEY ("questionId")
 );
 
 -- CreateIndex
@@ -201,4 +201,4 @@ ALTER TABLE "Quiz_User" ADD CONSTRAINT "Quiz_User_userId_fkey" FOREIGN KEY ("use
 ALTER TABLE "Quiz_User" ADD CONSTRAINT "Quiz_User_quizId_fkey" FOREIGN KEY ("quizId") REFERENCES "Quiz"("quizId") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "QuizQuestions" ADD CONSTRAINT "QuizQuestions_quizId_fkey" FOREIGN KEY ("quizId") REFERENCES "Quiz"("quizId") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "QuizQuestion" ADD CONSTRAINT "QuizQuestion_quizId_fkey" FOREIGN KEY ("quizId") REFERENCES "Quiz"("quizId") ON DELETE RESTRICT ON UPDATE CASCADE;

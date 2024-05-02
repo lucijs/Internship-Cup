@@ -6,10 +6,10 @@ export class QuizQuestionsService {
   constructor(private prisma: PrismaService) {}
 
   findAll() {
-    return this.prisma.quizQuestions.findMany();
+    return this.prisma.quizQuestion.findMany();
   }
 
   findOne(id: number) {
-    return this.prisma.quizQuestions.findUnique({ where: { questionId: id } });
+    return this.prisma.quizQuestion.findUnique({ where: { questionId: id } });
   }
 }

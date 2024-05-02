@@ -19,4 +19,10 @@ export class QuizesController {
   findOne(@Param('id') id: string) {
     return this.quizesService.findOne(+id);
   }
+
+  @Get('/categories/:id')
+  @ApiCreatedResponse({ type: String, isArray: true })
+  findCategories(@Param('id') id: string) {
+    return this.quizesService.findCategories(+id);
+  }
 }

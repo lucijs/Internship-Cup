@@ -26,12 +26,30 @@ async function main() {
       categoryId: 1,
     },
   });
+  const question1 = await prisma.quizQuestion.create({
+    data: {
+      question: 'Nadopuni tekst',
+      possibleAnswers: [
+        'Vitamini su esencijalni ',
+        ' koje tijelo treba za održavanje zdravlja, poput ',
+        'Nutrijenti',
+        'Enzimi',
+        'Proteini',
+        'Vitamin D',
+        'Stanica',
+      ],
+      correctAnswer1: ['Nutrijenti'],
+      correctAnswer2: ['Vitamin D'],
+      type: 'fill in',
+      quizId: 1,
+    },
+  });
 }
 
 main()
   .catch((e) => {
     console.error(e);
-    process.exit(1); 
+    process.exit(1);
   })
   .finally(async () => {
     await prisma.$disconnect();

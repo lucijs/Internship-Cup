@@ -81,7 +81,7 @@ model Quiz {
   earnedPoints Int
   categories Quiz_Category[]
   users      Quiz_User[]
-  questions QuizQuestions[]
+  questions QuizQuestion[]
 }
 
 model Quiz_Category {
@@ -142,7 +142,7 @@ model Quiz_User {
   @@id([userId, quizId])
 }
 
-model QuizQuestions {
+model QuizQuestion {
   questionId Int    @id @default(autoincrement())
   question   String
   possibleAnswers     String[]
