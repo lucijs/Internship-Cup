@@ -124,7 +124,7 @@ model User {
   dateOfBirth    DateTime
   points         Int
   streak         Int
-  email          String
+  email          String      @unique
   password       String
   lastStreakDate DateTime    @updatedAt
   quizzes        Quiz_User[]
