@@ -13,4 +13,7 @@ export class QuizEntity implements Quiz {
 
   @ApiProperty()
   text: string;
+
+  @ApiProperty()
+  earnedPoints: number;
 }

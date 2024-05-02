@@ -7,4 +7,7 @@ export class CityEntity implements City {
 
   @ApiProperty()
   name: string;
+
+  @ApiProperty()
+  regionId: number;
 }

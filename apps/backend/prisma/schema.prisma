@@ -10,7 +10,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url= env("DATABASE_URL")
 }
 
 model City {
@@ -78,6 +78,7 @@ model Quiz {
   name       String          @unique
   description String
   text String
+  earnedPoints Int
   categories Quiz_Category[]
   users      Quiz_User[]
   questions QuizQuestions[]
@@ -116,7 +117,6 @@ model Examination_Category {
 model Code {
   codeId            Int     @id @default(autoincrement())
   autenticationCode String
-  used              Boolean
 }
 
 model User {

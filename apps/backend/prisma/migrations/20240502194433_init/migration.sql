@@ -62,7 +62,9 @@ CREATE TABLE "Ad_Category" (
 CREATE TABLE "Quiz" (
     "quizId" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
-    "points" INTEGER NOT NULL,
+    "description" TEXT NOT NULL,
+    "text" TEXT NOT NULL,
+    "earnedPoints" INTEGER NOT NULL,
 
     CONSTRAINT "Quiz_pkey" PRIMARY KEY ("quizId")
 );
@@ -100,7 +102,6 @@ CREATE TABLE "Examination_Category" (
 CREATE TABLE "Code" (
     "codeId" SERIAL NOT NULL,
     "autenticationCode" TEXT NOT NULL,
-    "used" BOOLEAN NOT NULL,
 
     CONSTRAINT "Code_pkey" PRIMARY KEY ("codeId")
 );
@@ -124,8 +125,22 @@ CREATE TABLE "User" (
 CREATE TABLE "Quiz_User" (
     "userId" INTEGER NOT NULL,
     "quizId" INTEGER NOT NULL,
+    "completed" BOOLEAN NOT NULL,
 
     CONSTRAINT "Quiz_User_pkey" PRIMARY KEY ("userId","quizId")
+);
+
+-- CreateTable
+CREATE TABLE "QuizQuestions" (
+    "questionId" SERIAL NOT NULL,
+    "question" TEXT NOT NULL,
+    "possibleAnswers" TEXT[],
+    "correctAnswer1" TEXT[],
+    "correctAnswer2" TEXT[],
+    "type" TEXT NOT NULL,
+    "quizId" INTEGER NOT NULL,
+
+    CONSTRAINT "QuizQuestions_pkey" PRIMARY KEY ("questionId")
 );
 
 -- CreateIndex
@@ -142,6 +157,9 @@ CREATE UNIQUE INDEX "Category_name_key" ON "Category"("name");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Quiz_name_key" ON "Quiz"("name");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
 -- AddForeignKey
 ALTER TABLE "Institution_City" ADD CONSTRAINT "Institution_City_cityId_fkey" FOREIGN KEY ("cityId") REFERENCES "City"("cityId") ON DELETE RESTRICT ON UPDATE CASCADE;
@@ -181,3 +199,6 @@ ALTER TABLE "Quiz_User" ADD CONSTRAINT "Quiz_User_userId_fkey" FOREIGN KEY ("use
 
 -- AddForeignKey
 ALTER TABLE "Quiz_User" ADD CONSTRAINT "Quiz_User_quizId_fkey" FOREIGN KEY ("quizId") REFERENCES "Quiz"("quizId") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "QuizQuestions" ADD CONSTRAINT "QuizQuestions_quizId_fkey" FOREIGN KEY ("quizId") REFERENCES "Quiz"("quizId") ON DELETE RESTRICT ON UPDATE CASCADE;

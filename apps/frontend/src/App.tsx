@@ -3,6 +3,7 @@ import './App.css'
 import FillInQuestion from './components/Questions/DnDQuestion/FillInQuestion';
 import MatchingQuestion from './components/Questions/DnDQuestion/MatchingQuestion/MatchingQuestion';
 import SliderQuestion from './components/Questions/SliderQuestion';
+import Quiz from './Pages/QuziPage';
 
 function App() {
   const [greeting, setGreeting] = useState('');
@@ -13,6 +14,7 @@ function App() {
 
   return (
     <>
+     <Quiz/>
      <SliderQuestion/>
      <MatchingQuestion/>
      <h1>{greeting}</h1>
