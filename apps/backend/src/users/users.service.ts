@@ -1,8 +1,12 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  ForbiddenException,
+  Injectable,
+} from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { hash } from 'bcrypt';
+import { compare, hash } from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { RegisterDto } from './dto/register.dto';
 
@@ -58,7 +62,28 @@ export class UsersService {
 
     return { token: this.jwtService.sign(payload) };
   }
-  //login
+
+  async login(email: string, password: string) {
+    if (!email) throw new BadRequestException("Missing 'email' field");
+    if (!password) throw new BadRequestException("Missing 'password' field");
+
+    const user = await this.prisma.user.findUnique({
+      where: { email },
+    });
+
+    if (!user) throw new BadRequestException('User does not exist!');
+
+    const isPasswordValid = await compare(password, user.password);
+
+    if (!isPasswordValid) throw new ForbiddenException('Password not valid');
+
+    const payload = {
+      id: user.userId,
+      email: user.email,
+    };
+
+    return { token: this.jwtService.sign(payload) };
+  }
 
   findAll() {
     return this.prisma.user.findMany();
