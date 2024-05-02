@@ -76,9 +76,11 @@ model Ad_Category {
 model Quiz {
   quizId     Int             @id @default(autoincrement())
   name       String          @unique
-  points     Int
+  description String
+  text String
   categories Quiz_Category[]
   users      Quiz_User[]
+  questions QuizQuestions[]
 }
 
 model Quiz_Category {
@@ -143,5 +145,10 @@ model Quiz_User {
 model QuizQuestions {
   questionId Int    @id @default(autoincrement())
   question   String
-  answer     String
+  possibleAnswers     String[]
+  correctAnswer1  String[]
+  correctAnswer2 String[]
+  type String
+  quizId Int
+  quiz Quiz @relation(fields: [quizId], references: [quizId])
 }

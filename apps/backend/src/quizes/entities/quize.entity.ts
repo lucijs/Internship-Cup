@@ -9,5 +9,8 @@ export class QuizEntity implements Quiz {
   name: string;
 
   @ApiProperty()
-  points: number;
+  description: string;
+
+  @ApiProperty()
+  text: string;
 }
