@@ -41,9 +41,7 @@ const MatchingQuestion = () => {
   // Droppable items
   const droppable = (idDrop: string) => (
     <Droppable id={idDrop}>
-      <div style={{ width: "150px", height: "100px" }}>
-        {getParentContent(idDrop)}
-      </div>
+      <div style={{ height: "100px" }}>{getParentContent(idDrop)}</div>
     </Droppable>
   );
 
@@ -75,7 +73,9 @@ const MatchingQuestion = () => {
           Object.entries(parents).map(([key, value]) => [
             key,
             Array.isArray(value) && key === droppableId
-              ? [...value, String(drag)]
+              ? value.some((el) => el === String(drag))
+                ? value
+                : [...value, String(drag)]
               : value?.filter((item) => item !== String(drag)) || null, // Ensure value is always string[] or null
           ])
         );
