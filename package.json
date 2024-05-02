@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "turbo run dev",
     "build": "turbo run build",
-    "start": "node apps/backend/dist/main"
+    "start": "node apps/backend/dist/src/main"
+  },
+  "prisma": {
+    "seed": "ts-node apps/backend/prisma/seed.ts"
   },
   "workspaces": [
     "apps/*"
