@@ -2,6 +2,7 @@
 
 /* fonts */
 
+/* Hind */
 @font-face {
   font-family: "Hind";
   src: url(./../assets/fonts/Hind/Hind-Regular.ttf) format("woff2");
@@ -27,6 +28,22 @@
   src: url(./../assets/fonts/Hind/Hind-SemiBold.ttf) format("woff2");
 }
 
+/* Martel Sans */
+
+@font-face {
+  font-family: "Martel Sans";
+  src: url(./../assets/fonts/MartelSans/martelsans-regular.otf) format("woff2");
+}
+
+@font-face {
+  font-family: "Martel Sans Bold";
+  src: url(./../assets/fonts/MartelSans/martelsans-bold.otf) format("woff2");
+}
+
+@font-face {
+  font-family: "Martel Sans Light";
+  src: url(./../assets/fonts/MartelSans/martelsans-light.otf) format("woff2");
+}
 
 #root{
   display: flex;
