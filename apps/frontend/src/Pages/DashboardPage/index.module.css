@@ -1,0 +1,25 @@
+@media only screen and (min-width: 350px) and (max-width: 550px){
+    .dashboardPageWrapper{
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        align-items: center;
+    }
+    .dashboardPageWrapper h2{
+        color: #000;
+        font-family: "Martel Sans";
+        font-size: 28px;
+        width: 100%;
+    }
+
+    .streakPointsSection{
+        display: flex;
+        gap: 16px;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .streakCard {
+        flex: 1;
+    }
+}

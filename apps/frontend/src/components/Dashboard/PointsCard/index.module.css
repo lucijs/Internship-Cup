@@ -1,0 +1,32 @@
+@media only screen and (min-width: 350px) and (max-width: 550px){
+    .pointsCard{
+        display: flex;
+        flex-direction: column;
+        width: 159px;
+        height: 150px;
+        border-radius: 16px;
+        background: #93B6EB;
+    }
+    .pointsCardUpper{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #4D4D4D;
+        font-family: "Hind";
+        font-size: 16px;
+        padding: 16px;
+        margin: 0;
+    }
+    .pointsCardUpper h4{
+        margin: 0;
+    }
+
+    .pointsCardLower{
+        color: #000;
+        font-family: "Martel Sans Bold";
+        font-size: 48px;
+        text-align: center;
+        position: relative;
+        bottom: 20px;
+    }
+}
