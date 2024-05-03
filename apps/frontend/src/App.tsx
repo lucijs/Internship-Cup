@@ -1,11 +1,9 @@
-import { useEffect, useState } from "react";
-import RegisterPage from "./Pages/AuthPages/RegisterPage";
+import LoginPage from "./Pages/AuthPages/LoginPage";
 
 function App() {
   return (
     <>
-      {/* <Quiz /> */}
-      <RegisterPage />
+      <LoginPage />
     </>
   );
 }
