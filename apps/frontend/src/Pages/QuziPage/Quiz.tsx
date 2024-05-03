@@ -1,59 +1,54 @@
-import { useTheme } from "@mui/material/styles";
-import { Button, MobileStepper } from "@mui/material";
+import { Button, MobileStepper, useTheme } from "@mui/material";
+import { Category } from "@prisma/client";
 import { useEffect, useState } from "react";
-import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
-import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 
 const Quiz = () => {
-  const [displayedItem, setDisplayedItem] = useState(<>neki</>);
+  const id = 1;
+  const [displayedItem, setDisplayedItem] = useState(<></>);
   const theme = useTheme();
   const [activeStep, setActiveStep] = useState(1);
 
-  const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
-
-  const quizId = 1; // Zamijenite ovo s ID-om vašeg kviza
-
-  const [greeting, setGreeting] = useState("");
-
   useEffect(() => {
-    f1();
-    f2();
-  }, []);
+    fetchQuizData(id);
+  }, [id]);
 
-  const f1 = () => {
-    fetch("/backend/quizes/1")
-      .then((res) => res.json())
-      .then((res) => setDisplayedItem(() => <>{res["name"]}</>));
+  const fetchQuizData = (id: number) => {
+    Promise.all([
+      fetch(`/backend/quizes/${id}`).then((res) => res.json()),
+      fetch(`/backend/quizes/categories/${id}`).then((res) => res.json()),
+    ]).then(([quizData, categoryData]) => {
+      setDisplayedItem(
+        <div>
+          <div>{quizData["name"]}</div>
+          <div>{quizData["description"]}</div>
+          <div>{quizData["text"]}</div>
+          {categoryData.map((element: Category) => (
+            <div key={element.categoryId}>{element.name}</div>
+          ))}
+        </div>
+      );
+    });
   };
 
-  const f2 = () => {
-    fetch("backend/quizes/categories/1")
-      .then((res) => res.json())
-      .then((res) => {
-        setDisplayedItem((prev) => (
-          <>
-            {prev}
-            {res[0]["name"]}
-          </>
-        ));
-      });
+  const handleStartQuiz = () => {
+    
   };
 
   return (
     <>
-      {greeting}
-      <MobileStepper
-        variant="progress"
-        steps={4}
-        position="static"
-        activeStep={activeStep}
-        sx={{ width: 400, flexGrow: 1 }}
-        nextButton={<></>}
-        backButton={<></>}
-      />
+      <div>
+        <MobileStepper
+          variant="progress"
+          steps={4}
+          position="static"
+          activeStep={activeStep}
+          sx={{ width: 400, flexGrow: 1 }}
+          nextButton={<></>}
+          backButton={<></>}
+        />
+      </div>
       {displayedItem}
+      <Button onClick={handleStartQuiz} />
     </>
   );
 };
