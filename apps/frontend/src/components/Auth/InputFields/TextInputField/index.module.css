@@ -21,6 +21,8 @@
         display: flex;
         align-items: center;
         font-family: "Hind";
+        padding-left: 10px;
+        font-size: 16px;
     }
     .TextInputField input::placeholder{
         padding-left: 10px;

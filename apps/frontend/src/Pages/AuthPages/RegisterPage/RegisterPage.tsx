@@ -1,7 +1,9 @@
+import CheckBoxField from "../../../components/Auth/CheckBoxField";
 import FormIntroduction from "../../../components/Auth/FormIntroduction";
 import EmailInputField from "../../../components/Auth/InputFields/EmailInputField";
 import PasswordInputField from "../../../components/Auth/InputFields/PasswordInputField";
 import TextInputField from "../../../components/Auth/InputFields/TextInputField";
+import SubmitButton from "../../../components/Auth/SubmitButton";
 import classes from "./index.module.css";
 const RegisterPage = () => {
   return (
@@ -30,6 +32,10 @@ const RegisterPage = () => {
           label="Potvrda lozinke"
           placeholder="Potvrdi svoju lozinku"
         />
+        <div className={classes.belowRegisterForm}>
+          <CheckBoxField text="Slažem se s Uvjetima usluge i Politikom privatnosti." />
+          <SubmitButton buttonText="Stvori račun" />
+        </div>
       </div>
     </>
   );

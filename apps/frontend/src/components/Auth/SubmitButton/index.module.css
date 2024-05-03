@@ -1,0 +1,13 @@
+.authSubmitButton{
+    display: flex;
+    padding: 12px 8px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 16px;
+    background-color: #8C8C8C;
+    border: none;
+    width: 90%;
+    color: #000;
+    font-family: "Hind";
+    font-size: 20px;
+}
