@@ -1,17 +1,9 @@
-import { useEffect, useState } from "react";
-import RegisterPage from "./Pages/AuthPages/RegisterPage";
-import "./App.css";
-import FillInQuestion from "./components/Questions/DnDQuestion/FillInQuestion";
-import MatchingQuestion from "./components/Questions/DnDQuestion/MatchingQuestion/MatchingQuestion";
-import SliderQuestion from "./components/Questions/SliderQuestion";
-import Quiz from "./Pages/QuizPage";
-
+import LoginPage from "./Pages/AuthPages/LoginPage";
 
 function App() {
   return (
     <>
-      {/* <Quiz /> */}
-      <RegisterPage />
+      <LoginPage />
     </>
   );
 }
