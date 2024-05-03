@@ -1,6 +1,16 @@
 import { useState } from "react";
 import { Questions } from "./questions";
-const MultipleChoice = () => {
+const MultipleChoice = ({
+  question,
+  possibleAnswers,
+  correctAnswer1,
+  correctAnswer2,
+}: {
+  question: string;
+  possibleAnswers: string[];
+  correctAnswer1: string[];
+  correctAnswer2: string[];
+}) => {
   const [currentQuestion, setCurrentQuestion] = useState(1);
   const [optionChosen, setOptionChosen] = useState("");
   const [score, setScore] = useState(0);
@@ -12,7 +22,7 @@ const MultipleChoice = () => {
 
   return (
     <>
-      <h1>{Questions[currentQuestion].prompt}</h1>
+      <h1>{question}</h1>
       <div>
         <button onClick={() => setOptionChosen("A")}>
           {Questions[currentQuestion].optionA}

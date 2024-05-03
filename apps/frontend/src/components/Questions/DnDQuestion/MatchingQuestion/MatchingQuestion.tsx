@@ -5,9 +5,19 @@ import { DndContext } from "@dnd-kit/core";
 import { Over } from "@dnd-kit/core";
 import classes from "./index.module.css";
 
-const MatchingQuestion = () => {
-  const text1 = "Prvi dio teksta";
-  const text2 = "Drugi dio teksta";
+const MatchingQuestion = ({
+  question,
+  possibleAnswers,
+  correctAnswer1,
+  correctAnswer2,
+}: {
+  question: string;
+  possibleAnswers: string[];
+  correctAnswer1: string[];
+  correctAnswer2: string[];
+}) => {
+  const text1 = possibleAnswers[0];
+  const text2 = possibleAnswers[1];
 
   // Collects where each item has been dropped
   const [parents, setParents] = useState<{ [key: string]: string[] | null }>({
@@ -24,7 +34,9 @@ const MatchingQuestion = () => {
   });
 
   // Draggable items
-  const draggable = (id: string) => <Draggable id={id}>{id}</Draggable>;
+  const draggable = (id: string) => (
+    <Draggable id={id}>{possibleAnswers[+id[9] + 1]}</Draggable>
+  );
 
   // Represents the currently dragged item
   const [drag, setDrag] = useState<string | null>(null);
@@ -113,6 +125,7 @@ const MatchingQuestion = () => {
 
   return (
     <>
+      {question}
       <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
         <div className={classes.container}>
           <div className={classes.dragHere}>
