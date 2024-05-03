@@ -1,0 +1,26 @@
+@media only screen and (min-width: 350px) and (max-width: 550px){
+    .formIntroduction {
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        margin-bottom: 20px;
+    }
+    
+    .formIntroduction h2{
+        color: #000;
+        font-family: "Martel Sans Extra Bold";
+        font-size: 28px;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .formIntroduction h3{
+        color: #000;
+        font-family: "Hind";
+        font-size: 20px;
+        font-style: normal;
+        padding: 0;
+        margin: 0;
+    }
+}
+
