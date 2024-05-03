@@ -3,13 +3,13 @@ import { useEffect, useState } from "react";
 // import MatchingQuestion from "./components/Questions/DnDQuestion/MatchingQuestion/MatchingQuestion";
 // import SliderQuestion from "./components/Questions/SliderQuestion";
 // import Quiz from "./Pages/QuziPage";
-import InputField from "./components/Auth/InputField";
+import RegisterPage from "./Pages/AuthPages/RegisterPage";
 
 function App() {
   return (
     <>
       {/* <Quiz /> */}
-      <InputField label={"Ime"} placeholder={"Upisite ime"} />
+      <RegisterPage />
     </>
   );
 }
