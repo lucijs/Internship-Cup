@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { QuizQuestions } from '@prisma/client';
+import { QuizQuestion } from '@prisma/client';
 
-export class QuizQuestionEntity implements QuizQuestions {
+export class QuizQuestionEntity implements QuizQuestion {
   @ApiProperty()
   questionId: number;
 
@@ -9,5 +9,17 @@ export class QuizQuestionEntity implements QuizQuestions {
   question: string;
 
   @ApiProperty()
-  answer: string;
+  possibleAnswers: string[];
+
+  @ApiProperty()
+  correctAnswer1: string[];
+
+  @ApiProperty()
+  correctAnswer2: string[];
+
+  @ApiProperty()
+  type: string;
+
+  @ApiProperty()
+  quizId: number;
 }

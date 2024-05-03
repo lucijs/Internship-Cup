@@ -4,14 +4,14 @@ import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
 import { QuizQuestionEntity } from './entities/quiz_question.entity';
 
 @ApiTags('Quiz questions')
-@Controller('quiz-questions')
+@Controller('quizQuestions')
 export class QuizQuestionsController {
   constructor(private readonly quizQuestionsService: QuizQuestionsService) {}
 
-  @Get()
+  @Get('/quizId/:id')
   @ApiCreatedResponse({ type: QuizQuestionEntity, isArray: true })
-  findAll() {
-    return this.quizQuestionsService.findAll();
+  findAll(@Param('id') id: string) {
+    return this.quizQuestionsService.findAll(+id);
   }
 
   @Get(':id')

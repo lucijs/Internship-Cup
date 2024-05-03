@@ -10,7 +10,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url= env("DATABASE_URL")
 }
 
 model City {
@@ -39,8 +39,7 @@ model Institution_City {
 model Ad {
   adId        Int           @id @default(autoincrement())
   name        String        @unique
-  description String?
-  price       Float
+  description String
   discount    Int
   image       String
   cities      Ad_City[]
@@ -76,9 +75,12 @@ model Ad_Category {
 model Quiz {
   quizId     Int             @id @default(autoincrement())
   name       String          @unique
-  points     Int
+  description String
+  text String
+  earnedPoints Int
   categories Quiz_Category[]
   users      Quiz_User[]
+  questions QuizQuestion[]
 }
 
 model Quiz_Category {
@@ -114,7 +116,6 @@ model Examination_Category {
 model Code {
   codeId            Int     @id @default(autoincrement())
   autenticationCode String
-  used              Boolean
 }
 
 model User {
@@ -140,8 +141,13 @@ model Quiz_User {
   @@id([userId, quizId])
 }
 
-model QuizQuestions {
+model QuizQuestion {
   questionId Int    @id @default(autoincrement())
   question   String
-  answer     String
+  possibleAnswers     String[]
+  correctAnswer1  String[]
+  correctAnswer2 String[]
+  type String
+  quizId Int
+  quiz Quiz @relation(fields: [quizId], references: [quizId])
 }
