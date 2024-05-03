@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
-import "./App.css";
-import FillInQuestion from "./components/Questions/DnDQuestion/FillInQuestion";
-import MatchingQuestion from "./components/Questions/DnDQuestion/MatchingQuestion/MatchingQuestion";
-import SliderQuestion from "./components/Questions/SliderQuestion";
-import Quiz from "./Pages/QuziPage";
+// import FillInQuestion from "./components/Questions/DnDQuestion/FillInQuestion";
+// import MatchingQuestion from "./components/Questions/DnDQuestion/MatchingQuestion/MatchingQuestion";
+// import SliderQuestion from "./components/Questions/SliderQuestion";
+// import Quiz from "./Pages/QuziPage";
+import InputField from "./components/Auth/InputField";
 
-function App() { return (
+function App() {
+  return (
     <>
-      <Quiz />
+      {/* <Quiz /> */}
+      <InputField label={"Ime"} placeholder={"Upisite ime"} />
     </>
   );
 }
