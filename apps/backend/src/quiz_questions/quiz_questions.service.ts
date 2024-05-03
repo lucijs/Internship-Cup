@@ -5,8 +5,8 @@ import { PrismaService } from 'src/prisma/prisma.service';
 export class QuizQuestionsService {
   constructor(private prisma: PrismaService) {}
 
-  findAll() {
-    return this.prisma.quizQuestion.findMany();
+  findAll(id: number) {
+    return this.prisma.quizQuestion.findMany({ where: { quizId: id } });
   }
 
   findOne(id: number) {

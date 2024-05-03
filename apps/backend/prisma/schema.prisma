@@ -39,8 +39,7 @@ model Institution_City {
 model Ad {
   adId        Int           @id @default(autoincrement())
   name        String        @unique
-  description String?
-  price       Float
+  description String
   discount    Int
   image       String
   cities      Ad_City[]

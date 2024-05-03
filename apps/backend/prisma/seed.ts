@@ -37,6 +37,7 @@ async function main() {
         'Proteini',
         'Vitamin D',
         'Stanica',
+        'Minerali',
       ],
       correctAnswer1: ['Nutrijenti'],
       correctAnswer2: ['Vitamin D'],
