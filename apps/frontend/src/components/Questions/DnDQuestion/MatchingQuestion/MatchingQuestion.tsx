@@ -43,11 +43,13 @@ const MatchingQuestion = ({
 
   const getParentContent = (idDrop: string) => {
     const id = parents[idDrop];
-    return id !== null
-      ? id.map((idDrag, index) => (
-          <div key={`${idDrop}-${index}`}>{draggable(idDrag.toString())}</div>
-        ))
-      : "Drop here";
+    return id !== null ? (
+      id.map((idDrag, index) => (
+        <div key={`${idDrop}-${index}`}>{draggable(idDrag.toString())}</div>
+      ))
+    ) : (
+      <div></div>
+    );
   };
 
   // Droppable items

@@ -5,7 +5,8 @@ import MatchingQuestion from "./components/Questions/DnDQuestion/MatchingQuestio
 import SliderQuestion from "./components/Questions/SliderQuestion";
 import Quiz from "./Pages/QuizPage";
 
-function App() { return (
+function App() {
+  return (
     <>
       <Quiz />
     </>

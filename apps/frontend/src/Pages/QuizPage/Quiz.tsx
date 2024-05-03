@@ -8,11 +8,12 @@ import MatchingQuestion from "../../components/Questions/DnDQuestion/MatchingQue
 
 const Quiz = () => {
   const id = 1;
-  const [displayedItem, setDisplayedItem] = useState(<div>neki</div>);
+  const [displayedItem, setDisplayedItem] = useState(<div></div>);
   const [activeStep, setActiveStep] = useState(1);
   const [buttonText, setButtonText] = useState("Započni kviz");
   const [questions, setQuestions] = useState<QuizQuestion[] | null>(null);
-  const [questionDIsplay, setQuestionDisplay] = useState(<></>);
+  const [questionDisplay, setQuestionDisplay] = useState(<></>);
+  const [title, setTitle] = useState("");
 
   useEffect(() => {
     fetchQuizData(id);
@@ -34,6 +35,7 @@ const Quiz = () => {
           ))}
         </div>
       );
+      setTitle(quizData["name"]);
     });
   };
 
@@ -43,8 +45,6 @@ const Quiz = () => {
       .then((data) => {
         const dataArray = Array.isArray(data) ? data : [data];
         setQuestions(dataArray);
-        console.log(dataArray);
-        console.log(dataArray[0]["possibleAnswers"]);
       });
   };
 
@@ -53,10 +53,9 @@ const Quiz = () => {
   };
 
   useEffect(() => {
-    if (questions !== null) {
-      console.log(activeStep);
-      const question = questions[activeStep - 1];
-      console.log(question);
+    if (questions !== null && activeStep <= 4) {
+      const question =
+        questions[activeStep === 4 ? activeStep - 2 : activeStep - 1];
       switch (question["type"]) {
         case "fill in":
           setQuestionDisplay(
@@ -109,18 +108,17 @@ const Quiz = () => {
   const handleStartQuiz = () => {
     switch (activeStep) {
       case 3:
-        console.log("tri je");
         setButtonText("Završi kviz");
+        handleNext();
         break;
-      case 5:
-        console.log("5 je");
-        handleEndQuiz();
-        return;
-      default:
-        console.log("next je");
+      case 1:
+      case 2:
         setButtonText("Iduće pitanje");
         handleNext();
         break;
+      default:
+        handleEndQuiz();
+        return;
     }
     setDisplayedItem(
       <div>
@@ -135,14 +133,15 @@ const Quiz = () => {
             backButton={<></>}
           />
         </div>
-        {questionDIsplay}
+        {questionDisplay}
       </div>
     );
   };
 
   return (
     <>
-      {activeStep}
+      {activeStep > 1 ? <>{title}</> : <></>}
+      {activeStep === 1 ? <></> : <>{activeStep - 1}/3</>}
       {displayedItem}
       <Button onClick={handleStartQuiz}>{buttonText}</Button>
     </>
