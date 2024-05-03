@@ -1,3 +1,4 @@
+import FormIntroduction from "../../../components/Auth/FormIntroduction";
 import EmailInputField from "../../../components/Auth/InputFields/EmailInputField";
 import PasswordInputField from "../../../components/Auth/InputFields/PasswordInputField";
 import TextInputField from "../../../components/Auth/InputFields/TextInputField";
@@ -6,10 +7,10 @@ const RegisterPage = () => {
   return (
     <>
       <div className={classes.registerFormWrapper}>
-        <div className={classes.registerIntroduction}>
-          <h2>Kreiraj svoj račun</h2>
-          <h3>Pridruži se Vitasano zajednici</h3>
-        </div>
+        <FormIntroduction
+          firstText="Kreiraj svoj račun"
+          secondText="Pridruži se Vitasano zajednici!"
+        />
         <TextInputField label="Ime" placeholder="Unesite svoje ime" />
         <TextInputField label="Prezime" placeholder="Unesite svoje prezime" />
         <TextInputField
