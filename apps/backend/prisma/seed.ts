@@ -45,6 +45,34 @@ async function main() {
       quizId: 1,
     },
   });
+
+  const question2 = await prisma.quizQuestion.create({
+    data: {
+      question: 'Spoji vitamin i povrće',
+      possibleAnswers: [
+        'Vitamin A',
+        'Vitamin C',
+        'Špinat',
+        'Brokula',
+        'Batat',
+        'Paprika',
+      ],
+      correctAnswer1: ['Brokula', 'Paprika'],
+      correctAnswer2: ['Špinat', 'Batat'],
+      type: 'match',
+      quizId: 1,
+    },
+  });
+
+  const question3 = await prisma.quizQuestion.create({
+    data: {
+      question: 'Koji vitamin je važan za očuvanje zdravlja kostiju i zuba?',
+      possibleAnswers: ['Vitamin A', 'Vitamin E', 'Vitamin C', 'Vitamin D'],
+      correctAnswer1: ['Vitamin D'],
+      type: 'multiple choice',
+      quizId: 1,
+    },
+  });
 }
 
 main()
