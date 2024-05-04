@@ -1,0 +1,45 @@
+@media only screen and (min-width: 350px) and (max-width: 550px){
+    .examinationCard{
+        background-color: #53C1AE;
+        display: flex;
+        flex-direction: column; 
+        padding: 18px 24px;
+        border-radius: 16px;
+    }
+
+    .examinationCardCategory{
+        color: #4D4D4D;
+        font-family: "Hind Light";
+        font-size: 16px;
+        text-transform: uppercase;
+        margin: 0;
+        padding: 0;
+    }
+
+    .examinationCardDescription{
+        color: #000;
+        font-family: "Martel Sans";
+        font-size: 18px;
+        line-height: 22px;
+        max-width: 277px;
+        margin: 0;
+        padding: 0;
+        margin-bottom: 10px ;
+    }
+
+    .examinationCardInfo{
+        display: flex;
+        gap: 8px;
+        margin: 0;
+        padding: 0;
+        color: #4D4D4D;
+        font-family: "Hind Medium";
+        font-size: 16px;
+        text-transform: uppercase;
+        align-items: center;
+    }
+    .examinationCard svg{
+        position: relative;
+        bottom: 2px;
+    }
+}
