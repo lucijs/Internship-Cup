@@ -1,0 +1,33 @@
+@media only screen and (min-width: 350px) and (max-width: 550px){
+    
+    .searchBar{
+        height: 42px;
+        display: flex;
+        align-items: center;
+        background-color: #C4C4C4;
+        border-radius: 11px;
+        width: 100%;
+    }
+    .searchBar input{
+        display: flex;
+        width: 90%;
+        border: none;
+        background-color: #C4C4C4;
+        border-radius: 11px;
+        height: 90%;
+        color: #4D4D4D;
+        font-family: "Hind Medium";
+        font-size: 16px;
+        padding-left: 5px;
+    }
+    .searchBar input::placeholder{
+        color: #4D4D4D;
+        font-family: "Hind";
+        font-size: 16px;
+    }
+    .searchBar input:focus{
+        border: none;
+        outline: none;
+    }
+
+}

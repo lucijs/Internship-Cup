@@ -1,0 +1,30 @@
+@media only screen and (min-width: 350px) and (max-width: 550px){
+    body{
+        background-color: #93B6EB;
+        width: 100%;
+        margin: 0;
+    }
+    h1{
+        color: #000;
+        font-family: "Martel Sans";
+        font-size: 28px;
+        display: flex;
+        padding-left: 15px;
+        margin-bottom: 17px;
+    }
+    .examinationsPageWrapper{
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .examinationsPageLower{
+        display: flex;
+        flex-direction: column;
+        background-color: #F2F2F2;
+        border-radius: 16px 16px 0 0;
+        width: 100%;
+        margin-top: 0;
+        align-items: center;
+    }
+}

@@ -4,6 +4,7 @@
         flex-direction: column;
         width: 90%;
         align-items: center;
+        padding-bottom: 150px;
     }
     .dashboardPageWrapper h2{
         color: #000;
