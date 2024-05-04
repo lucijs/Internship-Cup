@@ -5,9 +5,10 @@ import FillInQuestion from "../../components/Questions/DnDQuestion/FillInQuestio
 import MultipleChoice from "../../components/Questions/MultipleChoice";
 import SliderQuestion from "../../components/Questions/SliderQuestion";
 import MatchingQuestion from "../../components/Questions/DnDQuestion/MatchingQuestion";
+import FillInOneQuestion from "../../components/Questions/DnDQuestion/FillInOneQuestion";
+import classes from "./index.module.css";
 
-const Quiz = () => {
-  const id = 1;
+const Quiz = ({ id }: { id: number }) => {
   const [displayedItem, setDisplayedItem] = useState(<div></div>);
   const [activeStep, setActiveStep] = useState(1);
   const [buttonText, setButtonText] = useState("Započni kviz");
@@ -26,7 +27,8 @@ const Quiz = () => {
       fetch(`/backend/quizes/categories/${id}`).then((res) => res.json()),
     ]).then(([quizData, categoryData]) => {
       setDisplayedItem(
-        <div>
+        <div className={classes.container}>
+          <img src={categoryData[0].img} className={classes.img} />
           <div>{quizData["name"]}</div>
           <div>{quizData["description"]}</div>
           <div>{quizData["text"]}</div>
@@ -60,6 +62,16 @@ const Quiz = () => {
         case "fill in":
           setQuestionDisplay(
             <FillInQuestion
+              question={question["question"]}
+              possibleAnswers={question["possibleAnswers"]}
+              correctAnswer1={question["correctAnswer1"]}
+              correctAnswer2={question["correctAnswer2"]}
+            />
+          );
+          break;
+        case "fill in one":
+          setQuestionDisplay(
+            <FillInOneQuestion
               question={question["question"]}
               possibleAnswers={question["possibleAnswers"]}
               correctAnswer1={question["correctAnswer1"]}
@@ -139,12 +151,12 @@ const Quiz = () => {
   };
 
   return (
-    <>
+    <div className={classes.body}>
       {activeStep > 1 ? <>{title}</> : <></>}
       {activeStep === 1 ? <></> : <>{activeStep - 1}/3</>}
       {displayedItem}
       <Button onClick={handleStartQuiz}>{buttonText}</Button>
-    </>
+    </div>
   );
 };
 

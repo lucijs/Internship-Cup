@@ -58,6 +58,7 @@ model Ad_City {
 model Category {
   categoryId   Int                    @id @default(autoincrement())
   name         String                 @unique
+  img String
   ads          Ad_Category[]
   quizzes      Quiz_Category[]
   examinations Examination_Category[]

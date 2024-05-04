@@ -12,21 +12,38 @@ const SliderQuestion = ({
   correctAnswer1: string[];
   correctAnswer2: string[];
 }) => {
-  const [value, setValue] = useState(0);
-  const handleChange = (_event: Event, newValue: number | number[]) => {
-    setValue(newValue as number);
+  const [value1, setValue1] = useState(0);
+  const [value2, setValue2] = useState(0);
+  const handleChange1 = (_event: Event, newValue: number | number[]) => {
+    setValue1(newValue as number);
+  };
+  const handleChange2 = (_event: Event, newValue: number | number[]) => {
+    setValue2(newValue as number);
   };
   return (
     <>
       {question}
+      {possibleAnswers[0]}
       <Slider
         aria-label="Small steps"
-        value={value}
-        onChange={handleChange}
-        defaultValue={0}
-        step={1}
-        min={-10}
-        max={10}
+        value={value1}
+        onChange={handleChange1}
+        defaultValue={+possibleAnswers[3]}
+        marks
+        step={+possibleAnswers[5]}
+        min={+possibleAnswers[3]}
+        max={+possibleAnswers[4]}
+        valueLabelDisplay="auto"
+      />
+      <Slider
+        aria-label="Small steps"
+        value={value2}
+        onChange={handleChange2}
+        defaultValue={+possibleAnswers[8]}
+        marks
+        step={+possibleAnswers[10]}
+        min={+possibleAnswers[8]}
+        max={+possibleAnswers[9]}
         valueLabelDisplay="auto"
       />
     </>

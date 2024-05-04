@@ -8,6 +8,7 @@ async function main() {
     update: {},
     create: {
       name: 'Prehrana',
+      img: '../src/assets/categoryIcons/ph_carrot-bold.png',
     },
   });
   const quiz1 = await prisma.quiz.upsert({
@@ -79,6 +80,7 @@ async function main() {
     update: {},
     create: {
       name: 'Prva pomoć',
+      img: '../src/assets/categoryIcons/first-aid 1.png',
     },
   });
 
@@ -124,9 +126,12 @@ async function main() {
         'setova pritiska',
         '0',
         '100',
+        '5',
+        'Pri oživljavanju djece potrebno je ',
+        'setova pritiska',
         '0',
         '100',
-        'Pri oživljavanju djece potrebno je ',
+        '5',
       ],
       correctAnswer1: ['30'],
       correctAnswer2: ['15'],
@@ -141,7 +146,7 @@ async function main() {
       possibleAnswers: ['Cijepljenje', 'Cirkulaciju', 'Alergije', 'Cviljenje'],
       correctAnswer1: ['Cirkulaciju'],
       type: 'multiple choice',
-      quizId: 1,
+      quizId: 2,
     },
   });
 }

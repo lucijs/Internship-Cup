@@ -5,7 +5,7 @@ import { DndContext } from "@dnd-kit/core";
 import { Over } from "@dnd-kit/core";
 import classes from "./index.module.css";
 
-const FillInQuestion = ({
+const FillInOneQuestion = ({
   question,
   possibleAnswers,
   correctAnswer1,
@@ -22,7 +22,6 @@ const FillInQuestion = ({
   // Collects where each item has been dropped
   const [parents, setParents] = useState<{ [key: string]: string | null }>({
     droppable1: null,
-    droppable2: null,
   });
 
   // Collects items that have been dragged
@@ -30,9 +29,6 @@ const FillInQuestion = ({
     draggable1: null,
     draggable2: null,
     draggable3: null,
-    draggable4: null,
-    draggable5: null,
-    draggable6: null,
   });
 
   // Draggable items
@@ -45,7 +41,7 @@ const FillInQuestion = ({
 
   const getParentContent = (idDrop: string) => {
     const id = parents[idDrop];
-    return id !== null ? draggable(id) : <div> </div>;
+    return id !== null ? draggable(id) : <div> n</div>;
   };
 
   // Droppable items
@@ -74,7 +70,7 @@ const FillInQuestion = ({
           [String(draggedId)]: null,
         }));
       } else {
-        if (parents["droppable1"] !== null && parents["droppable2"] !== null) {
+        if (parents["droppable1"] !== null) {
           setDragged((prev) => ({
             ...prev,
             [String(parents[droppableId])]: draggedId,
@@ -114,15 +110,11 @@ const FillInQuestion = ({
             {text1}
             {droppable("droppable1")}
             {text2}
-            {droppable("droppable2")}
           </div>
           <div className={classes.answerFillIn}>
             {dragged.draggable1 === null ? draggable("draggable1") : null}
             {dragged.draggable2 === null ? draggable("draggable2") : null}
             {dragged.draggable3 === null ? draggable("draggable3") : null}
-            {dragged.draggable4 === null ? draggable("draggable4") : null}
-            {dragged.draggable5 === null ? draggable("draggable5") : null}
-            {dragged.draggable6 === null ? draggable("draggable6") : null}
           </div>
         </div>
       </DndContext>
@@ -130,4 +122,4 @@ const FillInQuestion = ({
   );
 };
 
-export default FillInQuestion;
+export default FillInOneQuestion;
