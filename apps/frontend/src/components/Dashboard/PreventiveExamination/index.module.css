@@ -6,6 +6,7 @@
         background-color: #93B6EB;
         width: 100% ;
         padding-left: 16px;
+        padding-top: 8px;
         margin-bottom: 16px;
     }
 
@@ -29,12 +30,14 @@
     .preventiveExaminationInfo{
         display: flex;
         gap: 8px;
-        margin-bottom: 8px;
         color: #FFF;
         font-family: "Hind Medium";
         font-size: 16px;
         text-transform: uppercase;
         align-items: center;
+    }
+    .preventiveExaminationInfo:last-of-type{
+        padding-bottom: 16px;
     }
 
     .preventiveExamination:last-of-type{
