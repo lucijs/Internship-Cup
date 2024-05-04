@@ -108,6 +108,7 @@ const FillInQuestion = ({
 
   return (
     <>
+      {question}
       <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
         <div className={classes.questionFillIn}>
           <div className={classes.text}>
