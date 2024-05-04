@@ -19,13 +19,19 @@
         justify-content: center;
     }
 
-    .dashboardPageWrapper h3{
+    .dashboardSpecialForYou{
         color: #000;
         font-family: "Martel Sans Bold";
         font-size: 20px;
         width: 100%;
         margin-bottom: 0;
 
+    }
+
+    .preventiveExaminationsContainer{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .dashboardIntroSection{
@@ -51,6 +57,12 @@
         display: flex;
         width: 100%;
         justify-content: space-between;
+    }
+
+    .preventiveExaminationsContainer{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
     }
 
 

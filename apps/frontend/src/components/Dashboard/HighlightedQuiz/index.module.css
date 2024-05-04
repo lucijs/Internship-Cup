@@ -5,19 +5,12 @@
         border-radius: 16px;
         background-color: #93B6EB;
         width: 48%;
+        margin-bottom: 50px;
     }
 
     .highlightedQuizUpper{
         display: flex;
         
-    }
-    #highlightedQuizStar{
-        /* transform: rotate(50.909deg);
-        overflow: hidden; */
-    }
-    #highlightedQuizQuestionMark{
-        /* position: relative;
-        bottom: 150px; */
     }
 
 
