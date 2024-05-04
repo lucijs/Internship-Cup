@@ -9,11 +9,6 @@
 }
 
 @font-face {
-  font-family: "Hind Bold";
-  src: url(./../assets/fonts/Hind/Hind-Bold.ttf) format("woff2");
-}
-
-@font-face {
   font-family: "Hind Light";
   src: url(./../assets/fonts/Hind/Hind-Light.ttf) format("woff2");
 }
@@ -28,6 +23,12 @@
   src: url(./../assets/fonts/Hind/Hind-SemiBold.ttf) format("woff2");
 }
 
+@font-face {
+  font-family: "Hind Bold";
+  src: url(./../assets/fonts/Hind/Hind-Bold.ttf) format("woff2");
+}
+
+
 /* Martel Sans */
 
 @font-face {
@@ -36,8 +37,8 @@
 }
 
 @font-face {
-  font-family: "Martel Sans Bold";
-  src: url(./../assets/fonts/MartelSans/martelsans-bold.otf) format("woff2");
+  font-family: "Martel Sans Ultra Light";
+  src: url(./../assets/fonts/MartelSans/martelsans-ultralight.otf) format("woff2");
 }
 
 @font-face {
@@ -46,9 +47,21 @@
 }
 
 @font-face {
+  font-family: "Martel Sans Heavy";
+  src: url(./../assets/fonts/MartelSans/martelsans-heavy.otf) format("woff2");
+}
+
+@font-face {
+  font-family: "Martel Sans Bold";
+  src: url(./../assets/fonts/MartelSans/martelsans-bold.otf) format("woff2");
+}
+
+@font-face {
   font-family: "Martel Sans Extra Bold";
   src: url(./../assets/fonts/MartelSans/martelsans-extrabold.otf) format("woff2");
 }
+
+
 #root{
   display: flex;
   flex-direction: column;

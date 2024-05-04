@@ -19,11 +19,19 @@
         justify-content: center;
     }
 
-    .dashboardPageWrapper h3{
+    .dashboardTitles{
         color: #000;
         font-family: "Martel Sans Bold";
         font-size: 20px;
         width: 100%;
+        margin-bottom: 0;
+
+    }
+
+    .preventiveExaminationsContainer{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .dashboardIntroSection{
@@ -37,9 +45,61 @@
         align-items: center;
     }
 
-    .streakPointsSection{
+    .dashboardSubtitle{
+        color: #456EAD;
+        font-family: "Hind";
+        font-size: 16px;
+        width: 100%;
+        margin-top: 0;
+    }
+
+    .highlightedQuizzesContainer{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .preventiveExaminationsContainer{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
 
     }
+
+    .rewardCardsContainer{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+
+    .partnersContainer{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+        margin-top: 8px;
+    }
+    .partnersContainer img{
+        filter: invert(50%);
+    }
+
+    .sponsorsContainer{
+        display: flex;
+        flex-direction: row;
+        width: 90%;
+        gap: 16px;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    
+
+    
+
+    
 
     
 }

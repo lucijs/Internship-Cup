@@ -1,0 +1,31 @@
+@media only screen and (min-width: 350px) and (max-width: 550px){
+    .rewardCard{
+        display: flex;
+        flex-direction: column;
+        border-radius: 16px;
+        background-color: #93B6EB;
+        width: 100%;
+        padding-left: 16px;
+        padding-top: 8px;
+        margin-bottom: 16px;
+        height: 150px;
+    }
+
+    .rewardCardCategory{
+        color: #FFF;
+        font-family: "Hind Light";
+        font-size: 16px;
+        letter-spacing: 1px;
+        margin-bottom: 0;
+        font-weight: 400;
+        text-transform: uppercase;
+    }
+
+    .rewardCardDescription{
+        color: #FFF;
+        font-family: "Martel Sans Bold";
+        font-size: 18px;
+        margin-top: 0;
+        font-weight: 800;
+    }
+}
