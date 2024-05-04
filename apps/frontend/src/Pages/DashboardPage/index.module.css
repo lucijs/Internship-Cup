@@ -26,10 +26,19 @@
         width: 100%;
     }
 
-    .streakPointsSection{
-        border-radius: 16px;
+    .dashboardIntroSection{
+        display: flex;
+        flex-direction: column;
         background-color: #93B6EB;
-        padding: 15px 10px;
+        padding: 10px 10px 15px 10px;
+        width: 90%;
+        border-radius: 16px;
+        gap: 12px;
+        align-items: center;
+    }
+
+    .streakPointsSection{
+
     }
 
     

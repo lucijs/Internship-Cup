@@ -2,10 +2,10 @@
     .dailyAdviceWrapper{
         height: 150px;
         border-radius: 16px;
-        background-color: #93b6eb;
+        background-color: #FFFFFF;
         display: flex;
         flex-direction: column;
-        width: 100%;
+        width: 92%;
         padding: 10px;
     }
 
@@ -13,28 +13,23 @@
         display: flex;
         justify-content: space-between;
         width: 100%;
-        height: 50px;
+        align-items: center;
     }
-    .dailyAdviceUpper h5{
-        color: #4D4D4D;
+    .dailyAdviceUpper h4{
+        color: #456EAD;
         font-family: "Hind";
         font-size: 16px;
-        text-transform: uppercase;
-        
     }
-    .dailyAdviceUpper h2{
-        color: #4D4D4D;
-        font-family: "Martel Sans";
-        width: 50px;
-        display: flex;
-        justify-content: flex-end;
+    .dailyAdviceUpper svg{
+
     }
 
-    .dailyAdviceText{
+    .dailyAdviceWrapper blockquote{
         color: #000;
-        font-family: "Martel Sans";
+        font-family: "Martel Sans Extra Bold";
         font-size: 16px;
-        font-weight: 800;
+        padding: 0;
+        margin: 0;
     }
 
 }
