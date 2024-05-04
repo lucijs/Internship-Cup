@@ -2,6 +2,7 @@ import DailyAdvice from "../../components/Dashboard/DailyAdvice";
 import HighlightedQuiz from "../../components/Dashboard/HighlightedQuiz";
 import PointsCard from "../../components/Dashboard/PointsCard";
 import PreventiveExamination from "../../components/Dashboard/PreventiveExamination";
+import RewardCard from "../../components/Dashboard/RewardCard";
 import StreakCard from "../../components/Dashboard/StreakCard";
 import classes from "./index.module.css";
 
@@ -33,6 +34,19 @@ const DashboardPage = () => {
 
         <div className={classes.preventiveExaminationsContainer}>
           <PreventiveExamination />
+        </div>
+
+        <h4 className={classes.dashboardSubtitle}>POGODNOSTI NAŠIH PARTNERA</h4>
+
+        <div className={classes.rewardCardsContainer}>
+          <RewardCard
+            category="Prehrana"
+            description="15% popusta pri sljedećoj kupnji u bio&bio trgovinama"
+          />
+          <RewardCard
+            category="Trening"
+            description="Akcija 3 + 2 gratis mjeseca pretplate u Marjan teretanama "
+          />
         </div>
       </div>
     </>
