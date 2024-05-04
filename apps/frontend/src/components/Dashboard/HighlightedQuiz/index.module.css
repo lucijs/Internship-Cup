@@ -1,0 +1,30 @@
+@media only screen and (min-width: 350px) and (max-width: 550px){
+    .highlightedQuiz{
+        display: flex;
+        flex-direction: column;
+        border-radius: 16px;
+        background-color: #93B6EB;
+        width: 48%;
+    }
+
+    .highlightedQuizUpper{
+        display: flex;
+        
+    }
+    #highlightedQuizStar{
+        /* transform: rotate(50.909deg);
+        overflow: hidden; */
+    }
+    #highlightedQuizQuestionMark{
+        /* position: relative;
+        bottom: 150px; */
+    }
+
+
+    .highlightedQuizLower h4{
+        color: #456EAD;
+        font-family: "Martel Sans Extra Bold";
+        font-size: 16px;
+        padding: 10px;
+    }
+}

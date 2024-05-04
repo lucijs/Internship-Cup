@@ -24,6 +24,8 @@
         font-family: "Martel Sans Bold";
         font-size: 20px;
         width: 100%;
+        margin-bottom: 0;
+
     }
 
     .dashboardIntroSection{
@@ -37,9 +39,20 @@
         align-items: center;
     }
 
-    .streakPointsSection{
-
+    .dashboardSubtitle{
+        color: #456EAD;
+        font-family: "Hind";
+        font-size: 16px;
+        width: 100%;
+        margin-top: 0;
     }
+
+    .highlightedQuizzesContainer{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
+
 
     
 }
