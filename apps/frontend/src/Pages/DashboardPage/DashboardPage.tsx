@@ -4,6 +4,7 @@ import PointsCard from "../../components/Dashboard/PointsCard";
 import PreventiveExamination from "../../components/Dashboard/PreventiveExamination";
 import RewardCard from "../../components/Dashboard/RewardCard";
 import StreakCard from "../../components/Dashboard/StreakCard";
+import Navbar from "../../components/Other/Navbar";
 import classes from "./index.module.css";
 
 const DashboardPage = () => {
@@ -26,8 +27,26 @@ const DashboardPage = () => {
         <h4 className={classes.dashboardSubtitle}>ISTAKNUTI KVIZOVI</h4>
 
         <div className={classes.highlightedQuizzesContainer}>
-          <HighlightedQuiz />
-          <HighlightedQuiz />
+          <HighlightedQuiz
+            message="Um je bitan"
+            quizDescription="Kviz o živčanom sustavu"
+          />
+          <HighlightedQuiz
+            message="Probava 101"
+            quizDescription="Što se zapravo događa u tvom trbuhu? "
+          />
+          <HighlightedQuiz
+            message="Činjenice o krvnom tlaku"
+            quizDescription="koliko znaš?"
+          />
+          <HighlightedQuiz
+            message="Um je bitan"
+            quizDescription="Kviz o živčanom sustavu"
+          />
+          <HighlightedQuiz
+            message="Um je bitan"
+            quizDescription="Kviz o živčanom sustavu"
+          />
         </div>
 
         <h4 className={classes.dashboardSubtitle}>NOVI PREVENTIVNI PREGLEDI</h4>
@@ -106,6 +125,7 @@ const DashboardPage = () => {
           />
         </div>
       </div>
+      <Navbar />
     </>
   );
 };

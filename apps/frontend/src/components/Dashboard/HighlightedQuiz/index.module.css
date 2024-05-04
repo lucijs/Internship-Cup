@@ -13,11 +13,20 @@
         
     }
 
-
     .highlightedQuizLower h4{
         color: #456EAD;
         font-family: "Martel Sans Extra Bold";
         font-size: 16px;
         padding: 10px;
+    }
+
+    #highlightedQuizQuestionMark{
+        position: relative;
+        top: 15px;
+    }
+    #highlightedQuizBrain{
+        position: relative;
+        right: 65px;
+        top: 30px;
     }
 }
