@@ -56,7 +56,8 @@
     .highlightedQuizzesContainer{
         display: flex;
         width: 100%;
-        justify-content: space-between;
+        gap: 16px;
+        overflow-x: scroll;
     }
 
     .preventiveExaminationsContainer{
