@@ -1,18 +1,18 @@
 body {
   background: #93b6eb;
 }
-
 .container {
   display: flex;
   flex-direction: row;
+  position: relative;
 }
 
 .img {
   width: 133px;
   height: 133px;
   flex-shrink: 0;
-  left: 61vw;
   top: 12px;
+  right: 12px;
   position: absolute;
 }
 
@@ -59,7 +59,7 @@ body {
   border-radius: 16px 16px 0px 0px;
   background: var(--Bijela, #f2f2f2);
   width: 375px;
-  height: 589px;
+  height: 507px;
   flex-shrink: 0;
 }
 
@@ -94,7 +94,7 @@ body {
   text-align: left;
 }
 
-.button {
+.buttonStartQuiz {
   display: flex;
   width: 335px;
   padding: 12px 8px;
@@ -114,4 +114,116 @@ body {
   font-weight: 600;
   line-height: 144%; /* 23.04px */
   position: absolute;
+  text-transform: none;
+}
+
+.step {
+  color: #000;
+  text-align: center;
+  font-family: "Martel Sans";
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 40px; /* 190.476% */
+  margin-top: 16px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.mobileStepper {
+  border-radius: 16px;
+  overflow-x: hidden;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 0px;
+}
+
+.mobileStepper span {
+  width: 335px;
+  height: 11px;
+  background: var(--Bijela, #f2f2f2);
+}
+
+.mobileStepper span span {
+  border-radius: 16px;
+  background-color: #f5b943;
+}
+
+.questionCard {
+  width: 335px;
+  height: 503px;
+  flex-shrink: 0;
+  border-radius: 16px;
+  background: var(--Bijela, #f2f2f2);
+  margin-top: 32px;
+  margin-right: 20px;
+  margin-left: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.questionCardTitle {
+  margin-top: 24px;
+  left: 18px;
+  position: absolute;
+  color: var(--Plava-default, #5c93c9);
+
+  /* Mobile/Label/semibold-16-uppercase */
+  font-family: Hind;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 40px; /* 250% */
+  text-transform: uppercase;
+}
+
+.backgroundCard {
+  width: 309px;
+  height: 464px;
+  flex-shrink: 0;
+  border-radius: 16px;
+  background: var(--Naranasta-svijetla, #ead8b5);
+  position: relative;
+  margin-left: 33px;
+  margin-right: 33px;
+  margin-top: -452px;
+  top: 0px;
+  z-index: 1;
+}
+
+.furthestBackgroundCard {
+  width: 278px;
+  height: 418px;
+  border-radius: 16px;
+  background: var(--Plava-tamna, #083968);
+  position: relative;
+  margin-left: 49px;
+  margin-right: 48px;
+  margin-top: -406px;
+  bottom: 0px;
+  z-index: 0;
+}
+
+.buttonNextQuestion {
+  display: flex;
+  width: 226px;
+  padding: 12px 8px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 16px;
+  background: var(--Naranasta-default, #f5b943);
+  margin-bottom: 56px;
+  margin-left: 75px;
+  margin-right: 74px;
+  margin-top: 39px;
+  color: var(--narancasta-botun-tekst, #997329);
+
+  /* Mobile/Label/semibold-16 */
+  font-family: Hind;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 144%; /* 23.04px */
+  text-transform: none;
 }

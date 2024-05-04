@@ -65,7 +65,11 @@ const Quiz = ({ id }: { id: number }) => {
           <div className={classes.textContainer}>
             <div className={classes.subtitle}>{quizData["description"]}</div>
             <div className={classes.text}>{quizData["text"]}</div>
-            <Button onClick={handleStartQuiz} className={classes.button}>{buttonText}</Button>
+            <Button
+              onClick={handleStartQuiz}
+              className={classes.buttonStartQuiz}>
+              {buttonText}
+            </Button>
           </div>
         </div>
       );
@@ -175,23 +179,27 @@ const Quiz = ({ id }: { id: number }) => {
     <div className={classes.body}>
       {activeStep !== 0 ? (
         <>
-          {title}
-          {activeStep}/3
-          <div>
-            <div>
-              <MobileStepper
-                variant="progress"
-                steps={4}
-                position="static"
-                activeStep={activeStep}
-                sx={{ width: 400, flexGrow: 1 }}
-                nextButton={<></>}
-                backButton={<></>}
-              />
-            </div>
+          <div className={classes.step}>{activeStep}/3</div>
+          <MobileStepper
+            variant="progress"
+            steps={4}
+            position="static"
+            activeStep={activeStep}
+            nextButton={<></>}
+            backButton={<></>}
+            className={classes.mobileStepper}
+          />
+          <div className={classes.questionCard}>
+            <div className={classes.questionCardTitle}>{title}</div>
             {questionDisplay}
           </div>
-          <Button onClick={handleStartQuiz}>{buttonText}</Button>
+          <div className={classes.backgroundCard}></div>
+          <div className={classes.furthestBackgroundCard}></div>
+          <Button
+            onClick={handleStartQuiz}
+            className={classes.buttonNextQuestion}>
+            {buttonText}
+          </Button>
         </>
       ) : (
         <>{displayedItem}</>
