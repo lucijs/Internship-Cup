@@ -3,14 +3,14 @@
         border-radius: 16px;
         height: 150px;
         width: 159px;
-        background-color: #93b6eb;
+        background: #FFFFFF;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
     .streakCard h4{
         width: 100%;
-        color: #4D4D4D;
+        color: #456EAD;
         font-family: "Hind";
         font-size: 16px;
         padding: 0;

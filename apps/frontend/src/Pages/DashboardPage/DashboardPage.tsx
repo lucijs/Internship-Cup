@@ -15,6 +15,7 @@ const DashboardPage = () => {
             <PointsCard />
           </div>
         </div>
+        <h3>Posebno za tebe</h3>
       </div>
     </>
   );

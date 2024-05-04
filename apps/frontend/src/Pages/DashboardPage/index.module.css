@@ -19,7 +19,18 @@
         justify-content: center;
     }
 
-    .streakCard {
-        flex: 1;
+    .dashboardPageWrapper h3{
+        color: #000;
+        font-family: "Martel Sans Bold";
+        font-size: 20px;
+        width: 100%;
     }
+
+    .streakPointsSection{
+        border-radius: 16px;
+        background-color: #93B6EB;
+        padding: 15px 10px;
+    }
+
+    
 }
