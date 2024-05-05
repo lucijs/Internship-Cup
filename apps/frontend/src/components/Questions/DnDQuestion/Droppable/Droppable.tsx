@@ -1,5 +1,5 @@
-import React from 'react';
-import {useDroppable} from '@dnd-kit/core';
+import React from "react";
+import { useDroppable } from "@dnd-kit/core";
 
 interface TaxDroppableProps {
   id: string;
@@ -7,7 +7,7 @@ interface TaxDroppableProps {
 }
 
 export function Droppable(props: TaxDroppableProps) {
-  const {isOver, setNodeRef} = useDroppable({
+  const { isOver, setNodeRef } = useDroppable({
     id: props.id,
   });
   const style = {
@@ -20,4 +20,3 @@ export function Droppable(props: TaxDroppableProps) {
     </div>
   );
 }
-  

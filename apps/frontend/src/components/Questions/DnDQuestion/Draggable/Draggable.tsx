@@ -1,6 +1,6 @@
-import React from 'react';
-import {useDraggable} from '@dnd-kit/core';
-import {CSS} from '@dnd-kit/utilities';
+import React from "react";
+import { useDraggable } from "@dnd-kit/core";
+import { CSS } from "@dnd-kit/utilities";
 
 interface DraggableProps {
   id: string;
@@ -8,7 +8,7 @@ interface DraggableProps {
 }
 
 export function Draggable(props: DraggableProps) {
-  const {attributes, listeners, setNodeRef, transform} = useDraggable({
+  const { attributes, listeners, setNodeRef, transform } = useDraggable({
     id: props.id,
   });
   const style = {

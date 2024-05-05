@@ -104,7 +104,7 @@ const FillInOneQuestion = ({
       <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
         <div className={classes.questionFillIn}>
           <div className={classes.text}>
-            <p>{text1}</p>
+            {text1}
             {droppable("droppable1")}
             <p>{text2}</p>
           </div>
