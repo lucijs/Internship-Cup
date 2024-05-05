@@ -26,21 +26,18 @@
   gap: 25px;
 }
 
-.answerFillIn button {
-  justify-self: center;
-}
-
-.body {
-  position: relative;
-  top: 0px;
-}
-
 .body button {
+  justify-self: center;
   border: 0px;
   padding: 0px;
   width: 126px;
   height: 46px;
   border-radius: 16px;
+}
+
+.body {
+  position: relative;
+  top: 0px;
 }
 
 .question {
