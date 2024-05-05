@@ -1,4 +1,68 @@
-#root {
+/* DEFINITIONS */
+
+/* fonts */
+
+/* Hind */
+@font-face {
+  font-family: "Hind";
+  src: url(./../assets/fonts/Hind/Hind-Regular.ttf) format("woff2");
+}
+
+@font-face {
+  font-family: "Hind Light";
+  src: url(./../assets/fonts/Hind/Hind-Light.ttf) format("woff2");
+}
+
+@font-face {
+  font-family: "Hind Medium";
+  src: url(./../assets/fonts/Hind/Hind-Medium.ttf) format("woff2");
+}
+
+@font-face {
+  font-family: "Hind SemiBold";
+  src: url(./../assets/fonts/Hind/Hind-SemiBold.ttf) format("woff2");
+}
+
+@font-face {
+  font-family: "Hind Bold";
+  src: url(./../assets/fonts/Hind/Hind-Bold.ttf) format("woff2");
+}
+
+
+/* Martel Sans */
+
+@font-face {
+  font-family: "Martel Sans";
+  src: url(./../assets/fonts/MartelSans/martelsans-regular.otf) format("woff2");
+}
+
+@font-face {
+  font-family: "Martel Sans Ultra Light";
+  src: url(./../assets/fonts/MartelSans/martelsans-ultralight.otf) format("woff2");
+}
+
+@font-face {
+  font-family: "Martel Sans Light";
+  src: url(./../assets/fonts/MartelSans/martelsans-light.otf) format("woff2");
+}
+
+@font-face {
+  font-family: "Martel Sans Heavy";
+  src: url(./../assets/fonts/MartelSans/martelsans-heavy.otf) format("woff2");
+}
+
+@font-face {
+  font-family: "Martel Sans Bold";
+  src: url(./../assets/fonts/MartelSans/martelsans-bold.otf) format("woff2");
+}
+
+@font-face {
+  font-family: "Martel Sans Extra Bold";
+  src: url(./../assets/fonts/MartelSans/martelsans-extrabold.otf) format("woff2");
+}
+
+
+#root{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -6,8 +70,4 @@
   padding: 0;
   box-sizing: border-box;
   width: 100%;
-}
-
-* {
-  margin: 0;
 }
