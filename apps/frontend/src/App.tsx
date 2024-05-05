@@ -4,7 +4,7 @@ import Quiz from "./Pages/QuizPage";
 function App() {
   return (
     <>
-      <Quiz id={2} />
+      <Quiz id={1} />
     </>
   );
 }

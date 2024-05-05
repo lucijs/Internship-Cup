@@ -58,6 +58,7 @@
   position: relative;
   top: 0px;
   touch-action: none;
+  overflow: hidden;
 }
 
 .answerContainer {

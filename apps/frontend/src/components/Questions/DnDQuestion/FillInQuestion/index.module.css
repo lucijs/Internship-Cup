@@ -9,7 +9,7 @@
   flex-direction: row;
   gap: 10px;
   height: 50px;
-  height: 150px;
+  height: fit-content;
   flex-wrap: wrap;
   margin-left: 18px;
   margin-right: 17px;
@@ -46,6 +46,7 @@
   position: relative;
   top: 0px;
   touch-action: none;
+  overflow: hidden;
 }
 
 .question {

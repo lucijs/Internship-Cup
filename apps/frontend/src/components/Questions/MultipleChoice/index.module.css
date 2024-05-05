@@ -17,7 +17,7 @@
   text-align: left;
 }
 
-.body button {
+button {
   align-items: center;
   justify-self: center;
   width: 297px;
@@ -49,4 +49,12 @@
   line-height: 144%; /* 25.92px */
   margin-left: 18px;
   margin-right: 14px;
+}
+
+.unselected {
+  border: none;
+}
+
+.selected {
+  border: 2px solid var(--Plava-tamna, #083968);
 }
