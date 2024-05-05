@@ -1,12 +1,10 @@
-// import DashboardPage from "./Pages/DashboardPage";
-
-import ExaminationsPage from "./Pages/ExaminationsPage";
+import "./App.css";
+import Quiz from "./Pages/QuizPage";
 
 function App() {
   return (
     <>
-      {/* <DashboardPage /> */}
-      <ExaminationsPage />
+      <Quiz id={2} />
     </>
   );
 }

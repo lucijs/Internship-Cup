@@ -26,8 +26,7 @@ CREATE TABLE "Institution_City" (
 CREATE TABLE "Ad" (
     "adId" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
-    "description" TEXT,
-    "price" DOUBLE PRECISION NOT NULL,
+    "description" TEXT NOT NULL,
     "discount" INTEGER NOT NULL,
     "image" TEXT NOT NULL,
 
@@ -46,6 +45,7 @@ CREATE TABLE "Ad_City" (
 CREATE TABLE "Category" (
     "categoryId" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
+    "img" TEXT NOT NULL,
 
     CONSTRAINT "Category_pkey" PRIMARY KEY ("categoryId")
 );

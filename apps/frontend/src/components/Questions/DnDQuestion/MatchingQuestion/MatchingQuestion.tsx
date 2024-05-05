@@ -35,7 +35,9 @@ const MatchingQuestion = ({
 
   // Draggable items
   const draggable = (id: string) => (
-    <Draggable id={id}>{possibleAnswers[+id[9] + 1]}</Draggable>
+    <Draggable id={id}>
+      <div className={classes.draggable}>{possibleAnswers[+id[9] + 1]}</div>
+    </Draggable>
   );
 
   // Represents the currently dragged item
@@ -43,17 +45,19 @@ const MatchingQuestion = ({
 
   const getParentContent = (idDrop: string) => {
     const id = parents[idDrop];
-    return id !== null
-      ? id.map((idDrag, index) => (
-          <div key={`${idDrop}-${index}`}>{draggable(idDrag.toString())}</div>
-        ))
-      : "Drop here";
+    return id !== null ? (
+      id.map((idDrag, index) => (
+        <div key={`${idDrop}-${index}`}>{draggable(idDrag.toString())}</div>
+      ))
+    ) : (
+      <div></div>
+    );
   };
 
   // Droppable items
   const droppable = (idDrop: string) => (
     <Droppable id={idDrop}>
-      <div style={{ height: "100px" }}>{getParentContent(idDrop)}</div>
+      <div className={classes.droppable}>{getParentContent(idDrop)}</div>
     </Droppable>
   );
 
@@ -117,34 +121,68 @@ const MatchingQuestion = ({
     setDrag(null);
   }
 
-  //za bodove samo triba provjeravat iz baze s parents jel dobro i za jedno
-  //logika je skroz ista
-
-  //za prikaz kad se spaja triba vidit kako napravit da se ne miće ovoliko
-  //kad draggas, ne znan jel nan okej ovako, al mislin da može bit bolje
-
   return (
-    <>
-      {question}
+    <div className={classes.body}>
+      <div className={classes.question}>{question}</div>
       <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
-        <div className={classes.container}>
-          <div className={classes.dragHere}>
-            {text1}
-            {droppable("droppable1")}
+        <div className={classes.answerContainer}>
+          <div className={classes.container}>
+            <div className={classes.dragHere}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="144"
+                height="54"
+                viewBox="0 0 144 54"
+                fill="none">
+                <mask id="path-1-inside-1_281_1716" fill="white">
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M16 0C7.16344 0 0 7.16344 0 16V25V28.8615V54H144V28.8615V25V16C144 7.16344 136.837 0 128 0H16Z"
+                  />
+                </mask>
+                <path
+                  d="M0 54H-4V58H0V54ZM144 54V58H148V54H144ZM4 16C4 9.37258 9.37258 4 16 4V-4C4.95431 -4 -4 4.9543 -4 16H4ZM4 25V16H-4V25H4ZM4 28.8615V25H-4V28.8615H4ZM4 54V28.8615H-4V54H4ZM144 50H0V58H144V50ZM140 28.8615V54H148V28.8615H140ZM140 25V28.8615H148V25H140ZM140 16V25H148V16H140ZM128 4C134.627 4 140 9.37258 140 16H148C148 4.95431 139.046 -4 128 -4V4ZM16 4H128V-4H16V4Z"
+                  fill="#F5B943"
+                  mask="url(#path-1-inside-1_281_1716)"
+                />
+              </svg>
+              <div className={classes.textField}>{text1}</div>
+              {droppable("droppable1")}
+            </div>
+            <div className={classes.dragHere}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="144"
+                height="54"
+                viewBox="0 0 144 54"
+                fill="none">
+                <mask id="path-1-inside-1_281_1716" fill="white">
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M16 0C7.16344 0 0 7.16344 0 16V25V28.8615V54H144V28.8615V25V16C144 7.16344 136.837 0 128 0H16Z"
+                  />
+                </mask>
+                <path
+                  d="M0 54H-4V58H0V54ZM144 54V58H148V54H144ZM4 16C4 9.37258 9.37258 4 16 4V-4C4.95431 -4 -4 4.9543 -4 16H4ZM4 25V16H-4V25H4ZM4 28.8615V25H-4V28.8615H4ZM4 54V28.8615H-4V54H4ZM144 50H0V58H144V50ZM140 28.8615V54H148V28.8615H140ZM140 25V28.8615H148V25H140ZM140 16V25H148V16H140ZM128 4C134.627 4 140 9.37258 140 16H148C148 4.95431 139.046 -4 128 -4V4ZM16 4H128V-4H16V4Z"
+                  fill="#F5B943"
+                  mask="url(#path-1-inside-1_281_1716)"
+                />
+              </svg>
+              <div className={classes.textField}>{text2}</div>
+              {droppable("droppable2")}
+            </div>
           </div>
-          <div className={classes.dragHere}>
-            {text2}
-            {droppable("droppable2")}
+          <div className={classes.answerFillIn}>
+            {dragged.draggable1 === null ? draggable("draggable1") : null}
+            {dragged.draggable2 === null ? draggable("draggable2") : null}
+            {dragged.draggable3 === null ? draggable("draggable3") : null}
+            {dragged.draggable4 === null ? draggable("draggable4") : null}
           </div>
-        </div>
-        <div className={classes.answers}>
-          {dragged.draggable1 === null ? draggable("draggable1") : null}
-          {dragged.draggable2 === null ? draggable("draggable2") : null}
-          {dragged.draggable3 === null ? draggable("draggable3") : null}
-          {dragged.draggable4 === null ? draggable("draggable4") : null}
         </div>
       </DndContext>
-    </>
+    </div>
   );
 };
 
