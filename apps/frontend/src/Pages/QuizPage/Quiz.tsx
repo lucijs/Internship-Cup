@@ -191,7 +191,7 @@ const Quiz = ({ id }: { id: number }) => {
           />
           <div className={classes.questionCard}>
             <div className={classes.questionCardTitle}>{title}</div>
-            {questionDisplay}
+            <div className={classes.question}>{questionDisplay}</div>
           </div>
           <div className={classes.backgroundCard}></div>
           <div className={classes.furthestBackgroundCard}></div>

@@ -162,12 +162,16 @@ body {
   z-index: 2;
 }
 
+.question {
+  top: 50px;
+  position: absolute;
+}
+
 .questionCardTitle {
-  margin-top: 24px;
+  margin-top: 18px;
   left: 18px;
   position: absolute;
   color: var(--Plava-default, #5c93c9);
-
   /* Mobile/Label/semibold-16-uppercase */
   font-family: Hind;
   font-size: 16px;

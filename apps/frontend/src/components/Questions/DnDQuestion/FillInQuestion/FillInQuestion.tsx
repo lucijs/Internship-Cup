@@ -37,7 +37,9 @@ const FillInQuestion = ({
 
   // Draggable items
   const draggable = (id: string) => (
-    <Draggable id={id}>{possibleAnswers[+id[9] + 1]}</Draggable>
+    <Draggable id={id}>
+      <div className={classes.draggable}>{possibleAnswers[+id[9] + 1]}</div>
+    </Draggable>
   );
 
   // Represents the currently dragged item
@@ -51,7 +53,7 @@ const FillInQuestion = ({
   // Droppable items
   const droppable = (idDrop: string) => (
     <Droppable id={idDrop}>
-      <div style={{ width: "150px" }}>{getParentContent(idDrop)}</div>
+      <div className={classes.droppable}>{getParentContent(idDrop)}</div>
     </Droppable>
   );
 
@@ -100,21 +102,15 @@ const FillInQuestion = ({
     }
   }
 
-  //za bodove samo triba provjeravat iz baze s parents jel dobro i za jedno
-  //logika je skroz ista
-
-  //za prikaz kad se spaja triba vidit kako napravit da se ne miće ovoliko
-  //kad draggas, ne znan jel nan okej ovako, al mislin da može bit bolje
-
   return (
-    <>
-      {question}
+    <div className={classes.body}>
+      <div className={classes.question}>{question}</div>
       <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
         <div className={classes.questionFillIn}>
           <div className={classes.text}>
-            {text1}
+            <div className={classes.textField}>{text1}</div>
             {droppable("droppable1")}
-            {text2}
+            <div className={classes.textField}>{text2}</div>
             {droppable("droppable2")}
           </div>
           <div className={classes.answerFillIn}>
@@ -127,7 +123,7 @@ const FillInQuestion = ({
           </div>
         </div>
       </DndContext>
-    </>
+    </div>
   );
 };
 
