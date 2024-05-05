@@ -13,15 +13,8 @@
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  margin-left: 23px;
-}
-
-.answerFillIn {
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
+  margin-left: 18px;
+  text-align: left;
 }
 
 .body button {
@@ -38,6 +31,9 @@
 .body {
   position: relative;
   top: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .question {
@@ -52,4 +48,5 @@
   font-weight: 600;
   line-height: 144%; /* 25.92px */
   margin-left: 18px;
+  margin-right: 14px;
 }

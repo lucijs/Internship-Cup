@@ -113,7 +113,8 @@ body {
   font-style: normal;
   font-weight: 600;
   line-height: 144%; /* 23.04px */
-  position: sticky;
+  position: relative;
+  margin-top: auto;
   text-transform: none;
 }
 
@@ -179,6 +180,8 @@ body {
   font-weight: 600;
   line-height: 40px; /* 250% */
   text-transform: uppercase;
+  position: fixed;
+  bottom: 0;
 }
 
 .backgroundCard {
