@@ -1,12 +1,9 @@
-import RegisterPage from "./Pages/AuthPages/RegisterPage";
-import "./index.css";
-import AuthPage from "./Pages/AuthPages/AuthPage";
-import Quiz from "./Pages/QuizPage";
+import AuthPage from "./Pages/AuthPages";
 
 function App() {
   return (
     <>
-      <RegisterPage />
+      <AuthPage />
     </>
   );
 }

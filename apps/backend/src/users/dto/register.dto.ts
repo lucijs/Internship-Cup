@@ -27,4 +27,7 @@ export class RegisterDto {
 
   // @ApiProperty()
   // lastStreakDate: Date;
+
+  @ApiProperty()
+  confirmationPassword: string;
 }

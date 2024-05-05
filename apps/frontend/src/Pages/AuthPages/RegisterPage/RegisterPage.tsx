@@ -1,3 +1,4 @@
+import { ChangeEvent, useState } from "react";
 import CheckBoxField from "../../../components/Auth/CheckBoxField";
 import FormIntroduction from "../../../components/Auth/FormIntroduction";
 import DateInputField from "../../../components/Auth/InputFields/DateInputField";
@@ -7,6 +8,62 @@ import TextInputField from "../../../components/Auth/InputFields/TextInputField"
 import SubmitButton from "../../../components/Auth/SubmitButton";
 import classes from "./index.module.css";
 const RegisterPage = () => {
+  const [registrationData, setRegistrationData] = useState({
+    name: "",
+    surname: "",
+    dateOfBirth: "",
+    email: "",
+    password: "",
+    confirmationPassword: "",
+  });
+
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setRegistrationData((previousData) => ({
+      ...previousData,
+      [name]: value,
+    }));
+  };
+
+  const clearInputFields = () => {
+    setRegistrationData({
+      name: "",
+      surname: "",
+      dateOfBirth: "",
+      email: "",
+      password: "",
+      confirmationPassword: "",
+    });
+  };
+
+  const handleSubmit = async () => {
+    try {
+      const isoDate = registrationData.dateOfBirth + "T23:27:54.502Z";
+
+      setRegistrationData((previousData) => ({
+        ...previousData,
+        dateOfBirth: isoDate,
+      }));
+
+      const response = await fetch("backend/users/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(registrationData),
+      });
+      if (!response.ok) {
+        const errorMessage = await response.text();
+        throw new Error(errorMessage);
+      }
+      const responseData = await response.json();
+      console.log("User registered successfully:", responseData);
+      clearInputFields();
+    } catch (error) {
+      console.error("Error in registration process");
+    }
+  };
+
   return (
     <>
       <div className={classes.registerFormWrapper}>
@@ -14,30 +71,46 @@ const RegisterPage = () => {
           firstText="Kreiraj svoj račun"
           secondText="Pridruži se Vitasano zajednici!"
         />
-        <TextInputField label="Ime" placeholder="Unesite svoje ime" />
-        <TextInputField label="Prezime" placeholder="Unesite svoje prezime" />
-        {/* <TextInputField
-          label="Datum rođenja"
-          placeholder="Unesi svoj datum rođenja (dd/mm/gggg)"
-        /> */}
+        <TextInputField
+          label="Ime"
+          placeholder="Unesite svoje ime"
+          onChange={handleInputChange}
+          name="name"
+        />
+        <TextInputField
+          label="Prezime"
+          placeholder="Unesite svoje prezime"
+          onChange={handleInputChange}
+          name="surname"
+        />
 
-        <DateInputField label="Datum rođenja" />
-        {/* prominit kasnije u date input field */}
+        <DateInputField
+          label="Datum rođenja"
+          onChange={handleInputChange}
+          name="dateOfBirth"
+        />
+
         <EmailInputField
           label="Email adresa"
           placeholder="Unesi svoju email adresu"
+          onChange={handleInputChange}
+          name="email"
         />
         <PasswordInputField
           label="Lozinka"
           placeholder="Odaberi jaku lozinku"
+          onChange={handleInputChange}
+          name="password"
         />
         <PasswordInputField
           label="Potvrda lozinke"
           placeholder="Potvrdi svoju lozinku"
+          onChange={handleInputChange}
+          name="confirmationPassword"
         />
         <div className={classes.belowRegisterForm}>
           <CheckBoxField text="Slažem se s Uvjetima usluge i Politikom privatnosti." />
-          <SubmitButton buttonText="Stvori račun" />
+          <SubmitButton buttonText="Stvori račun" handleSubmit={handleSubmit} />
         </div>
       </div>
     </>
