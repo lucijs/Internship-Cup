@@ -27,6 +27,7 @@
 }
 
 .body button {
+  align-items: center;
   justify-self: center;
   border: 0px;
   padding: 0px;
