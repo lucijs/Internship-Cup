@@ -34,8 +34,6 @@ body {
 
 .category {
   color: var(--Bijela, #f2f2f2);
-
-  /* Mobile/Label/semibold-16-uppercase */
   font-family: Hind;
   font-size: 16px;
   font-style: normal;
@@ -94,7 +92,7 @@ body {
   margin-left: 20px;
   width: 335px;
   text-align: left;
-  margin-bottom: 32px;
+  margin-bottom: 50px;
 }
 
 .buttonStartQuizContainer {

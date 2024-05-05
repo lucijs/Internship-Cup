@@ -1,5 +1,6 @@
 import { Slider } from "@mui/material";
 import { useState } from "react";
+import classes from "./index.module.css";
 
 const SliderQuestion = ({
   question,
@@ -21,8 +22,8 @@ const SliderQuestion = ({
     setValue2(newValue as number);
   };
   return (
-    <>
-      {question}
+    <div className={classes.body}>
+      <div className={classes.question}>{question}</div>
       {possibleAnswers[0]}
       <Slider
         aria-label="Small steps"
@@ -46,7 +47,7 @@ const SliderQuestion = ({
         max={+possibleAnswers[9]}
         valueLabelDisplay="auto"
       />
-    </>
+    </div>
   );
 };
 
