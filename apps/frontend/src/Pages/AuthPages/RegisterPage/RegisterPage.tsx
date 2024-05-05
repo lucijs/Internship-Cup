@@ -1,5 +1,6 @@
 import CheckBoxField from "../../../components/Auth/CheckBoxField";
 import FormIntroduction from "../../../components/Auth/FormIntroduction";
+import DateInputField from "../../../components/Auth/InputFields/DateInputField";
 import EmailInputField from "../../../components/Auth/InputFields/EmailInputField";
 import PasswordInputField from "../../../components/Auth/InputFields/PasswordInputField";
 import TextInputField from "../../../components/Auth/InputFields/TextInputField";
@@ -15,10 +16,12 @@ const RegisterPage = () => {
         />
         <TextInputField label="Ime" placeholder="Unesite svoje ime" />
         <TextInputField label="Prezime" placeholder="Unesite svoje prezime" />
-        <TextInputField
+        {/* <TextInputField
           label="Datum rođenja"
           placeholder="Unesi svoj datum rođenja (dd/mm/gggg)"
-        />{" "}
+        /> */}
+
+        <DateInputField label="Datum rođenja" />
         {/* prominit kasnije u date input field */}
         <EmailInputField
           label="Email adresa"
