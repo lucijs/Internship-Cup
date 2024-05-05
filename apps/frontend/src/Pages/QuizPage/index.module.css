@@ -1,6 +1,8 @@
 body {
   background: #93b6eb;
+  overflow-x: hidden;
 }
+
 .container {
   display: flex;
   flex-direction: row;
@@ -33,8 +35,6 @@ body {
 
 .category {
   color: var(--Bijela, #f2f2f2);
-
-  /* Mobile/Label/semibold-16-uppercase */
   font-family: Hind;
   font-size: 16px;
   font-style: normal;
@@ -58,8 +58,12 @@ body {
 .textContainer {
   border-radius: 16px 16px 0px 0px;
   background: var(--Bijela, #f2f2f2);
-  width: 375px;
-  height: 560px;
+  width: 376px;
+  margin-top: 16px;
+  height: max-content;
+  position: relative;
+  bottom: 0px;
+  overflow-x: hidden;
 }
 
 .subtitle {
@@ -81,7 +85,7 @@ body {
 
 .text {
   color: var(--Plava-tamna, #083968);
-
+  height: fit-content;
   /* Mobile/Body/regular-16 */
   font-family: Hind;
   font-size: 16px;
@@ -91,7 +95,15 @@ body {
   margin-left: 20px;
   width: 335px;
   text-align: left;
-  margin-bottom: 32px;
+  margin-bottom: 50px;
+}
+
+.buttonStartQuizContainer {
+  height: 103px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin-bottom: -10px;
 }
 
 .buttonStartQuiz {
@@ -100,9 +112,9 @@ body {
   padding: 12px 8px;
   justify-content: center;
   align-items: center;
-  margin-left: 20px;
-  margin-right: 20px;
-  bottom: 56px;
+  margin-left: 18px;
+  margin-right: 18px;
+  top: 0px;
   border-radius: 16px;
   background: var(--Naranasta-default, #f5b943);
   color: var(--narancasta-botun-tekst, #997329);
@@ -114,7 +126,6 @@ body {
   font-weight: 600;
   line-height: 144%; /* 23.04px */
   position: relative;
-  margin-top: auto;
   text-transform: none;
 }
 
@@ -147,6 +158,7 @@ body {
 
 .mobileStepper span span {
   border-radius: 16px;
+  height: 11px;
   background-color: #f5b943;
 }
 

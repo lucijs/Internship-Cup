@@ -5,12 +5,18 @@
 }
 
 .text {
-  display: inline-flex;
+  display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   height: 150px;
-  flex-wrap: wrap;
   margin-left: 18px;
   margin-right: 17px;
+  color: var(--Plava-tamna, #083968);
+  font-family: Hind;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .answerFillIn {
@@ -34,6 +40,8 @@
 .body {
   position: relative;
   top: 0px;
+  touch-action: none;
+  overflow: hidden;
 }
 
 .question {

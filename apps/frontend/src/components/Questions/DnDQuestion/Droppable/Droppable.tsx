@@ -1,5 +1,6 @@
-import React from 'react';
-import {useDroppable} from '@dnd-kit/core';
+import React from "react";
+import { useDroppable } from "@dnd-kit/core";
+import { green, red } from "@mui/material/colors";
 
 interface TaxDroppableProps {
   id: string;
@@ -7,17 +8,9 @@ interface TaxDroppableProps {
 }
 
 export function Droppable(props: TaxDroppableProps) {
-  const {isOver, setNodeRef} = useDroppable({
+  const { isOver, setNodeRef } = useDroppable({
     id: props.id,
   });
-  const style = {
-    opacity: isOver ? 1 : 0.5,
-  };
 
-  return (
-    <div ref={setNodeRef} style={style}>
-      {props.children}
-    </div>
-  );
+  return <div ref={setNodeRef}>{props.children}</div>;
 }
-  

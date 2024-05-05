@@ -65,11 +65,13 @@ const Quiz = ({ id }: { id: number }) => {
           <div className={classes.textContainer}>
             <div className={classes.subtitle}>{quizData["description"]}</div>
             <div className={classes.text}>{quizData["text"]}</div>
-            <Button
-              onClick={handleStartQuiz}
-              className={classes.buttonStartQuiz}>
-              {buttonText}
-            </Button>
+            <div className={classes.buttonStartQuizContainer}>
+              <Button
+                onClick={handleStartQuiz}
+                className={classes.buttonStartQuiz}>
+                {buttonText}
+              </Button>
+            </div>
           </div>
         </div>
       );

@@ -88,16 +88,20 @@ const MatchingQuestion = ({
         const updatedParents = Object.fromEntries(
           Object.entries(parents).map(([key, value]) => [
             key,
-            Array.isArray(value) && key === droppableId
+            Array.isArray(value) && key === droppableId && value.length === 1
               ? value.some((el) => el === String(drag))
                 ? value
                 : [...value, String(drag)]
-              : value?.filter((item) => item !== String(drag)) || null, // Ensure value is always string[] or null
+              : value?.filter((item) => item !== String(drag)) || null,
           ])
         );
         setDragged((prev) => ({
           ...prev,
-          [String(drag)]: droppableId,
+          [String(drag)]: updatedParents[droppableId]?.some(
+            (el) => el === String(drag)
+          )
+            ? droppableId
+            : null,
         }));
 
         setParents(updatedParents);
