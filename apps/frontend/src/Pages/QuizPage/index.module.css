@@ -180,8 +180,9 @@ body {
   font-weight: 600;
   line-height: 40px; /* 250% */
   text-transform: uppercase;
-  position: fixed;
-  bottom: 0;
+  position: absolute;
+  text-align: left;
+  top: 0;
 }
 
 .backgroundCard {
