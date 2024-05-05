@@ -1,5 +1,6 @@
 import { Slider } from "@mui/material";
 import { useState } from "react";
+import classes from "./index.module.css";
 
 const SliderQuestion = ({
   question,
@@ -21,32 +22,49 @@ const SliderQuestion = ({
     setValue2(newValue as number);
   };
   return (
-    <>
-      {question}
-      {possibleAnswers[0]}
-      <Slider
-        aria-label="Small steps"
-        value={value1}
-        onChange={handleChange1}
-        defaultValue={+possibleAnswers[3]}
-        marks
-        step={+possibleAnswers[5]}
-        min={+possibleAnswers[3]}
-        max={+possibleAnswers[4]}
-        valueLabelDisplay="auto"
-      />
-      <Slider
-        aria-label="Small steps"
-        value={value2}
-        onChange={handleChange2}
-        defaultValue={+possibleAnswers[8]}
-        marks
-        step={+possibleAnswers[10]}
-        min={+possibleAnswers[8]}
-        max={+possibleAnswers[9]}
-        valueLabelDisplay="auto"
-      />
-    </>
+    <div className={classes.body}>
+      <div className={classes.questionDescription}>{question}</div>
+      <div className={classes.question}>{possibleAnswers[0]}</div>
+      <div className={classes.sliderContainer}>
+        <div className={classes.sliderContainerOne}>
+          <Slider
+            value={value1}
+            onChange={handleChange1}
+            defaultValue={+possibleAnswers[3]}
+            marks
+            track={false}
+            step={+possibleAnswers[5]}
+            min={+possibleAnswers[3] - +possibleAnswers[5]}
+            max={+possibleAnswers[4] + +possibleAnswers[5]}
+            className={classes.slider}
+          />
+          <div className={classes.sliderDescription}>
+            <div>{possibleAnswers[1]}</div>
+            <div className={classes.sliderDescriptionValue}>{value1}</div>
+            <div>{possibleAnswers[2]}</div>
+          </div>
+        </div>
+        <div className={classes.sliderContainerOne}>
+          <Slider
+            aria-label="Small steps"
+            value={value2}
+            onChange={handleChange2}
+            defaultValue={+possibleAnswers[8]}
+            track={false}
+            marks
+            step={+possibleAnswers[10]}
+            min={+possibleAnswers[8] - +possibleAnswers[10]}
+            max={+possibleAnswers[9] + +possibleAnswers[10]}
+            className={classes.slider}
+          />
+          <div className={classes.sliderDescription}>
+            {possibleAnswers[6]}
+            <div className={classes.sliderDescriptionValue}>{value2}</div>
+            {possibleAnswers[7]}
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 

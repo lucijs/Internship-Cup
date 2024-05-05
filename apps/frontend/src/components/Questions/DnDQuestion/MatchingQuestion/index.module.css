@@ -32,6 +32,7 @@
   line-height: 144%; /* 25.92px */
   margin-top: -38px;
   margin-left: 16px;
+  text-align: center;
 }
 
 .answerFillIn {
@@ -56,6 +57,8 @@
 .body {
   position: relative;
   top: 0px;
+  touch-action: none;
+  overflow: hidden;
 }
 
 .answerContainer {
