@@ -37,7 +37,6 @@ export class InstitutionsService {
       const cities = institution?.citiesInstitutionIsIn.map(
         (c) => c.city || [],
       );
-      console.log(cities);
       return cities;
     } catch (error) {
       console.error(error);

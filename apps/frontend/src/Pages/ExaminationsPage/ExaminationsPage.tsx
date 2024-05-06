@@ -7,7 +7,10 @@ import classes from "./index.module.css";
 
 interface Examination {
   examinationId: number;
-  categoryId: number;
+  category: {
+    categoryId: number;
+    name: string;
+  };
   name: string;
   institution: {
     institutionId: number;
@@ -49,6 +52,7 @@ const ExaminationsPage = () => {
       return "";
     }
   };
+
   useEffect(() => {
     const fetchCityNames = async () => {
       const names: { [key: number]: string } = {};
@@ -63,6 +67,42 @@ const ExaminationsPage = () => {
 
     fetchCityNames();
   }, [examinationsData]);
+
+  // useEffect(() => {
+  //   const fetchCategories = async () => {
+  //     const categories = await Promise.all(
+  //       examinationsData.map(async (examination) => {
+  //         console.log(examination);
+
+  //         const category = await fetchCategory(examination.category.categoryId);
+  //         return category;
+  //       })
+  //     );
+  //     setExaminationsData((prevData) =>
+  //       prevData.map((examination, index) => ({
+  //         ...examination,
+  //         category: categories[index],
+  //       }))
+  //     );
+  //   };
+
+  //   fetchCategories();
+  // }, [examinationsData]);
+
+  // const fetchCategory = async (id: number) => {
+  //   try {
+  //     const res = await fetch(`/backend/examinations/categories/${id}`);
+  //     if (!res.ok) throw new Error("Failed to fetch examination category");
+
+  //     const data = await res.json();
+  //     console.log(data);
+
+  //     return data[0]?.name ?? "";
+  //   } catch (error) {
+  //     console.error("Error fetching examination category: ", error);
+  //     return "";
+  //   }
+  // };
 
   return (
     <>
@@ -82,8 +122,8 @@ const ExaminationsPage = () => {
           <div className={classes.examinationsContainer}>
             {examinationsData.map((examination) => (
               <ExaminationCard
-                key=""
-                category="{examination.categoryId.toString()}"
+                key={examination.examinationId}
+                category={examination.category ? examination.category.name : ""}
                 description={examination.name}
                 location={
                   examination.institution.name +
