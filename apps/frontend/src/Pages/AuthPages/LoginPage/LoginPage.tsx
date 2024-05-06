@@ -15,13 +15,7 @@ const LoginPage = () => {
 
   const handleSubmit = async () => {
     try {
-      const response = await fetch("backend/users/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(loginData),
-      });
+      const response = await sendLoginInfo();
 
       if (!response.ok) {
         const errorMessage = await response.text();
@@ -33,6 +27,18 @@ const LoginPage = () => {
     } catch (error) {
       console.error("Error in login process: ", error);
     }
+  };
+
+  const sendLoginInfo = async () => {
+    const response = await fetch("backend/users/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(loginData),
+    });
+
+    return response;
   };
 
   return (
