@@ -17,6 +17,7 @@ interface Examination {
 
 const ExaminationsPage = () => {
   const [examinationsData, setExaminationsData] = useState<Examination[]>([]);
+  const [cityNames, setCityNames] = useState<{ [key: number]: string }>({});
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,7 +26,6 @@ const ExaminationsPage = () => {
         if (!res.ok) throw new Error("Failed to fetch examinations");
 
         const data = await res.json();
-        console.log(data);
 
         setExaminationsData(data);
       } catch (error) {
@@ -35,6 +35,34 @@ const ExaminationsPage = () => {
 
     fetchData();
   }, []);
+
+  const getCityName = async (id: number) => {
+    try {
+      const res = await fetch(`/backend/institutions/cities/${id}`);
+      if (!res.ok) throw new Error("Failed to fetch institution city");
+
+      const data = await res.json();
+
+      return data[0].name;
+    } catch (error) {
+      console.error("Error fetching institution city: ", error);
+      return "";
+    }
+  };
+  useEffect(() => {
+    const fetchCityNames = async () => {
+      const names: { [key: number]: string } = {};
+      for (const examination of examinationsData) {
+        const cityName = await getCityName(
+          examination.institution.institutionId
+        );
+        names[examination.institution.institutionId] = cityName;
+      }
+      setCityNames(names);
+    };
+
+    fetchCityNames();
+  }, [examinationsData]);
 
   return (
     <>
@@ -57,7 +85,11 @@ const ExaminationsPage = () => {
                 key=""
                 category="{examination.categoryId.toString()}"
                 description={examination.name}
-                location={examination.institution.name.toString()}
+                location={
+                  examination.institution.name +
+                  ", " +
+                  cityNames[examination.institution.institutionId]
+                }
                 time=""
               />
             ))}
