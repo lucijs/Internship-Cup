@@ -33,7 +33,6 @@
 
 .selected {
   display: flex;
-  width: 119px;
   padding: 8px;
   justify-content: center;
   align-items: center;
@@ -60,5 +59,13 @@
 .marginLeft {
   margin-left: -24px;
   padding: 8px 8px 8px 24px;
-  width: 119px;
+  width: 95px;
+}
+
+.widthRegister{
+  width: 135px;
+}
+
+.widthLogin{
+  width: 111px;
 }

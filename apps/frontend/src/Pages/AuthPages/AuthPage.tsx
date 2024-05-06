@@ -21,7 +21,7 @@ const AuthPage = () => {
         <div
           className={
             value === 0
-              ? classes.selected
+              ? `${classes.selected} ${classes.widthRegister}`
               : `${classes.unselected} ${classes.marginRight}`
           }
           onClick={handleRegistration}>
@@ -30,7 +30,7 @@ const AuthPage = () => {
         <div
           className={
             value === 1
-              ? classes.selected
+              ? `${classes.selected} ${classes.widthLogin}`
               : `${classes.unselected} ${classes.marginLeft}`
           }
           onClick={handleLogIn}>
