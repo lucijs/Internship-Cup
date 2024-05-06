@@ -14,6 +14,11 @@ export class ExaminationsService {
     return this.prisma.examination.findMany({
       include: {
         institution: true,
+        categories: {
+          select: {
+            category: true,
+          },
+        },
       },
     });
   }
