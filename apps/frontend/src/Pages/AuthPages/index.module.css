@@ -1,20 +1,26 @@
+.body {
+  position: relative;
+  top: 0px;
+  overflow: hidden;
+  background: var(--Bijela, #F2F2F2);
+  width: 375px;
+}
+
 .container {
   display: flex;
   flex-direction: row;
-  border-radius: 16px;
-  background: #d9d9d9;
+  justify-content: center;
+  margin-top: 32px;
 }
 
 .unselected {
   display: flex;
-  width: 119px;
-  padding: 8px 24px 8px 8px;
   justify-content: center;
   align-items: center;
   gap: 8px;
   border-radius: 16px;
-  background: #d9d9d9;
-  color: #000;
+  background: #EAD8B5;
+  color: #AA956B;
 
   /* Mobile/Label/semibold-16 */
   font-family: Hind;
@@ -27,14 +33,14 @@
 
 .selected {
   display: flex;
-  width: 103px;
+  width: 119px;
   padding: 8px;
   justify-content: center;
   align-items: center;
   gap: 8px;
   border-radius: 16px;
-  background: #8c8c8c;
-  color: #000;
+  background: var(--Naranasta-default, #F5B943);
+  color: var(--narancasta-botun-tekst, #997329);
 
   /* Mobile/Label/semibold-16 */
   font-family: Hind;
@@ -47,8 +53,12 @@
 
 .marginRight {
   margin-right: -24px;
+  padding: 8px 24px 8px 8px;
+  width: 119px;
 }
 
 .marginLeft {
   margin-left: -24px;
+  padding: 8px 8px 8px 24px;
+  width: 119px;
 }
