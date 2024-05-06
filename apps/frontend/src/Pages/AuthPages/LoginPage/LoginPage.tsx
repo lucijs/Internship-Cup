@@ -1,4 +1,4 @@
-import { ChangeEvent, EventHandler, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import FormIntroduction from "../../../components/Auth/FormIntroduction";
 import EmailInputField from "../../../components/Auth/InputFields/EmailInputField";
 import PasswordInputField from "../../../components/Auth/InputFields/PasswordInputField";

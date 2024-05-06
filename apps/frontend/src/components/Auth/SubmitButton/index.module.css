@@ -5,11 +5,11 @@
         justify-content: center;
         align-items: center;
         border-radius: 16px;
-        background-color: #8C8C8C;
+        background-color: #F5B943;
         border: none;
         width: 90%;
-        color: #000;
-        font-family: "Hind";
+        color: #997329;
+        font-family: "Hind SemiBold";
         font-size: 20px;
     }
 }
