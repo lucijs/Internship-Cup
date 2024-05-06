@@ -26,13 +26,16 @@ export class UsersService {
     dateOfBirth: Date,
     email: string,
     password: string,
+    confirmationPassword: string,
   ) {
     if (!name) throw new BadRequestException("Missing 'name' field");
     if (!surname) throw new BadRequestException("Missing 'surname' field");
-    // if (!dateOfBirth)
-    // throw new BadRequestException("Missing 'date of birth' field");
+    if (!dateOfBirth)
+      throw new BadRequestException("Missing 'date of birth' field");
     if (!email) throw new BadRequestException("Missing 'email' field");
     if (!password) throw new BadRequestException("Missing 'password' field");
+    if (!confirmationPassword)
+      throw new BadRequestException("Missing 'confirmation password' field");
 
     const existingUser = await this.prisma.user.findUnique({
       where: { email },
@@ -40,18 +43,21 @@ export class UsersService {
 
     if (existingUser) throw new BadRequestException('User already exists');
 
+    if (password != confirmationPassword)
+      throw new BadRequestException('Passwords do not match.');
+
     const hashedPassword = await hash(password, 10);
 
     const user = await this.prisma.user.create({
       data: {
         name,
         surname,
-        dateOfBirth: new Date('2003-06-26'),
+        dateOfBirth,
         points: 0,
         streak: 0,
         email: email,
         password: hashedPassword,
-        lastStreakDate: new Date('2024-01-01'), //privremeno
+        lastStreakDate: new Date(),
       },
     });
 

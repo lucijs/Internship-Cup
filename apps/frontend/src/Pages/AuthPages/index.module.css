@@ -11,6 +11,7 @@
   flex-direction: row;
   justify-content: center;
   margin-top: 32px;
+
 }
 
 .unselected {
@@ -20,15 +21,10 @@
   gap: 8px;
   border-radius: 16px;
   background: #EAD8B5;
-  color: #AA956B;
-
-  /* Mobile/Label/semibold-16 */
-  font-family: Hind;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 144%; /* 23.04px */
   z-index: 0;
+  color: #AA956B;
+  font-family: "Hind SemiBold";
+  font-size: 16px;
 }
 
 .selected {
@@ -38,15 +34,10 @@
   align-items: center;
   gap: 8px;
   border-radius: 16px;
-  background: var(--Naranasta-default, #F5B943);
-  color: var(--narancasta-botun-tekst, #997329);
-
-  /* Mobile/Label/semibold-16 */
-  font-family: Hind;
+  background: #F5B943;
+  color: #997329;
+  font-family: "Hind SemiBold";
   font-size: 16px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 144%; /* 23.04px */
   z-index: 1;
 }
 
@@ -69,3 +60,4 @@
 .widthLogin{
   width: 111px;
 }
+

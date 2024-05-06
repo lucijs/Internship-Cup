@@ -1,10 +1,14 @@
+import React, { MouseEventHandler } from "react";
 import classes from "./index.module.css";
 
-const SubmitButton = ({ buttonText }: { buttonText: string }) => {
+const SubmitButton: React.FC<{
+  buttonText: string;
+  handleSubmit: MouseEventHandler;
+}> = ({ buttonText, handleSubmit }) => {
   return (
-    <>
-      <button className={classes.authSubmitButton}>{buttonText}</button>
-    </>
+    <button onClick={handleSubmit} className={classes.authSubmitButton}>
+      {buttonText}
+    </button>
   );
 };
 

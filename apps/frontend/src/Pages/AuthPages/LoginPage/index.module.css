@@ -1,4 +1,5 @@
 @media only screen and (min-width: 350px) and (max-width: 550px){
+
     .loginPageWrapper{
         display: flex;
         flex-direction: column;
@@ -10,18 +11,18 @@
         flex-direction: column;
         width: 100%;
         align-items: center;
-        margin-bottom: 200px;
+        margin-bottom: 215px;
     }
 
     .belowLoginForm{
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: 100%;
+        width: 100%; 
     }
 
     .registerHereText{
-        color: #000;
+        color: #083968;
         font-family: "Hind";
         font-size: 16px;
     }

@@ -14,7 +14,15 @@ export class UsersController {
 
   @Post('register')
   register(
-    @Body() { name, surname, dateOfBirth, email, password }: RegisterDto,
+    @Body()
+    {
+      name,
+      surname,
+      dateOfBirth,
+      email,
+      password,
+      confirmationPassword,
+    }: RegisterDto,
   ) {
     return this.usersService.register(
       name,
@@ -22,6 +30,7 @@ export class UsersController {
       dateOfBirth,
       email,
       password,
+      confirmationPassword,
     );
   }
 

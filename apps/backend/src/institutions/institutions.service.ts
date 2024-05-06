@@ -7,6 +7,10 @@ import { PrismaService } from 'src/prisma/prisma.service';
 export class InstitutionsService {
   constructor(private prisma: PrismaService) {}
 
+  create(createInstitutionDto: CreateInstitutionDto) {
+    return this.prisma.institution.create({ data: createInstitutionDto });
+  }
+
   findAll() {
     return this.prisma.institution.findMany();
   }
