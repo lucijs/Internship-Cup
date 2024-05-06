@@ -25,43 +25,43 @@ const RegisterPage = () => {
     }));
   };
 
-  const clearInputFields = () => {
-    setRegistrationData({
-      name: "",
-      surname: "",
-      dateOfBirth: "",
-      email: "",
-      password: "",
-      confirmationPassword: "",
-    });
-  };
-
   const handleSubmit = async () => {
     try {
-      const isoDate = registrationData.dateOfBirth + "T23:27:54.502Z";
+      const isoDate = await changeDateFormatToIso(registrationData.dateOfBirth);
 
       setRegistrationData((previousData) => ({
         ...previousData,
         dateOfBirth: isoDate,
       }));
 
-      const response = await fetch("backend/users/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(registrationData),
-      });
+      const response = await sendRegistrationData();
+
       if (!response.ok) {
         const errorMessage = await response.text();
         throw new Error(errorMessage);
       }
       const responseData = await response.json();
       console.log("User registered successfully:", responseData);
-      clearInputFields();
     } catch (error) {
-      console.error("Error in registration process");
+      console.error("Error in registration process: ", error);
     }
+  };
+
+  const changeDateFormatToIso = async (date: string) => {
+    // const isoDate = date + "T23:27:54.502Z";
+    const isoDate = new Date(date).toISOString();
+    return isoDate;
+  };
+
+  const sendRegistrationData = async () => {
+    const response = await fetch("backend/users/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(registrationData),
+    });
+    return response;
   };
 
   return (
