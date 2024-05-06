@@ -7,7 +7,7 @@ export class CitiesService {
   constructor(private prisma: PrismaService) {}
 
   create(createCityDto: CreateCityDto) {
-    return 'This action adds a new city';
+    return this.prisma.city.create({ data: createCityDto });
   }
 
   findAll() {

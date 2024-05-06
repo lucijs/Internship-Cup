@@ -1,12 +1,20 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { InstitutionsService } from './institutions.service';
 import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
 import { InstitutionEntity } from './entities/institution.entity';
+import { CityEntity } from 'src/cities/entities/city.entity';
+import { CreateInstitutionDto } from './dto/create-institution.dto';
 
 @ApiTags('Institutions')
 @Controller('institutions')
 export class InstitutionsController {
   constructor(private readonly institutionsService: InstitutionsService) {}
+
+  @Post()
+  @ApiCreatedResponse({ type: CityEntity })
+  create(@Body() createInstitutionDto: CreateInstitutionDto) {
+    return this.institutionsService.create(createInstitutionDto);
+  }
 
   @Get()
   @ApiCreatedResponse({ type: InstitutionEntity, isArray: true })

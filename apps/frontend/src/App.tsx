@@ -1,9 +1,9 @@
-import AuthPage from "./Pages/AuthPages";
+import ExaminationsPage from "./Pages/ExaminationsPage";
 
 function App() {
   return (
     <>
-      <AuthPage />
+      <ExaminationsPage />
     </>
   );
 }

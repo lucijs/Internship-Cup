@@ -5,6 +5,19 @@ import Navbar from "../../components/Other/Navbar";
 import classes from "./index.module.css";
 
 const ExaminationsPage = () => {
+  const fetchData = async () => {
+    try {
+      const res = await fetch("/backend/examinations");
+      if (!res.ok) throw new Error("Failed to fetch examinations");
+
+      const data = await res.json();
+      console.log(data);
+    } catch (error) {
+      console.error("Error fetching examinations:", error);
+    }
+  };
+
+  // fetchData();
   return (
     <>
       <div className={classes.examinationsPageWrapper}>
