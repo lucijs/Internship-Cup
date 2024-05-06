@@ -1,23 +1,41 @@
+import { useEffect, useState } from "react";
 import ExaminationCard from "../../components/Examinations/ExaminationCard";
 import FilterIcon from "../../components/Examinations/FilterIcon";
 import SearchBar from "../../components/Examinations/SearchBar";
 import Navbar from "../../components/Other/Navbar";
 import classes from "./index.module.css";
 
-const ExaminationsPage = () => {
-  const fetchData = async () => {
-    try {
-      const res = await fetch("/backend/examinations");
-      if (!res.ok) throw new Error("Failed to fetch examinations");
-
-      const data = await res.json();
-      console.log(data);
-    } catch (error) {
-      console.error("Error fetching examinations:", error);
-    }
+interface Examination {
+  examinationId: number;
+  categoryId: number;
+  name: string;
+  institution: {
+    institutionId: number;
+    name: string;
   };
+}
 
-  // fetchData();
+const ExaminationsPage = () => {
+  const [examinationsData, setExaminationsData] = useState<Examination[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch("/backend/examinations");
+        if (!res.ok) throw new Error("Failed to fetch examinations");
+
+        const data = await res.json();
+        console.log(data);
+
+        setExaminationsData(data);
+      } catch (error) {
+        console.error("Error fetching examinations:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <>
       <div className={classes.examinationsPageWrapper}>
@@ -34,39 +52,51 @@ const ExaminationsPage = () => {
           </p>
 
           <div className={classes.examinationsContainer}>
-            <ExaminationCard
-              category="Stomatologija"
-              description="Besplatan pregled oralnog zdravlja"
-              location="gornji grad, Osijek"
-              time="22.5. (Srijeda) u 8h"
-            />
-            <ExaminationCard
-              category="Dermatologija"
-              description="Besplatan pregled madeža"
-              location="Đardin, Split"
-              time="26.5. (Subota) u 10h"
-            />
-            <ExaminationCard
-              category="Stomatologija"
-              description="Besplatan pregled oralnog zdravlja"
-              location="gornji grad, Osijek"
-              time="22.5. (Srijeda) u 8h"
-            />
-
-            <ExaminationCard
-              category="Stomatologija"
-              description="Besplatan pregled oralnog zdravlja"
-              location="gornji grad, Osijek"
-              time="22.5. (Srijeda) u 8h"
-            />
-
-            <ExaminationCard
-              category="Dermatologija"
-              description="Besplatan pregled madeža"
-              location="Đardin, Split"
-              time="26.5. (Subota) u 10h"
-            />
+            {examinationsData.map((examination) => (
+              <ExaminationCard
+                key=""
+                category="{examination.categoryId.toString()}"
+                description={examination.name}
+                location={examination.institution.name.toString()}
+                time=""
+              />
+            ))}
           </div>
+
+          {/* <div className={classes.examinationsContainer}>
+            <ExaminationCard
+              category="Stomatologija"
+              description="Besplatan pregled oralnog zdravlja"
+              location="gornji grad, Osijek"
+              time="22.5. (Srijeda) u 8h"
+            />
+            <ExaminationCard
+              category="Dermatologija"
+              description="Besplatan pregled madeža"
+              location="Đardin, Split"
+              time="26.5. (Subota) u 10h"
+            />
+            <ExaminationCard
+              category="Stomatologija"
+              description="Besplatan pregled oralnog zdravlja"
+              location="gornji grad, Osijek"
+              time="22.5. (Srijeda) u 8h"
+            />
+
+            <ExaminationCard
+              category="Stomatologija"
+              description="Besplatan pregled oralnog zdravlja"
+              location="gornji grad, Osijek"
+              time="22.5. (Srijeda) u 8h"
+            />
+
+            <ExaminationCard
+              category="Dermatologija"
+              description="Besplatan pregled madeža"
+              location="Đardin, Split"
+              time="26.5. (Subota) u 10h"
+            />
+          </div> */}
         </div>
       </div>
 

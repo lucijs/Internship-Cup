@@ -11,7 +11,11 @@ export class ExaminationsService {
   }
 
   findAll() {
-    return this.prisma.examination.findMany();
+    return this.prisma.examination.findMany({
+      include: {
+        institution: true,
+      },
+    });
   }
 
   findOne(id: number) {
