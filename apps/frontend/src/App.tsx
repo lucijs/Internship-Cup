@@ -1,4 +1,3 @@
-
 import "./index.css";
 import AuthPage from "./Pages/AuthPages/AuthPage";
 import Quiz from "./Pages/QuizPage";
@@ -7,6 +6,7 @@ import LoginPage from "./Pages/AuthPages/LoginPage";
 import { Routes, Route} from "react-router-dom";
 
 //ovaj tribamo dodat da vodi na pocetak <Route path="/" element={<ProductsLayout />} />
+
 
 function App() {
   return (

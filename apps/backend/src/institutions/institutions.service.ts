@@ -18,4 +18,29 @@ export class InstitutionsService {
   findOne(id: number) {
     return this.prisma.institution.findUnique({ where: { institutionId: id } });
   }
+
+  async findInstitutionCity(id: number) {
+    try {
+      const institution = await this.prisma.institution.findUnique({
+        where: {
+          institutionId: id,
+        },
+        include: {
+          citiesInstitutionIsIn: {
+            select: {
+              city: true,
+            },
+          },
+        },
+      });
+
+      const cities = institution?.citiesInstitutionIsIn.map(
+        (c) => c.city || [],
+      );
+      return cities;
+    } catch (error) {
+      console.error(error);
+      throw new Error('Failed to fetch cities for institution');
+    }
+  }
 }

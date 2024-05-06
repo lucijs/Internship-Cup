@@ -150,26 +150,33 @@ async function main() {
   //   },
   // });
 
-  const institution1 = await prisma.institution.create({
-    data: {
-      name: 'Specijalna bolnica Agram',
-    },
-  });
+  // const institution1 = await prisma.institution.create({
+  //   data: {
+  //     name: 'Specijalna bolnica Agram',
+  //   },
+  // });
 
-  const city1 = await prisma.city.create({
-    data: {
-      name: 'Zagreb',
-    },
-  });
+  // const city1 = await prisma.city.create({
+  //   data: {
+  //     name: 'Zagreb',
+  //   },
+  // });
 
-  const examination1 = await prisma.examination.create({
+  // const examination1 = await prisma.examination.create({
+  //   data: {
+  //     name: 'Besplatan pregled oralnog zdravlja',
+  //     institutionId: 1,
+  //     price: 0,
+  //     discount: 0,
+  //     description: 'Detaljni pregled usne šupljine',
+  //     image: '/',
+  //   },
+  // });
+
+  const institutionCity1 = await prisma.institution_City.create({
     data: {
-      name: 'Besplatan pregled oralnog zdravlja',
       institutionId: 1,
-      price: 0,
-      discount: 0,
-      description: 'Detaljni pregled usne šupljine',
-      image: '/',
+      cityId: 1,
     },
   });
 }
