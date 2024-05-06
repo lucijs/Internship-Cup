@@ -1,3 +1,4 @@
+import { ChangeEvent, EventHandler, useState } from "react";
 import FormIntroduction from "../../../components/Auth/FormIntroduction";
 import EmailInputField from "../../../components/Auth/InputFields/EmailInputField";
 import PasswordInputField from "../../../components/Auth/InputFields/PasswordInputField";
@@ -5,6 +6,35 @@ import SubmitButton from "../../../components/Auth/SubmitButton";
 import classes from "./index.module.css";
 
 const LoginPage = () => {
+  const [loginData, setLoginData] = useState({ name: "", password: "" });
+
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setLoginData((previousData) => ({ ...previousData, [name]: value }));
+  };
+
+  const handleSubmit = async () => {
+    try {
+      const response = await fetch("backend/users/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(loginData),
+      });
+
+      if (!response.ok) {
+        const errorMessage = await response.text();
+        throw new Error(errorMessage);
+      }
+
+      const responseData = await response.json();
+      console.log("User successfully logged in: ", responseData);
+    } catch (error) {
+      console.error("Error in login process: ", error);
+    }
+  };
+
   return (
     <>
       <div className={classes.loginPageWrapper}>
@@ -16,15 +46,19 @@ const LoginPage = () => {
           <EmailInputField
             label="Email adresa"
             placeholder="Unesi svoju email adresu"
+            name="email"
+            onChange={handleInputChange}
           />
           <PasswordInputField
             label="Lozinka"
             placeholder="Unesi svoju lozinku"
+            name="password"
+            onChange={handleInputChange}
           />
         </div>
 
         <div className={classes.belowLoginForm}>
-          <SubmitButton buttonText="Prijavi se" />
+          <SubmitButton buttonText="Prijavi se" handleSubmit={handleSubmit} />
           <p className={classes.registerHereText}>
             Nemaš račun? <span>Registriraj se ovdje.</span>
           </p>
