@@ -1,3 +1,5 @@
+
+import { Link } from "react-router-dom";
 import { ChangeEvent, useState } from "react";
 import FormIntroduction from "../../../components/Auth/FormIntroduction";
 import EmailInputField from "../../../components/Auth/InputFields/EmailInputField";
@@ -66,7 +68,7 @@ const LoginPage = () => {
         <div className={classes.belowLoginForm}>
           <SubmitButton buttonText="Prijavi se" handleSubmit={handleSubmit} />
           <p className={classes.registerHereText}>
-            Nemaš račun? <span>Registriraj se ovdje.</span>
+            Nemaš račun? <Link to={"register"}>Registriraj se ovdje.</Link>
           </p>
         </div>
       </div>

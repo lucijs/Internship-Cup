@@ -106,7 +106,7 @@ const FillInOneQuestion = ({
           <div className={classes.text}>
             {text1}
             {droppable("droppable1")}
-            <p>{text2}</p>
+            {text2}
           </div>
           <div className={classes.answerFillIn}>
             {dragged.draggable1 === null ? draggable("draggable1") : null}

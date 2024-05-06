@@ -101,4 +101,11 @@
   justify-content: center;
   height: 46px;
   width: 126px;
+  color: var(--Plava-tamna, #083968);
+text-align: center;
+font-family: Hind;
+font-size: 17px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
 }
