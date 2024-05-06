@@ -1,18 +1,21 @@
-body{
-  background-color: #F2F2F2;
+.body {
+  position: relative;
+  top: 0px;
+  overflow: hidden;
+  background: var(--Bijela, #F2F2F2);
+  width: 375px;
 }
+
 .container {
   display: flex;
   flex-direction: row;
-  border-radius: 16px;
-  background: #d9d9d9;
-  margin: 30px 0 40px 0;
+  justify-content: center;
+  margin-top: 32px;
+
 }
 
 .unselected {
   display: flex;
-  width: 119px;
-  padding: 8px 24px 8px 8px;
   justify-content: center;
   align-items: center;
   gap: 8px;
@@ -26,7 +29,6 @@ body{
 
 .selected {
   display: flex;
-  width: 103px;
   padding: 8px;
   justify-content: center;
   align-items: center;
@@ -41,9 +43,21 @@ body{
 
 .marginRight {
   margin-right: -24px;
+  padding: 8px 24px 8px 8px;
+  width: 119px;
 }
 
 .marginLeft {
   margin-left: -24px;
+  padding: 8px 8px 8px 24px;
+  width: 95px;
+}
+
+.widthRegister{
+  width: 135px;
+}
+
+.widthLogin{
+  width: 111px;
 }
 

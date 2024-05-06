@@ -1,4 +1,3 @@
-import { BottomNavigation, BottomNavigationAction } from "@mui/material";
 import { useState } from "react";
 import classes from "./index.module.css";
 import LoginPage from "./LoginPage";
@@ -6,7 +5,7 @@ import RegisterPage from "./RegisterPage";
 
 const AuthPage = () => {
   const [value, setValue] = useState(1);
-  const [display, setDisplay] = useState(<></>);
+  const [display, setDisplay] = useState(<LoginPage/>);
 
   const handleRegistration = () => {
     setValue(0);
@@ -17,12 +16,12 @@ const AuthPage = () => {
     setDisplay(<LoginPage />);
   };
   return (
-    <>
+    <div className={classes.body}>
       <div className={classes.container}>
         <div
           className={
             value === 0
-              ? classes.selected
+              ? `${classes.selected} ${classes.widthRegister}`
               : `${classes.unselected} ${classes.marginRight}`
           }
           onClick={handleRegistration}>
@@ -31,7 +30,7 @@ const AuthPage = () => {
         <div
           className={
             value === 1
-              ? classes.selected
+              ? `${classes.selected} ${classes.widthLogin}`
               : `${classes.unselected} ${classes.marginLeft}`
           }
           onClick={handleLogIn}>
@@ -39,7 +38,7 @@ const AuthPage = () => {
         </div>
       </div>
       {display}
-    </>
+    </div>
   );
 };
 
