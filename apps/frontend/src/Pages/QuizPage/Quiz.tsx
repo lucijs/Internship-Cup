@@ -145,6 +145,7 @@ const Quiz = ({ id }: { id: number }) => {
             possibleAnswers={question["possibleAnswers"]}
             correctAnswer1={question["correctAnswer1"]}
             correctAnswer2={question["correctAnswer2"]}
+            toggleMode={toggleMode}
           />
         );
         break;
