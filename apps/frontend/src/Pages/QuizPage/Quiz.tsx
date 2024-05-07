@@ -7,6 +7,7 @@ import SliderQuestion from "../../components/Questions/SliderQuestion";
 import MatchingQuestion from "../../components/Questions/DnDQuestion/MatchingQuestion";
 import FillInOneQuestion from "../../components/Questions/DnDQuestion/FillInOneQuestion";
 import classes from "./index.module.css";
+import { useScore } from "../../providers/ScoreProvider";
 
 const Quiz = ({ id }: { id: number }) => {
   const [displayedItem, setDisplayedItem] = useState(<div></div>);
@@ -15,6 +16,7 @@ const Quiz = ({ id }: { id: number }) => {
   const [questions, setQuestions] = useState<QuizQuestion[] | null>(null);
   const [questionDisplay, setQuestionDisplay] = useState(<></>);
   const [title, setTitle] = useState("");
+  const { score, isCorrect, toggleMode } = useScore();
 
   useEffect(() => {
     fetchQuizData(id);
@@ -110,6 +112,7 @@ const Quiz = ({ id }: { id: number }) => {
             possibleAnswers={question["possibleAnswers"]}
             correctAnswer1={question["correctAnswer1"]}
             correctAnswer2={question["correctAnswer2"]}
+            toggleMode={toggleMode}
           />
         );
         break;
@@ -120,6 +123,7 @@ const Quiz = ({ id }: { id: number }) => {
             possibleAnswers={question["possibleAnswers"]}
             correctAnswer1={question["correctAnswer1"]}
             correctAnswer2={question["correctAnswer2"]}
+            toggleMode={toggleMode}
           />
         );
         break;
@@ -130,6 +134,7 @@ const Quiz = ({ id }: { id: number }) => {
             possibleAnswers={question["possibleAnswers"]}
             correctAnswer1={question["correctAnswer1"]}
             correctAnswer2={question["correctAnswer2"]}
+            toggleMode={toggleMode}
           />
         );
         break;
@@ -140,6 +145,7 @@ const Quiz = ({ id }: { id: number }) => {
             possibleAnswers={question["possibleAnswers"]}
             correctAnswer1={question["correctAnswer1"]}
             correctAnswer2={question["correctAnswer2"]}
+            toggleMode={toggleMode}
           />
         );
         break;
@@ -150,6 +156,7 @@ const Quiz = ({ id }: { id: number }) => {
             possibleAnswers={question["possibleAnswers"]}
             correctAnswer1={question["correctAnswer1"]}
             correctAnswer2={question["correctAnswer2"]}
+            toggleMode={toggleMode}
           />
         );
         break;

@@ -1,9 +1,6 @@
-.body {
-  position: relative;
-  top: 0px;
-  overflow: hidden;
-  background: var(--Bijela, #F2F2F2);
-  width: 375px;
+body {
+  background: var(--Bijela, #f2f2f2);
+  margin-bottom: 56px;
 }
 
 .container {
@@ -11,7 +8,7 @@
   flex-direction: row;
   justify-content: center;
   margin-top: 32px;
-
+  margin-bottom: 41px;
 }
 
 .unselected {
@@ -20,9 +17,9 @@
   align-items: center;
   gap: 8px;
   border-radius: 16px;
-  background: #EAD8B5;
+  background: #ead8b5;
   z-index: 0;
-  color: #AA956B;
+  color: #aa956b;
   font-family: "Hind SemiBold";
   font-size: 16px;
 }
@@ -34,7 +31,7 @@
   align-items: center;
   gap: 8px;
   border-radius: 16px;
-  background: #F5B943;
+  background: #f5b943;
   color: #997329;
   font-family: "Hind SemiBold";
   font-size: 16px;
@@ -53,11 +50,10 @@
   width: 95px;
 }
 
-.widthRegister{
+.widthRegister {
   width: 135px;
 }
 
-.widthLogin{
+.widthLogin {
   width: 111px;
 }
-

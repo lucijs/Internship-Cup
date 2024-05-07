@@ -11,7 +11,7 @@ const RegisterPage = () => {
   const [registrationData, setRegistrationData] = useState({
     name: "",
     surname: "",
-    dateOfBirth: "",
+    dateOfBirth: new Date("01-01-2001").toISOString(),
     email: "",
     password: "",
     confirmationPassword: "",
@@ -19,20 +19,33 @@ const RegisterPage = () => {
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-    setRegistrationData((previousData) => ({
-      ...previousData,
-      [name]: value,
-    }));
+    if (name === "dateOfBirth") {
+      setRegistrationData((previousData) => ({
+        ...previousData,
+        dateOfBirth: changeDateFormatToIso(value),
+      }));
+    } else {
+      setRegistrationData((previousData) => ({
+        ...previousData,
+        [name]: value,
+      }));
+    }
   };
 
   const handleSubmit = async () => {
     try {
       const isoDate = await changeDateFormatToIso(registrationData.dateOfBirth);
+      if (!isoDate) {
+        console.error("Neispravan format datuma.");
+        return;
+      }
 
       setRegistrationData((previousData) => ({
         ...previousData,
         dateOfBirth: isoDate,
       }));
+
+      console.log(registrationData);
 
       const response = await sendRegistrationData();
 
@@ -47,9 +60,10 @@ const RegisterPage = () => {
     }
   };
 
-  const changeDateFormatToIso = async (date: string) => {
+  const changeDateFormatToIso = (date: string) => {
     // const isoDate = date + "T23:27:54.502Z";
     const isoDate = new Date(date).toISOString();
+    console.log(isoDate);
     return isoDate;
   };
 

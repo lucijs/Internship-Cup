@@ -1,5 +1,5 @@
 import { Slider } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import classes from "./index.module.css";
 
 const SliderQuestion = ({
@@ -7,11 +7,13 @@ const SliderQuestion = ({
   possibleAnswers,
   correctAnswer1,
   correctAnswer2,
+  toggleMode,
 }: {
   question: string;
   possibleAnswers: string[];
   correctAnswer1: string[];
   correctAnswer2: string[];
+  toggleMode: (value: boolean) => void;
 }) => {
   const [value1, setValue1] = useState(0);
   const [value2, setValue2] = useState(0);
@@ -21,6 +23,13 @@ const SliderQuestion = ({
   const handleChange2 = (_event: Event, newValue: number | number[]) => {
     setValue2(newValue as number);
   };
+
+  useEffect(() => {
+    if (value1 === +correctAnswer1[0] && value2 === +correctAnswer2) {
+      toggleMode(true);
+    }
+  }, [value1, value2]);
+
   return (
     <div className={classes.body}>
       <div className={classes.questionDescription}>{question}</div>

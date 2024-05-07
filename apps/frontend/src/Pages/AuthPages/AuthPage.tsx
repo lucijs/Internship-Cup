@@ -1,11 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import classes from "./index.module.css";
 import LoginPage from "./LoginPage";
 import RegisterPage from "./RegisterPage";
 
 const AuthPage = () => {
   const [value, setValue] = useState(1);
-  const [display, setDisplay] = useState(<LoginPage/>);
+  const [display, setDisplay] = useState(<></>);
+
+  useEffect(() => {
+    setDisplay(<LoginPage onRegisterClick={handleRegistration} />);
+  }, []);
 
   const handleRegistration = () => {
     setValue(0);
@@ -13,8 +17,9 @@ const AuthPage = () => {
   };
   const handleLogIn = () => {
     setValue(1);
-    setDisplay(<LoginPage />);
+    setDisplay(<LoginPage onRegisterClick={handleRegistration} />);
   };
+
   return (
     <div className={classes.body}>
       <div className={classes.container}>
