@@ -13,8 +13,6 @@ function App() {
       <ScoreProvider>
         <Routes>
           <Route path="/users" element={<AuthPage />} />
-          <Route path="/users/register" element={<RegisterPage />} />
-          <Route path="/users/login" element={<LoginPage />} />
         </Routes>
       </ScoreProvider>
     </>

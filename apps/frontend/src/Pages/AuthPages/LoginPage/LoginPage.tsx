@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { ChangeEvent, useState } from "react";
 import FormIntroduction from "../../../components/Auth/FormIntroduction";
@@ -7,7 +6,7 @@ import PasswordInputField from "../../../components/Auth/InputFields/PasswordInp
 import SubmitButton from "../../../components/Auth/SubmitButton";
 import classes from "./index.module.css";
 
-const LoginPage = () => {
+const LoginPage = ({ onRegisterClick }: { onRegisterClick: () => void }) => {
   const [loginData, setLoginData] = useState({ name: "", password: "" });
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -68,7 +67,8 @@ const LoginPage = () => {
         <div className={classes.belowLoginForm}>
           <SubmitButton buttonText="Prijavi se" handleSubmit={handleSubmit} />
           <p className={classes.registerHereText}>
-            Nemaš račun? <Link to={"register"}>Registriraj se ovdje.</Link>
+            Nemaš račun?{" "}
+            <span onClick={onRegisterClick}>Registriraj se ovdje.</span>
           </p>
         </div>
       </div>
