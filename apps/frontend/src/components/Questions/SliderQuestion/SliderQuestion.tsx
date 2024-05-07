@@ -18,10 +18,20 @@ const SliderQuestion = ({
   const [value1, setValue1] = useState(0);
   const [value2, setValue2] = useState(0);
   const handleChange1 = (_event: Event, newValue: number | number[]) => {
-    setValue1(newValue as number);
+    if (
+      (newValue as number) !== +possibleAnswers[3] - +possibleAnswers[5] &&
+      (newValue as number) !== +possibleAnswers[4] + +possibleAnswers[5]
+    ) {
+      setValue1(newValue as number);
+    }
   };
   const handleChange2 = (_event: Event, newValue: number | number[]) => {
-    setValue2(newValue as number);
+    if (
+      (newValue as number) !== +possibleAnswers[8] - +possibleAnswers[10] &&
+      (newValue as number) !== +possibleAnswers[9] + +possibleAnswers[10]
+    ) {
+      setValue2(newValue as number);
+    }
   };
 
   useEffect(() => {
