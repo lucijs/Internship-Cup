@@ -14,11 +14,40 @@ export class ExaminationsService {
     return this.prisma.examination.findMany({
       include: {
         institution: true,
+        categories: {
+          select: {
+            category: true,
+          },
+        },
       },
     });
   }
 
   findOne(id: number) {
     return this.prisma.examination.findUnique({ where: { examinationId: id } });
+  }
+
+  async findExaminationCategory(id: number) {
+    try {
+      const examination = await this.prisma.examination.findUnique({
+        where: {
+          examinationId: id,
+        },
+        include: {
+          categories: {
+            select: {
+              category: true,
+            },
+          },
+        },
+      });
+      const categories = examination?.categories.map(
+        (cat) => cat.category || [],
+      );
+      console.log(categories);
+      return categories;
+    } catch (error) {
+      console.log(error);
+    }
   }
 }

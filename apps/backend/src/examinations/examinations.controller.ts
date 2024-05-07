@@ -26,4 +26,10 @@ export class ExaminationsController {
   findOne(@Param('id') id: string) {
     return this.examinationsService.findOne(+id);
   }
+
+  @Get('/categories/:id')
+  @ApiCreatedResponse({ type: ExaminationEntity, isArray: true })
+  findExaminationCategory(@Param('id') id: string) {
+    return this.examinationsService.findExaminationCategory(+id);
+  }
 }

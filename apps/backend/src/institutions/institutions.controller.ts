@@ -4,6 +4,7 @@ import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
 import { InstitutionEntity } from './entities/institution.entity';
 import { CityEntity } from 'src/cities/entities/city.entity';
 import { CreateInstitutionDto } from './dto/create-institution.dto';
+import { get } from 'http';
 
 @ApiTags('Institutions')
 @Controller('institutions')
@@ -26,5 +27,11 @@ export class InstitutionsController {
   @ApiCreatedResponse({ type: InstitutionEntity })
   findOne(@Param('id') id: string) {
     return this.institutionsService.findOne(+id);
+  }
+
+  @Get('/cities/:id')
+  @ApiCreatedResponse({ type: InstitutionEntity })
+  findInstitutionCity(@Param('id') id: string) {
+    return this.institutionsService.findInstitutionCity(+id);
   }
 }

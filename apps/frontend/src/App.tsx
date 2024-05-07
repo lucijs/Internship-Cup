@@ -15,6 +15,7 @@ function App() {
           <Route path="/users" element={<AuthPage />} />
         </Routes>
       </ScoreProvider>
+
     </>
   );
 }
