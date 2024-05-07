@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import classes from "./index.module.css";
 
 const MultipleChoice = ({
@@ -6,14 +6,21 @@ const MultipleChoice = ({
   possibleAnswers,
   correctAnswer1,
   correctAnswer2,
+  toggleMode,
 }: {
   question: string;
   possibleAnswers: string[];
   correctAnswer1: string[];
   correctAnswer2: string[];
+  toggleMode: (value: boolean) => void;
 }) => {
   const [optionChosen, setOptionChosen] = useState("");
-  const [score, setScore] = useState(0);
+
+  useEffect(() => {
+    if (optionChosen === correctAnswer1[0]) {
+      toggleMode(true);
+    }
+  }, [optionChosen]);
 
   return (
     <div className={classes.body}>
