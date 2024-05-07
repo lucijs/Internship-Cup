@@ -25,6 +25,8 @@ const PersonalInfo = () => {
 
           <h4>Član od 2. 12. 2023.</h4>
         </span>
+
+        <h2>Tvoja statistika</h2>
       </div>
     </>
   );

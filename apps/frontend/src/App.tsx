@@ -18,7 +18,7 @@ function App() {
           <Route path="/quiz" element={<Quiz id={2} />} />
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/examinations" element={<ExaminationsPage />} />
-          <Route path="/rewards" element={<RewardsPage />} />
+          <Route path="/my-profile" element={<RewardsPage />} />
         </Routes>
       </ScoreProvider>
     </>
