@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Draggable from "../Draggable";
 import Droppable from "../Droppable";
 import { DndContext } from "@dnd-kit/core";
@@ -9,15 +9,19 @@ const FillInOneQuestion = ({
   question,
   possibleAnswers,
   correctAnswer1,
-  correctAnswer2,
+  toggleMode,
 }: {
   question: string;
   possibleAnswers: string[];
   correctAnswer1: string[];
   correctAnswer2: string[];
+  toggleMode: (value: boolean) => void;
 }) => {
   const text1 = possibleAnswers[0];
   const text2 = possibleAnswers[1];
+
+  const answer =
+    "draggable" + String(possibleAnswers.indexOf(correctAnswer1[0]) - 1);
 
   // Collects where each item has been dropped
   const [parents, setParents] = useState<{ [key: string]: string | null }>({
@@ -97,6 +101,12 @@ const FillInOneQuestion = ({
       setDrag(null);
     }
   }
+
+  useEffect(() => {
+    if (answer === parents["droppable1"]) {
+      toggleMode(true);
+    }
+  }, [parents]);
 
   return (
     <div className={classes.body}>
