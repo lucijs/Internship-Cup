@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Draggable from "../Draggable";
 import Droppable from "../Droppable";
 import { DndContext } from "@dnd-kit/core";
@@ -10,11 +10,13 @@ const MatchingQuestion = ({
   possibleAnswers,
   correctAnswer1,
   correctAnswer2,
+  toggleMode,
 }: {
   question: string;
   possibleAnswers: string[];
   correctAnswer1: string[];
   correctAnswer2: string[];
+  toggleMode: (value: boolean) => void;
 }) => {
   const text1 = possibleAnswers[0];
   const text2 = possibleAnswers[1];
@@ -32,6 +34,15 @@ const MatchingQuestion = ({
     draggable3: null,
     draggable4: null,
   });
+
+  const firstAnswer =
+    "draggable" + String(possibleAnswers.indexOf(correctAnswer1[0]) - 1);
+  const secondAnswer =
+    "draggable" + String(possibleAnswers.indexOf(correctAnswer1[1]) - 1);
+  const thirdAnswer =
+    "draggable" + String(possibleAnswers.indexOf(correctAnswer2[0]) - 1);
+  const forthAnswer =
+    "draggable" + String(possibleAnswers.indexOf(correctAnswer2[1]) - 1);
 
   // Draggable items
   const draggable = (id: string) => (
@@ -124,6 +135,17 @@ const MatchingQuestion = ({
     }
     setDrag(null);
   }
+
+  useEffect(() => {
+    if (
+      parents["droppable1"]?.includes(firstAnswer) &&
+      parents["droppable1"]?.includes(secondAnswer) &&
+      parents["droppable2"]?.includes(thirdAnswer) &&
+      parents["droppable2"]?.includes(forthAnswer)
+    ) {
+      toggleMode(true);
+    }
+  }, [parents]);
 
   return (
     <div className={classes.body}>
