@@ -29,7 +29,8 @@ const AuthPage = () => {
               ? `${classes.selected} ${classes.widthRegister}`
               : `${classes.unselected} ${classes.marginRight}`
           }
-          onClick={handleRegistration}>
+          onClick={handleRegistration}
+        >
           Registracija
         </div>
         <div
@@ -38,7 +39,8 @@ const AuthPage = () => {
               ? `${classes.selected} ${classes.widthLogin}`
               : `${classes.unselected} ${classes.marginLeft}`
           }
-          onClick={handleLogIn}>
+          onClick={handleLogIn}
+        >
           Prijava
         </div>
       </div>
