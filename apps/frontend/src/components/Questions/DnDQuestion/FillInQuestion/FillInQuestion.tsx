@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Draggable from "../Draggable";
 import Droppable from "../Droppable";
 import { DndContext } from "@dnd-kit/core";
@@ -10,11 +10,13 @@ const FillInQuestion = ({
   possibleAnswers,
   correctAnswer1,
   correctAnswer2,
+  toggleMode,
 }: {
   question: string;
   possibleAnswers: string[];
   correctAnswer1: string[];
   correctAnswer2: string[];
+  toggleMode: (value: boolean) => void;
 }) => {
   const text1 = possibleAnswers[0];
   const text2 = possibleAnswers[1];
@@ -24,6 +26,11 @@ const FillInQuestion = ({
     droppable1: null,
     droppable2: null,
   });
+
+  const firstAnswer =
+    "draggable" + String(possibleAnswers.indexOf(correctAnswer1[0]) - 1);
+  const secondAnswer =
+    "draggable" + String(possibleAnswers.indexOf(correctAnswer2[0]) - 1);
 
   // Collects items that have been dragged
   const [dragged, setDragged] = useState<{ [key: string]: string | null }>({
@@ -59,6 +66,7 @@ const FillInQuestion = ({
 
   function handleDragStart(event: any) {
     setDrag(event.active.id);
+    console.log(event.active.id);
   }
 
   function handleDragEnd({ over }: { over: Over | null }) {
@@ -101,6 +109,15 @@ const FillInQuestion = ({
       setDrag(null);
     }
   }
+
+  useEffect(() => {
+    if (
+      firstAnswer === parents["droppable1"] &&
+      secondAnswer === parents["droppable2"]
+    ) {
+      toggleMode(true);
+    }
+  }, [parents]);
 
   return (
     <div className={classes.body}>
