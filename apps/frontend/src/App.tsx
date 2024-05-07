@@ -5,6 +5,7 @@ import ScoreProvider from "./providers/ScoreProvider";
 import Quiz from "./Pages/QuizPage";
 import DashboardPage from "./Pages/DashboardPage";
 import ExaminationsPage from "./Pages/ExaminationsPage";
+import RewardsPage from "./Pages/RewardsPage";
 
 //ovaj tribamo dodat da vodi na pocetak <Route path="/" element={<ProductsLayout />} />
 
@@ -17,6 +18,7 @@ function App() {
           <Route path="/quiz" element={<Quiz id={2} />} />
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/examinations" element={<ExaminationsPage />} />
+          <Route path="/rewards" element={<RewardsPage />} />
         </Routes>
       </ScoreProvider>
     </>

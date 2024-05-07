@@ -1,0 +1,11 @@
+@media only screen and (min-width: 350px) and (max-width: 550px){
+    .rewardPageWrapper{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 35px;
+    }
+    .rewardPageWrapper svg{
+        align-self: center;
+    }
+}
