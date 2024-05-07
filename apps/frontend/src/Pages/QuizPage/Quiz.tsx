@@ -92,6 +92,8 @@ const Quiz = ({ id }: { id: number }) => {
   };
 
   const handleEndQuiz = () => {
+    //napravit provjeru je li korisnik dobia streak taj dan 
+    //negativan rezultat
     console.log("kraj");
   };
 

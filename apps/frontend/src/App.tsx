@@ -6,14 +6,14 @@ import DailyStreak from "./components/Other/DailyStreak";
 import { Dashboard } from "@mui/icons-material";
 import DashboardPage from "./Pages/DashboardPage";
 import StreaksDisplay from "./components/Quiz/StreaksDisplay";
+import AcquiredStreak from "./components/Quiz/Success/AcquiredStreak";
 
 //ovaj tribamo dodat da vodi na pocetak <Route path="/" element={<ProductsLayout />} />
 
 function App() {
   return (
     <>
-      <StreaksDisplay dateRegistered={new Date()} today={new Date()} />
-      <DashboardPage />
+      <AcquiredStreak />
       <ScoreProvider>
         <Routes>
           <Route path="/users" element={<AuthPage />} />

@@ -2,13 +2,7 @@ import { useState } from "react";
 import classes from "./index.module.css";
 import DailyStreak from "../../Other/DailyStreak";
 
-const StreaksDisplay = ({
-  dateRegistered,
-  today,
-}: {
-  dateRegistered: Date;
-  today: Date;
-}) => {
+const StreaksDisplay = ({ dateRegistered }: { dateRegistered: Date }) => {
   const days = [
     "Sunday",
     "Monday",
@@ -26,8 +20,8 @@ const StreaksDisplay = ({
   threeDaysAgo.setDate(dateRegistered.getDate() - 4);
 
   // Dodaj 3 dana posle trenutnog datuma
-  const threeDaysLater = new Date(today.getTime());
-  threeDaysLater.setDate(today.getDate() + 3);
+  const threeDaysLater = new Date(new Date().getTime());
+  threeDaysLater.setDate(new Date().getDate() + 3);
 
   // Petlja za iteriranje kroz datume i dodavanje u niz
   for (
