@@ -1,7 +1,8 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param, UseGuards } from '@nestjs/common';
 import { QuizesService } from './quizes.service';
 import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
 import { QuizEntity } from './entities/quize.entity';
+import { UserAuthGuard } from 'src/users/user-auth.guard';
 
 @ApiTags('Quizes')
 @Controller('quizes')
@@ -14,6 +15,7 @@ export class QuizesController {
     return this.quizesService.findAll();
   }
 
+  @UseGuards(UserAuthGuard)
   @Get(':id')
   @ApiCreatedResponse({ type: QuizEntity })
   findOne(@Param('id') id: string) {

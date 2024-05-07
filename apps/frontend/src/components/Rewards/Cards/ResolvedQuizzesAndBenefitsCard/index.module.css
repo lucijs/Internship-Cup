@@ -1,0 +1,36 @@
+.resolvedQuizzesAndBenefitsCard{
+    display: flex;
+    flex-direction: column;
+    background-color: #69AE78;
+    border-radius: 16px;
+    width: 47%;
+    
+}
+
+.resolvedQuizzesAndBenefitsCard h4{
+    color: #326A3E;
+    font-family: "Hind";
+    font-size: 16px;
+    display: flex;
+    width: 100%;
+    padding-left: 16px;
+    max-width: 46px;
+    margin-bottom: 0;
+    text-transform: uppercase;
+
+}
+
+.resolvedQuizzesAndBenefitsCard span{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    color: #326A3E;
+    font-family: "Martel Sans";
+    font-size: 48px;
+    font-weight: 800;
+    position: relative;
+    left: 20px;
+    margin-top: 0;
+    text-transform: uppercase;
+}
+

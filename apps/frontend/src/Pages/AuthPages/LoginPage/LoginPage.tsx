@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { ChangeEvent, useState } from "react";
 import FormIntroduction from "../../../components/Auth/FormIntroduction";
 import EmailInputField from "../../../components/Auth/InputFields/EmailInputField";
@@ -25,6 +24,7 @@ const LoginPage = ({ onRegisterClick }: { onRegisterClick: () => void }) => {
 
       const responseData = await response.json();
       console.log("User successfully logged in: ", responseData);
+      localStorage.setItem("token", responseData);
     } catch (error) {
       console.error("Error in login process: ", error);
     }
