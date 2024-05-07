@@ -25,6 +25,7 @@ interface Examination {
 const ExaminationsPage = () => {
   const [examinationsData, setExaminationsData] = useState<Examination[]>([]);
   const [cityNames, setCityNames] = useState<{ [key: number]: string }>({});
+  const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -80,7 +81,6 @@ const ExaminationsPage = () => {
       } else {
         output += " ," + element.category.name;
       }
-      console.log(output);
     });
     return output;
   };
@@ -92,7 +92,7 @@ const ExaminationsPage = () => {
 
         <div className={classes.examinationsPageLower}>
           <div className={classes.examinationsPageSearch}>
-            <SearchBar />
+            <SearchBar setSearchValue={setSearchValue} />
             <FilterIcon />
           </div>
 
@@ -101,21 +101,27 @@ const ExaminationsPage = () => {
           </p>
 
           <div className={classes.examinationsContainer}>
-            {examinationsData.map((examination) => (
-              <ExaminationCard
-                key={examination.examinationId}
-                category={
-                  examination.categories ? write(examination.categories) : ""
-                }
-                description={examination.name}
-                location={
-                  examination.institution.name +
-                  ", " +
-                  cityNames[examination.institution.institutionId]
-                }
-                time=""
-              />
-            ))}
+            {examinationsData
+              .filter((examination) =>
+                examination.name
+                  .toLowerCase()
+                  .includes(searchValue.toLowerCase())
+              )
+              .map((examination) => (
+                <ExaminationCard
+                  key={examination.examinationId}
+                  category={
+                    examination.categories ? write(examination.categories) : ""
+                  }
+                  description={examination.name}
+                  location={
+                    examination.institution.name +
+                    ", " +
+                    cityNames[examination.institution.institutionId]
+                  }
+                  time=""
+                />
+              ))}
           </div>
 
           {/*

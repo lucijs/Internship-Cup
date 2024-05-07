@@ -159,9 +159,21 @@ async function main() {
     },
   });
 
+  const institution2 = await prisma.institution.create({
+    data: {
+      name: 'Sportska medicina Diomed',
+    },
+  });
+
   const city1 = await prisma.city.create({
     data: {
       name: 'Zagreb',
+    },
+  });
+
+  const city2 = await prisma.city.create({
+    data: {
+      name: 'Split',
     },
   });
 
@@ -176,12 +188,45 @@ async function main() {
     },
   });
 
+  const examination2 = await prisma.examination.create({
+    data: {
+      name: 'Besplatan oftamološki pregled',
+      institutionId: 1,
+      price: 0,
+      discount: 0,
+      description:
+        'Ako ste primijetili da ne možete više lagano kao nekad umetnuti konac u iglu ili se naprežete čitajući knjigu, vrijeme je za posjet oftalmologu. Možda su vam potrebne naočale za čitanje, a oftalmološki pregled koristan je i ako nemate problema s vidom jer se njime mogu otkriti bolesti očiju koje ne moraju uvijek davati simptome, poput katarakte i glaukoma.',
+      image: '/',
+    },
+  });
+
+  const examination3 = await prisma.examination.create({
+    data: {
+      name: 'Besplatni sistematski pregled',
+      institutionId: 1,
+      price: 0,
+      discount: 0,
+      description:
+        'Sistematski pregled je prevencija, a prevencija jamči dobro zdravlje i u godinama kad se zbog njega počinjemo brinuti. Možete ga ugovoriti kupnjom odgovarajuće police UNIQA dodatnog zdravstvenog osiguranja. Uz sistematski pregled, polica dodatnog zdravstvenog omogućuje vam korištenje zdravstvenih usluga koje su vam potrebne i medicinski indicirane, u terminu i u ustanovi po vašem izboru. Paket s odgovarajućim pokrićima odabirete sami.',
+      image: '/',
+    },
+  });
+
   const category3 = await prisma.category.upsert({
     where: { name: 'Stomatologija' },
     update: {},
     create: {
       name: 'Stomatologija',
       img: '/',
+    },
+  });
+
+  const category4 = await prisma.category.upsert({
+    where: { name: 'Oftamologija' },
+    update: {},
+    create: {
+      name: 'Oftamologija',
+      img: '../src/assets/categoryIcons/first-aid 1.png',
     },
   });
 
@@ -192,10 +237,31 @@ async function main() {
     },
   });
 
+  const examinationCategory2 = await prisma.examination_Category.create({
+    data: {
+      examinationId: 2,
+      categoryId: 4,
+    },
+  });
+
+  const examinationCategory3 = await prisma.examination_Category.create({
+    data: {
+      examinationId: 3,
+      categoryId: 3,
+    },
+  });
+
   const institutionCity1 = await prisma.institution_City.create({
     data: {
       institutionId: 1,
       cityId: 1,
+    },
+  });
+
+  const institutionCity2 = await prisma.institution_City.create({
+    data: {
+      institutionId: 2,
+      cityId: 2,
     },
   });
 }
