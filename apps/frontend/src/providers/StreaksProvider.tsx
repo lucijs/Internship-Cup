@@ -2,7 +2,7 @@ import { ReactNode, createContext, useContext, useState } from "react";
 
 interface StreaksContext {
   streaks: number;
-  toggleMode: (value: boolean) => void;
+  toggleMode: () => void;
 }
 
 const defaultContext: StreaksContext = {
