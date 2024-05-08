@@ -8,13 +8,14 @@ import DashboardPage from "./Pages/DashboardPage";
 import StreaksDisplay from "./components/Quiz/StreaksDisplay";
 import AcquiredStreak from "./components/Quiz/Success/AcquiredStreak";
 import QuizSuccessWithoutStreak from "./components/Quiz/Success/QuizSuccessWithoutStreak";
+import Fail from "./components/Quiz/Fail";
 
 //ovaj tribamo dodat da vodi na pocetak <Route path="/" element={<ProductsLayout />} />
 
 function App() {
   return (
     <>
-      <QuizSuccessWithoutStreak />
+      <Fail />
       <ScoreProvider>
         <Routes>
           <Route path="/users" element={<AuthPage />} />

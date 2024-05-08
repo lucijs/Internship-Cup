@@ -1,0 +1,93 @@
+body {
+  background: var(--Naranasta-svijetla, #ead8b5);
+}
+
+.titleBox {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.title {
+  color: var(--Plava-tamna, #083968);
+  text-align: center;
+
+  /* Mobile/Naslov/extrabold-32 */
+  font-family: "Martel Sans";
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 40px; /* 125% */
+  margin-top: 88px;
+  height: 79px;
+}
+
+.subtitle {
+  color: var(--Plava-tamna, #083968);
+  text-align: center;
+
+  /* Mobile/Body/regular-16 */
+  font-family: Hind;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.resault {
+  display: flex;
+  width: 335px;
+  justify-content: space-between;
+  align-items: flex-start;
+  color: var(--Plava-tamna, #083968);
+  font-family: Hind;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 40px; /* 200% */
+  text-transform: uppercase;
+  margin-top: 33px;
+}
+
+.logoBox {
+  width: 246px;
+  height: 246px;
+  margin-top: 51px;
+  position: relative;
+  top: 0px;
+}
+
+.circle {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+.logo {
+  position: absolute;
+  top: 18px;
+  right: 0px;
+}
+
+.button {
+  display: flex;
+  width: 226px;
+  padding: 12px 8px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 16px;
+  background: var(--Naranasta-default, #f5b943);
+  color: var(--Naranasta-Naranasta-botun-tekst, #997329);
+
+  /* Mobile/Label/semibold-16 */
+  font-family: Hind;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 144%; /* 23.04px */
+  margin-top: 98px;
+  margin-bottom: 56px;
+}
