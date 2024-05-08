@@ -23,6 +23,7 @@ const LoginPage = ({ onRegisterClick }: { onRegisterClick: () => void }) => {
 
       console.log("User successfully logged in: ", response);
       localStorage.setItem("token", response["token"]);
+      window.location.href = "/dashboard";
     } catch (error) {
       console.error("Error in login process: ", error);
     }
