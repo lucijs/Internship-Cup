@@ -65,7 +65,15 @@ export class UsersService {
       email: user.email,
     };
 
-    return { token: this.jwtService.sign(payload) };
+    return {
+      token: this.jwtService.sign(payload),
+      userId: user.userId,
+      name: user.name,
+      surname: user.surname,
+      streaks: user.userId,
+      points: user.points,
+      lastStreak: user.lastStreakDate,
+    };
   }
 
   async login(email: string, password: string) {
@@ -87,7 +95,15 @@ export class UsersService {
       email: user.email,
     };
 
-    return { token: this.jwtService.sign(payload) };
+    return {
+      token: this.jwtService.sign(payload),
+      userId: user.userId,
+      name: user.name,
+      surname: user.surname,
+      streaks: user.userId,
+      points: user.points,
+      lastStreak: user.lastStreakDate,
+    };
   }
 
   findAll() {

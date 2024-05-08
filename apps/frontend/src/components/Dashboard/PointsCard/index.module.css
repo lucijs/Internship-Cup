@@ -1,34 +1,34 @@
-@media only screen and (min-width: 350px) and (max-width: 550px){
-    .pointsCard{
-        display: flex;
-        flex-direction: column;
-        /* width: 159px;
+@media only screen and (min-width: 350px) and (max-width: 550px) {
+  .pointsCard {
+    display: flex;
+    flex-direction: column;
+    /* width: 159px;
         height: 150px; */
-        width: 47%;
+    width: 47%;
 
-        border-radius: 16px;
-        background: #FFFFFF;
-    }
-    .pointsCardUpper{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        color: #456EAD;
-        font-family: "Hind";
-        font-size: 16px;
-        padding: 16px;
-        margin: 0;
-    }
-    .pointsCardUpper h4{
-        margin: 0;
-    }
+    border-radius: 16px;
+    background: var(--Bijela, #f2f2f2);
+  }
+  .pointsCardUpper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #456ead;
+    font-family: "Hind";
+    font-size: 16px;
+    padding: 16px;
+    margin: 0;
+  }
+  .pointsCardUpper h4 {
+    margin: 0;
+  }
 
-    .pointsCardLower{
-        color: #000;
-        font-family: "Martel Sans Bold";
-        font-size: 48px;
-        text-align: center;
-        /* position: relative;
+  .pointsCardLower {
+    color: #000;
+    font-family: "Martel Sans Bold";
+    font-size: 48px;
+    text-align: center;
+    /* position: relative;
         bottom: 20px; */
-    }
+  }
 }

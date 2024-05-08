@@ -5,13 +5,15 @@ import PreventiveExamination from "../../components/Dashboard/PreventiveExaminat
 import RewardCard from "../../components/Dashboard/RewardCard";
 import StreakCard from "../../components/Dashboard/StreakCard";
 import Navbar from "../../components/Other/Navbar";
+import { useUser } from "../../providers/UserProvider";
 import classes from "./index.module.css";
 
 const DashboardPage = () => {
+  const { userName } = useUser();
   return (
     <>
       <div className={classes.dashboardPageWrapper}>
-        <h2>Pozdrav, Marko! 👋</h2>
+        <h2>Pozdrav, {userName}! 👋</h2>
 
         <div className={classes.dashboardIntroSection}>
           <DailyAdvice />

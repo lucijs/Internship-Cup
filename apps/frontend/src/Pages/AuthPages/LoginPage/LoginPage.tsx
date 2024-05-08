@@ -4,12 +4,18 @@ import EmailInputField from "../../../components/Auth/InputFields/EmailInputFiel
 import PasswordInputField from "../../../components/Auth/InputFields/PasswordInputField";
 import SubmitButton from "../../../components/Auth/SubmitButton";
 import classes from "./index.module.css";
+import { useUser } from "../../../providers/UserProvider";
 import { api } from "../../../api";
+
+const LoginPage = ({ onRegisterClick }: { onRegisterClick: () => void }) => {
+ 
+
 
 const LoginPage = ({ onRegisterClick }: { onRegisterClick: () => void }) => {
   interface LoginResponse {
     token: string;
   }
+   const { addUser } = useUser();
   const [loginData, setLoginData] = useState({ name: "", password: "" });
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -21,9 +27,18 @@ const LoginPage = ({ onRegisterClick }: { onRegisterClick: () => void }) => {
     try {
       const response = await sendLoginInfo();
 
+
+      addUser({
+        userId: responseData["userId"],
+        userName: responseData["name"],
+        userSurname: responseData["surname"],
+        lastStreak: responseData["lastStreakDate"],
+        points: responseData["points"],
+        streaks: responseData["streaks"],
+      });
       console.log("User successfully logged in: ", response);
       localStorage.setItem("token", response["token"]);
-      window.location.href = "/dashboard";
+      window.location.href = "/dashboard"
     } catch (error) {
       console.error("Error in login process: ", error);
     }

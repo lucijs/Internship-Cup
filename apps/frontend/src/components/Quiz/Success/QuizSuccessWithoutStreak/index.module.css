@@ -50,10 +50,24 @@
   gap: 8px;
 }
 
-.logo {
+.logoBox {
   width: 246px;
   height: 246px;
-  margin-top: 38px;
+  margin-top: 51px;
+  position: relative;
+  top: 0px;
+}
+
+.circle {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+.logo {
+  position: absolute;
+  top: 39px;
+  right: -16px;
 }
 
 .button {
