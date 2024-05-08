@@ -8,6 +8,7 @@ import DashboardPage from "./Pages/DashboardPage";
 function App() {
   return (
     <>
+      <AuthPage />
       <RewardsPage />
       <DashboardPage />
       <ScoreProvider>
