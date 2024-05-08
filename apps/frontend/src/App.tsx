@@ -6,16 +6,20 @@ import RewardsPage from "./Pages/RewardsPage";
 import DashboardPage from "./Pages/DashboardPage";
 import Quiz from "./Pages/QuizPage";
 import QuizSuccessWithoutStreak from "./components/Quiz/Success/QuizSuccessWithoutStreak";
+import UserProvider, { useUser } from "./providers/UserProvider";
 
 function App() {
+  const { userId } = useUser();
   return (
     <>
       <DashboardPage />
-      <ScoreProvider>
-        <Routes>
-          <Route path="/users" element={<AuthPage />} />
-        </Routes>
-      </ScoreProvider>
+      <UserProvider>
+        <ScoreProvider>
+          <Routes>
+            <Route path="/users" element={<AuthPage />} />
+          </Routes>
+        </ScoreProvider>
+      </UserProvider>
     </>
   );
 }

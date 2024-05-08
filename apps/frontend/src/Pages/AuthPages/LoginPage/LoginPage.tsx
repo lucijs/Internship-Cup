@@ -4,8 +4,10 @@ import EmailInputField from "../../../components/Auth/InputFields/EmailInputFiel
 import PasswordInputField from "../../../components/Auth/InputFields/PasswordInputField";
 import SubmitButton from "../../../components/Auth/SubmitButton";
 import classes from "./index.module.css";
+import { useUser } from "../../../providers/UserProvider";
 
 const LoginPage = ({ onRegisterClick }: { onRegisterClick: () => void }) => {
+  const { addUser } = useUser();
   const [loginData, setLoginData] = useState({ name: "", password: "" });
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -24,7 +26,16 @@ const LoginPage = ({ onRegisterClick }: { onRegisterClick: () => void }) => {
 
       const responseData = await response.json();
       console.log("User successfully logged in: ", responseData);
+      console.log(typeof +responseData["id"]);
       localStorage.setItem("token", responseData["token"]);
+      addUser({
+        userId: responseData["userId"],
+        userName: responseData["name"],
+        userSurname: responseData["surname"],
+        lasteStreak: responseData["lastStreakDate"],
+        points: responseData["points"],
+        streaks: responseData["streaks"],
+      });
     } catch (error) {
       console.error("Error in login process: ", error);
     }
