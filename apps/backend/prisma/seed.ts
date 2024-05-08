@@ -191,7 +191,7 @@ async function main() {
   const examination2 = await prisma.examination.create({
     data: {
       name: 'Besplatan oftamološki pregled',
-      institutionId: 1,
+      institutionId: 2,
       price: 0,
       discount: 0,
       description:
