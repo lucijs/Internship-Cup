@@ -7,7 +7,13 @@ import PasswordInputField from "../../../components/Auth/InputFields/PasswordInp
 import TextInputField from "../../../components/Auth/InputFields/TextInputField";
 import SubmitButton from "../../../components/Auth/SubmitButton";
 import classes from "./index.module.css";
+import { api } from "../../../api";
+
 const RegisterPage = () => {
+  interface RegisterResponse {
+    token: string;
+  }
+
   const [registrationData, setRegistrationData] = useState({
     name: "",
     surname: "",
@@ -45,36 +51,26 @@ const RegisterPage = () => {
         dateOfBirth: isoDate,
       }));
 
-      console.log(registrationData);
-
       const response = await sendRegistrationData();
 
-      if (!response.ok) {
-        const errorMessage = await response.text();
-        throw new Error(errorMessage);
-      }
-      const responseData = await response.json();
-      console.log("User registered successfully:", responseData);
+      console.log("User registered successfully:", response);
+      localStorage.setItem("token", response["token"]);
+      window.location.href = "/dashboard";
     } catch (error) {
       console.error("Error in registration process: ", error);
     }
   };
 
   const changeDateFormatToIso = (date: string) => {
-    // const isoDate = date + "T23:27:54.502Z";
     const isoDate = new Date(date).toISOString();
-    console.log(isoDate);
     return isoDate;
   };
 
   const sendRegistrationData = async () => {
-    const response = await fetch("backend/users/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(registrationData),
-    });
+    const response = api.post<never, RegisterResponse>(
+      "/users/register",
+      registrationData
+    );
     return response;
   };
 
