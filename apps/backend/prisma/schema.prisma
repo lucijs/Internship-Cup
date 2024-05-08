@@ -129,7 +129,7 @@ model User {
   streak         Int
   email          String      @unique
   password       String
-  lastStreakDate DateTime    @updatedAt
+  lastStreakDate DateTime?
   quizzes        Quiz_User[]
   streaks Streak[]
 }

@@ -12,7 +12,7 @@ interface UserContext {
   userSurname: string;
   streaks: number;
   points: number;
-  lastStreak: Date;
+  lastStreak: Date | null;
   addUser: ({
     userId,
     userName,
@@ -26,7 +26,7 @@ interface UserContext {
     userSurname: string;
     streaks: number;
     points: number;
-    lastStreak: Date;
+    lastStreak: Date | null;
   }) => void;
   addPoints: (value: number) => void;
   addStreak: () => void;
@@ -38,7 +38,7 @@ const defaultContext: UserContext = {
   userSurname: "",
   streaks: 0,
   points: 0,
-  lastStreak: new Date(),
+  lastStreak: null,
   addUser: () => {},
   addPoints: () => {},
   addStreak: () => {},
@@ -70,7 +70,7 @@ const UserProvider = ({ children }: { children: ReactNode }) => {
     userSurname: string;
     streaks: number;
     points: number;
-    lastStreak: Date;
+    lastStreak: Date | null;
   }) => {
     setUserId(() => userId);
     setUserName(() => userName);
@@ -86,18 +86,20 @@ const UserProvider = ({ children }: { children: ReactNode }) => {
 
   const addStreak = () => {
     setStreaks((prev) => prev + 1);
+    setLastStreak(() => new Date());
   };
 
   useEffect(() => {
     console.log("ulazi");
-    if (
-      !(
-        lastStreak.getFullYear() === yesterday.getFullYear() &&
-        lastStreak.getMonth() === yesterday.getMonth() &&
-        lastStreak.getDate() === yesterday.getDate()
+    if (lastStreak !== null)
+      if (
+        !(
+          lastStreak.getFullYear() === yesterday.getFullYear() &&
+          lastStreak.getMonth() === yesterday.getMonth() &&
+          lastStreak.getDate() === yesterday.getDate()
+        )
       )
-    )
-      setStreaks(() => 0);
+        setStreaks(() => 0);
   }, [lastStreak]);
 
   return (

@@ -104,7 +104,7 @@ const Quiz = ({ id }: { id: number }) => {
     } else {
       const today = new Date();
       addPoints(addedPoints);
-      if (today.toDateString() === lastStreak.toDateString()) {
+      if (today.toDateString() === lastStreak?.toDateString()) {
         setDisplayedItem(<QuizSuccessWithoutStreak />);
       } else {
         setDisplayedItem(<AcquiredStreak />);
