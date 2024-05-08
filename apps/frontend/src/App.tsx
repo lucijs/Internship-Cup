@@ -7,13 +7,14 @@ import { Dashboard } from "@mui/icons-material";
 import DashboardPage from "./Pages/DashboardPage";
 import StreaksDisplay from "./components/Quiz/StreaksDisplay";
 import AcquiredStreak from "./components/Quiz/Success/AcquiredStreak";
+import QuizSuccessWithoutStreak from "./components/Quiz/Success/QuizSuccessWithoutStreak";
 
 //ovaj tribamo dodat da vodi na pocetak <Route path="/" element={<ProductsLayout />} />
 
 function App() {
   return (
     <>
-      <AcquiredStreak />
+      <QuizSuccessWithoutStreak />
       <ScoreProvider>
         <Routes>
           <Route path="/users" element={<AuthPage />} />
