@@ -10,6 +10,8 @@ import classes from "./index.module.css";
 import { useScore } from "../../providers/ScoreProvider";
 import Fail from "../../components/Quiz/Fail";
 import AcquiredStreak from "../../components/Quiz/Success/AcquiredStreak";
+import { useUser } from "../../providers/UserProvider";
+import QuizSuccessWithoutStreak from "../../components/Quiz/Success/QuizSuccessWithoutStreak";
 
 const Quiz = ({ id }: { id: number }) => {
   const [displayedItem, setDisplayedItem] = useState(<div></div>);
@@ -19,6 +21,8 @@ const Quiz = ({ id }: { id: number }) => {
   const [questionDisplay, setQuestionDisplay] = useState(<></>);
   const [title, setTitle] = useState("");
   const { score, isCorrect, toggleMode } = useScore();
+  const { lastStreak, addPoints, addStreak } = useUser();
+  const [addedPoints, setAddedPoints] = useState(0);
 
   useEffect(() => {
     fetchQuizData(id);
@@ -30,6 +34,7 @@ const Quiz = ({ id }: { id: number }) => {
       fetch(`/backend/quizes/${id}`).then((res) => res.json()),
       fetch(`/backend/quizes/categories/${id}`).then((res) => res.json()),
     ]).then(([quizData, categoryData]) => {
+      setAddedPoints(quizData["earnedPoints"]);
       setDisplayedItem(
         <div>
           <div className={classes.container}>
@@ -97,9 +102,14 @@ const Quiz = ({ id }: { id: number }) => {
     if (score === 0) {
       setDisplayedItem(<Fail />);
     } else {
-      //ako nema streak od danas, onda se onda se display postavi  na <AcquiredStreak/>
-      //ako ima streak od danas, onda se display postavi na <QuizSuccessWithoutStreak/>
-      setDisplayedItem(<AcquiredStreak />);
+      const today = new Date();
+      addPoints(addedPoints);
+      if (today.toDateString() === lastStreak.toDateString()) {
+        setDisplayedItem(<QuizSuccessWithoutStreak />);
+      } else {
+        setDisplayedItem(<AcquiredStreak />);
+        addStreak();
+      }
     }
 
     setActiveStep(6);

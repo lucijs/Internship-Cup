@@ -32,7 +32,7 @@ const LoginPage = ({ onRegisterClick }: { onRegisterClick: () => void }) => {
         userId: responseData["userId"],
         userName: responseData["name"],
         userSurname: responseData["surname"],
-        lasteStreak: responseData["lastStreakDate"],
+        lastStreak: responseData["lastStreakDate"],
         points: responseData["points"],
         streaks: responseData["streaks"],
       });
