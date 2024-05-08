@@ -2,18 +2,19 @@ import "./index.css";
 import AuthPage from "./Pages/AuthPages/AuthPage";
 import { Routes, Route } from "react-router-dom";
 import ScoreProvider from "./providers/ScoreProvider";
-import RewardsPage from "./Pages/RewardsPage";
 import DashboardPage from "./Pages/DashboardPage";
+import Quiz from "./Pages/QuizPage";
+import MyProfilePage from "./Pages/MyProfilePage";
 
 function App() {
   return (
     <>
-      <AuthPage />
-      <RewardsPage />
-      <DashboardPage />
       <ScoreProvider>
         <Routes>
           <Route path="/users" element={<AuthPage />} />
+          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="quiz" element={<Quiz id={2} />} />
+          <Route path="/my-profile" element={<MyProfilePage />} />
         </Routes>
       </ScoreProvider>
     </>
