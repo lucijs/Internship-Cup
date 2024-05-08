@@ -3,13 +3,12 @@ import AuthPage from "./Pages/AuthPages/AuthPage";
 import { Routes, Route } from "react-router-dom";
 import ScoreProvider from "./providers/ScoreProvider";
 import Quiz from "./Pages/QuizPage";
-
-//ovaj tribamo dodat da vodi na pocetak <Route path="/" element={<ProductsLayout />} />
+import RewardsPage from "./Pages/RewardsPage";
 
 function App() {
   return (
     <>
-      <Quiz id={2} />
+      <RewardsPage />
       <ScoreProvider>
         <Routes>
           <Route path="/users" element={<AuthPage />} />

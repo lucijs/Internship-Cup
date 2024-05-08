@@ -28,7 +28,6 @@
   src: url(./../assets/fonts/Hind/Hind-Bold.ttf) format("woff2");
 }
 
-
 /* Martel Sans */
 
 @font-face {
@@ -38,7 +37,8 @@
 
 @font-face {
   font-family: "Martel Sans Ultra Light";
-  src: url(./../assets/fonts/MartelSans/martelsans-ultralight.otf) format("woff2");
+  src: url(./../assets/fonts/MartelSans/martelsans-ultralight.otf)
+    format("woff2");
 }
 
 @font-face {
@@ -58,16 +58,17 @@
 
 @font-face {
   font-family: "Martel Sans Extra Bold";
-  src: url(./../assets/fonts/MartelSans/martelsans-extrabold.otf) format("woff2");
+  src: url(./../assets/fonts/MartelSans/martelsans-extrabold.otf)
+    format("woff2");
 }
 
-
-#root{
+#root {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 0;
   padding: 0;
+  border: 0px;
   box-sizing: border-box;
   width: 100%;
 }
