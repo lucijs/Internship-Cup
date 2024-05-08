@@ -1,5 +1,10 @@
-body {
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background: var(--Zelena-svijetlija, #badbd5);
+  width: 376px;
+  margin-top: -8px;
 }
 
 .title {

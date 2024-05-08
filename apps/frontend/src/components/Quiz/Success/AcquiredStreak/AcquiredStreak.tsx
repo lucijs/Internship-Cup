@@ -8,7 +8,7 @@ const AcquiredStreak = () => {
   //ovo mora bit iz user-a, kad se registrira
   const registrationDate = new Date();
   return (
-    <>
+    <div className={classes.body}>
       <div className={classes.title}>
         Kviz je uspješno dovršen!
         <div className={classes.subtitle}>
@@ -31,7 +31,7 @@ const AcquiredStreak = () => {
       </div>
       <StreaksDisplay dateRegistered={registrationDate} />
       <Button className={classes.button}>Skupi bodove</Button>
-    </>
+    </div>
   );
 };
 

@@ -3,7 +3,7 @@ import classes from "./index.module.css";
 
 const Fail = () => {
   return (
-    <>
+    <div className={classes.body}>
       <div className={classes.titleBox}>
         <div className={classes.title}>Kviz je uspješno dovršen!</div>
         <div className={classes.subtitle}>Više sreće drugi put!</div>
@@ -88,7 +88,7 @@ const Fail = () => {
             d="M152.907 50.1952C145.051 55.1384 135.885 55.6876 132.284 55.3444C93.0028 46.0759 76.3081 45.0461 56.6674 71.8216C35.0374 101.309 55.6854 192.312 148.979 195.401C228.696 198.041 243.254 101.687 219.685 69.762C196.117 37.8373 162.727 44.0162 152.907 50.1952Z"
             fill="#FF5858"
             stroke="#AA3E3E"
-            stroke-width="2.5"
+            strokeWidth="2.5"
           />
           <path
             d="M217.393 216.872C285.012 187.586 250.835 129.672 225.686 104.617C208.431 109.002 211.034 137.861 214.493 151.742C217.331 159.631 221.342 179.819 203.178 175.461C180.473 170.013 185.378 228.448 185.724 232.223C186.069 235.992 218.305 240.165 217.393 216.872Z"
@@ -140,8 +140,8 @@ const Fail = () => {
           <path
             d="M170.24 124.356H170.468"
             stroke="#AA3E3E"
-            stroke-width="2.5"
-            stroke-linecap="round"
+            strokeWidth="2.5"
+            strokeLinecap="round"
           />
           <path
             d="M198.981 123.423C199.134 123.597 199.069 123.703 199.209 123.423"
@@ -205,7 +205,7 @@ const Fail = () => {
         </svg>
       </div>
       <Button className={classes.button}>Povratak na kvizove</Button>
-    </>
+    </div>
   );
 };
 

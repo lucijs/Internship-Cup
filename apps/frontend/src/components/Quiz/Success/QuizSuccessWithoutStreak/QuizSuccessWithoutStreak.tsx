@@ -5,7 +5,7 @@ const QuizSuccessWithoutStreak = () => {
   //treba povezat na kontekst da od tamo primi podatke
   const streaks = 3;
   return (
-    <>
+    <div className={classes.body}>
       <div className={classes.title}>Kviz je uspješno dovršen!</div>
       <div className={classes.container}>
         <div className={classes.resault}>
@@ -40,8 +40,8 @@ const QuizSuccessWithoutStreak = () => {
           <circle cx="123" cy="123" r="123" fill="#EAD8B5" />
         </svg>
       </div>
-      <Button className={classes.button}>Skupi bodova</Button>
-    </>
+      <Button className={classes.button}>Skupi bodove</Button>
+    </div>
   );
 };
 
