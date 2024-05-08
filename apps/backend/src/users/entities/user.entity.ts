@@ -15,6 +15,9 @@ export class UserEntity implements User {
   dateOfBirth: Date;
 
   @ApiProperty()
+  dateRegister: Date;
+
+  @ApiProperty()
   points: number;
 
   @ApiProperty()

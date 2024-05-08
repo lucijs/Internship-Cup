@@ -1,0 +1,78 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--Zelena-svijetlija, #badbd5);
+  width: 376px;
+  margin-top: -8px;
+}
+
+.title {
+  color: var(--Plava-tamna, #083968);
+  text-align: center;
+
+  /* Mobile/Naslov/extrabold-32 */
+  font-family: "Martel Sans";
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 40px; /* 125% */
+  margin-top: 88px;
+  height: 131px;
+}
+
+.container {
+  margin-top: -12px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  width: 335px;
+}
+
+.resault {
+  display: flex;
+  width: 335px;
+  justify-content: space-between;
+  align-items: flex-start;
+  color: var(--Plava-tamna, #083968);
+  font-family: Hind;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 40px; /* 200% */
+  text-transform: uppercase;
+}
+
+.points {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.logo {
+  width: 246px;
+  height: 246px;
+  margin-top: 38px;
+}
+
+.button {
+  display: flex;
+  width: 226px;
+  padding: 12px 8px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 16px;
+  background: var(--Naranasta-default, #f5b943);
+  color: var(--Naranasta-Naranasta-botun-tekst, #997329);
+
+  /* Mobile/Label/semibold-16 */
+  font-family: Hind;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 144%; /* 23.04px */
+  margin-top: 96px;
+  margin-bottom: 56px;
+}

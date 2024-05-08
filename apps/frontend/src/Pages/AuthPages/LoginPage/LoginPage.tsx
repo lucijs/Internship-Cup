@@ -24,7 +24,7 @@ const LoginPage = ({ onRegisterClick }: { onRegisterClick: () => void }) => {
 
       const responseData = await response.json();
       console.log("User successfully logged in: ", responseData);
-      localStorage.setItem("token", responseData);
+      localStorage.setItem("token", responseData["token"]);
     } catch (error) {
       console.error("Error in login process: ", error);
     }

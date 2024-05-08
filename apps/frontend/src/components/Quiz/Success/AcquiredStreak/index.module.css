@@ -1,0 +1,78 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--Bijela, #f2f2f2);
+  width: 376px;
+  margin-top: -8px;
+}
+
+.title {
+  width: 303px;
+  height: 131px;
+  margin-top: 88px;
+  color: var(--Zelena-jarka, #53c1ae);
+  text-align: center;
+  position: relative;
+
+  /* Mobile/Naslov/extrabold-32 */
+  font-family: "Martel Sans";
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 40px; /* 125% */
+}
+
+.subtitle {
+  width: 271px;
+  position: absolute;
+  left: 16px;
+  bottom: -11px;
+  color: var(--Plava-tamna, #083968);
+  text-align: center;
+
+  /* Mobile/Body/regular-16 */
+  font-family: Hind;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.streaks {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 32px;
+  margin-bottom: 64px;
+}
+
+.streaksAmount {
+  color: var(--Zelena-jarka, #53c1ae);
+  font-family: "Martel Sans";
+  font-size: 64px;
+  font-weight: 800;
+  height: 74px;
+}
+
+.button {
+  display: flex;
+  width: 226px;
+  padding: 12px 8px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 16px;
+  background: var(--Naranasta-default, #f5b943);
+  color: var(--Naranasta-Naranasta-botun-tekst, #997329);
+
+  /* Mobile/Label/semibold-16 */
+  font-family: Hind;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 144%; /* 23.04px */
+  margin-top: 80px;
+  margin-bottom: 56px;
+}

@@ -1,0 +1,22 @@
+.streaks {
+  display: flex;
+  gap: 12px;
+  overflow: scroll;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  overflow: scroll;
+}
+
+.container::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+.container::-webkit-scrollbar-track {
+  background: transparent;
+}

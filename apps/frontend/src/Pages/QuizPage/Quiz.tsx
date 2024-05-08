@@ -8,6 +8,8 @@ import MatchingQuestion from "../../components/Questions/DnDQuestion/MatchingQue
 import FillInOneQuestion from "../../components/Questions/DnDQuestion/FillInOneQuestion";
 import classes from "./index.module.css";
 import { useScore } from "../../providers/ScoreProvider";
+import Fail from "../../components/Quiz/Fail";
+import AcquiredStreak from "../../components/Quiz/Success/AcquiredStreak";
 
 const Quiz = ({ id }: { id: number }) => {
   const [displayedItem, setDisplayedItem] = useState(<div></div>);
@@ -92,7 +94,15 @@ const Quiz = ({ id }: { id: number }) => {
   };
 
   const handleEndQuiz = () => {
-    console.log("kraj");
+    if (score === 0) {
+      setDisplayedItem(<Fail />);
+    } else {
+      //ako nema streak od danas, onda se onda se display postavi  na <AcquiredStreak/>
+      //ako ima streak od danas, onda se display postavi na <QuizSuccessWithoutStreak/>
+      setDisplayedItem(<AcquiredStreak />);
+    }
+
+    setActiveStep(6);
   };
 
   useEffect(() => {
@@ -186,7 +196,7 @@ const Quiz = ({ id }: { id: number }) => {
 
   return (
     <div className={classes.body}>
-      {activeStep !== 0 ? (
+      {activeStep !== 0 && activeStep !== 6 ? (
         <>
           <div className={classes.step}>{activeStep}/3</div>
           <MobileStepper
