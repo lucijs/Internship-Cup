@@ -8,7 +8,12 @@ import TextInputField from "../../../components/Auth/InputFields/TextInputField"
 import SubmitButton from "../../../components/Auth/SubmitButton";
 import classes from "./index.module.css";
 import { api } from "../../../api";
+
 const RegisterPage = () => {
+  interface RegisterResponse {
+    token: string;
+  }
+
   const [registrationData, setRegistrationData] = useState({
     name: "",
     surname: "",
@@ -49,20 +54,23 @@ const RegisterPage = () => {
       const response = await sendRegistrationData();
 
       console.log("User registered successfully:", response);
+      localStorage.setItem("token", response["token"]);
+      window.location.href = "/dashboard";
     } catch (error) {
       console.error("Error in registration process: ", error);
     }
   };
 
   const changeDateFormatToIso = (date: string) => {
-    // const isoDate = date + "T23:27:54.502Z";
     const isoDate = new Date(date).toISOString();
-    console.log(isoDate);
     return isoDate;
   };
 
   const sendRegistrationData = async () => {
-    const response = api.post("/users/register", registrationData);
+    const response = api.post<never, RegisterResponse>(
+      "/users/register",
+      registrationData
+    );
     return response;
   };
 

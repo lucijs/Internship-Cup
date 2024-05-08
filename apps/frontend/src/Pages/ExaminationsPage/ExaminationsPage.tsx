@@ -4,6 +4,8 @@ import FilterIcon from "../../components/Examinations/FilterIcon";
 import SearchBar from "../../components/Examinations/SearchBar";
 import Navbar from "../../components/Other/Navbar";
 import classes from "./index.module.css";
+import { api } from "../../api";
+import { Institution } from "@prisma/client";
 
 interface category {
   categoryId: number;
@@ -27,33 +29,59 @@ const ExaminationsPage = () => {
   const [cityNames, setCityNames] = useState<{ [key: number]: string }>({});
   const [searchValue, setSearchValue] = useState("");
 
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const res = await fetch("/backend/examinations");
+  //       if (!res.ok) throw new Error("Failed to fetch examinations");
+
+  //       const data = await res.json();
+  //       console.log(data[0].categories[0].category.name);
+  //       setExaminationsData(data);
+  //     } catch (error) {
+  //       console.error("Error fetching examinations:", error);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, []);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch("/backend/examinations");
-        if (!res.ok) throw new Error("Failed to fetch examinations");
+        const response = await api.get<never, Examination[]>("/examinations");
 
-        const data = await res.json();
-        console.log(data[0].categories[0].category.name);
-        setExaminationsData(data);
+        setExaminationsData(response);
       } catch (error) {
-        console.error("Error fetching examinations:", error);
+        console.log(error);
       }
     };
-
     fetchData();
   }, []);
 
+  // const getCityName = async (id: number) => {
+  //   try {
+  //     const res = await fetch(`/backend/institutions/cities/${id}`);
+  //     if (!res.ok) throw new Error("Failed to fetch institution city");
+
+  //     const data = await res.json();
+
+  //     return data[0].name;
+  //   } catch (error) {
+  //     console.error("Error fetching institution city: ", error);
+  //     return "";
+  //   }
+  // };
+
   const getCityName = async (id: number) => {
     try {
-      const res = await fetch(`/backend/institutions/cities/${id}`);
-      if (!res.ok) throw new Error("Failed to fetch institution city");
-
-      const data = await res.json();
-
-      return data[0].name;
+      const response = await api.get<never, Institution[]>(
+        `/institutions/cities/${id}`
+      );
+      console.log(response);
+      return response[0].name;
     } catch (error) {
-      console.error("Error fetching institution city: ", error);
+      console.log(error);
       return "";
     }
   };
@@ -132,32 +160,7 @@ const ExaminationsPage = () => {
                 location="gornji grad, Osijek"
                 time="22.5. (Srijeda) u 8h"
               />
-              <ExaminationCard
-                category="Dermatologija"
-                description="Besplatan pregled madeža"
-                location="Đardin, Split"
-                time="26.5. (Subota) u 10h"
-              />
-              <ExaminationCard
-                category="Stomatologija"
-                description="Besplatan pregled oralnog zdravlja"
-                location="gornji grad, Osijek"
-                time="22.5. (Srijeda) u 8h"
-              />
-
-              <ExaminationCard
-                category="Stomatologija"
-                description="Besplatan pregled oralnog zdravlja"
-                location="gornji grad, Osijek"
-                time="22.5. (Srijeda) u 8h"
-              />
-
-              <ExaminationCard
-                category="Dermatologija"
-                description="Besplatan pregled madeža"
-                location="Đardin, Split"
-                time="26.5. (Subota) u 10h"
-              />
+              
             </div>
           */}
         </div>

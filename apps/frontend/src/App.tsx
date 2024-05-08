@@ -5,6 +5,7 @@ import ScoreProvider from "./providers/ScoreProvider";
 import DashboardPage from "./Pages/DashboardPage";
 import Quiz from "./Pages/QuizPage";
 import MyProfilePage from "./Pages/MyProfilePage";
+import ExaminationsPage from "./Pages/ExaminationsPage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="quiz" element={<Quiz id={2} />} />
           <Route path="/my-profile" element={<MyProfilePage />} />
+          <Route path="/examinations" element={<ExaminationsPage />} />
         </Routes>
       </ScoreProvider>
     </>

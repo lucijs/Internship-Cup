@@ -10,6 +10,7 @@ import classes from "./index.module.css";
 import { useScore } from "../../providers/ScoreProvider";
 import Fail from "../../components/Quiz/Fail";
 import AcquiredStreak from "../../components/Quiz/Success/AcquiredStreak";
+import { api } from "../../api";
 
 const Quiz = ({ id }: { id: number }) => {
   const [displayedItem, setDisplayedItem] = useState(<div></div>);
@@ -27,8 +28,8 @@ const Quiz = ({ id }: { id: number }) => {
 
   const fetchQuizData = (id: number) => {
     Promise.all([
-      fetch(`/backend/quizes/${id}`).then((res) => res.json()),
-      fetch(`/backend/quizes/categories/${id}`).then((res) => res.json()),
+      api.get<never, any>(`quizes/${id}`),
+      api.get<never, any>(`quizes/categories/${id}`),
     ]).then(([quizData, categoryData]) => {
       setDisplayedItem(
         <div>
@@ -39,7 +40,8 @@ const Quiz = ({ id }: { id: number }) => {
                 width="40"
                 height="40"
                 viewBox="0 0 40 40"
-                fill="none">
+                fill="none"
+              >
                 <g clipPath="url(#clip0_281_1666)">
                   <circle cx="20" cy="20" r="20" fill="#F2F2F2" />
                   <path
@@ -72,7 +74,8 @@ const Quiz = ({ id }: { id: number }) => {
             <div className={classes.buttonStartQuizContainer}>
               <Button
                 onClick={handleStartQuiz}
-                className={classes.buttonStartQuiz}>
+                className={classes.buttonStartQuiz}
+              >
                 {buttonText}
               </Button>
             </div>
@@ -216,7 +219,8 @@ const Quiz = ({ id }: { id: number }) => {
           <div className={classes.furthestBackgroundCard}></div>
           <Button
             onClick={handleStartQuiz}
-            className={classes.buttonNextQuestion}>
+            className={classes.buttonNextQuestion}
+          >
             {buttonText}
           </Button>
         </>
