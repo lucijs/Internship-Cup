@@ -4,8 +4,12 @@ import EmailInputField from "../../../components/Auth/InputFields/EmailInputFiel
 import PasswordInputField from "../../../components/Auth/InputFields/PasswordInputField";
 import SubmitButton from "../../../components/Auth/SubmitButton";
 import classes from "./index.module.css";
+import { api } from "../../../api";
 
 const LoginPage = ({ onRegisterClick }: { onRegisterClick: () => void }) => {
+  interface LoginResponse {
+    token: string;
+  }
   const [loginData, setLoginData] = useState({ name: "", password: "" });
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -17,31 +21,20 @@ const LoginPage = ({ onRegisterClick }: { onRegisterClick: () => void }) => {
     try {
       const response = await sendLoginInfo();
 
-      if (!response.ok) {
-        const errorMessage = await response.text();
-        throw new Error(errorMessage);
-      }
-
-      const responseData = await response.json();
-      console.log("User successfully logged in: ", responseData);
-      localStorage.setItem("token", responseData["token"]);
+      console.log("User successfully logged in: ", response);
+      localStorage.setItem("token", response["token"]);
     } catch (error) {
       console.error("Error in login process: ", error);
     }
   };
 
   const sendLoginInfo = async () => {
-    const response = await fetch("backend/users/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(loginData),
-    });
-
+    const response = await api.post<never, LoginResponse>(
+      "users/login",
+      loginData
+    );
     return response;
   };
-
   return (
     <>
       <div className={classes.loginPageWrapper}>

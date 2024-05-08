@@ -7,6 +7,7 @@ import PasswordInputField from "../../../components/Auth/InputFields/PasswordInp
 import TextInputField from "../../../components/Auth/InputFields/TextInputField";
 import SubmitButton from "../../../components/Auth/SubmitButton";
 import classes from "./index.module.css";
+import { api } from "../../../api";
 const RegisterPage = () => {
   const [registrationData, setRegistrationData] = useState({
     name: "",
@@ -45,16 +46,9 @@ const RegisterPage = () => {
         dateOfBirth: isoDate,
       }));
 
-      console.log(registrationData);
-
       const response = await sendRegistrationData();
 
-      if (!response.ok) {
-        const errorMessage = await response.text();
-        throw new Error(errorMessage);
-      }
-      const responseData = await response.json();
-      console.log("User registered successfully:", responseData);
+      console.log("User registered successfully:", response);
     } catch (error) {
       console.error("Error in registration process: ", error);
     }
@@ -68,13 +62,7 @@ const RegisterPage = () => {
   };
 
   const sendRegistrationData = async () => {
-    const response = await fetch("backend/users/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(registrationData),
-    });
+    const response = api.post("/users/register", registrationData);
     return response;
   };
 
