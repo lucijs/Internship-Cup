@@ -10,7 +10,6 @@ import QuizSuccessWithoutStreak from "./components/Quiz/Success/QuizSuccessWitho
 function App() {
   return (
     <>
-      <QuizSuccessWithoutStreak />
       <DashboardPage />
       <ScoreProvider>
         <Routes>
