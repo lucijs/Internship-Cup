@@ -90,6 +90,13 @@ export class UsersService {
     return { token: this.jwtService.sign(payload) };
   }
 
+  async updateStreak(userId: number, newStreak: number) {
+    return this.prisma.user.update({
+      where: { userId },
+      data: { streak: newStreak },
+    });
+  }
+
   findAll() {
     return this.prisma.user.findMany();
   }

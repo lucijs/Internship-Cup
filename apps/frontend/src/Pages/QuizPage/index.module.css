@@ -58,7 +58,7 @@
 .textContainer {
   border-radius: 16px 16px 0px 0px;
   background: var(--Bijela, #f2f2f2);
-  width: 376px;
+  width: 375px;
   margin-top: 16px;
   height: max-content;
   position: relative;

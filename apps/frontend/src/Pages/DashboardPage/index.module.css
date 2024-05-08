@@ -1,107 +1,97 @@
-@media only screen and (min-width: 350px) and (max-width: 550px){
-    .dashboardPageWrapper{
-        display: flex;
-        flex-direction: column;
-        width: 90%;
-        align-items: center;
-        padding-bottom: 150px;
-    }
-    .dashboardPageWrapper h2{
-        color: #000;
-        font-family: "Martel Sans";
-        font-size: 28px;
-        width: 100%;
-    }
+@media only screen and (min-width: 350px) and (max-width: 550px) {
+  .dashboardPageWrapper {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    align-items: center;
+    padding-bottom: 150px;
+  }
+  .dashboardPageWrapper h2 {
+    color: #000;
+    font-family: "Martel Sans";
+    font-size: 28px;
+    width: 100%;
+  }
 
-    .streakPointsSection{
-        display: flex;
-        gap: 16px;
-        width: 100%;
-        justify-content: center;
-    }
+  .streakPointsSection {
+    display: flex;
+    gap: 16px;
+    width: 100%;
+    justify-content: center;
+  }
 
-    .dashboardTitles{
-        color: #000;
-        font-family: "Martel Sans Bold";
-        font-size: 20px;
-        width: 100%;
-        margin-bottom: 0;
+  .dashboardTitles {
+    color: #000;
+    font-family: "Martel Sans Bold";
+    font-size: 20px;
+    width: 100%;
+    margin-bottom: 0;
+  }
 
-    }
+  .preventiveExaminationsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-    .preventiveExaminationsContainer{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+  .dashboardIntroSection {
+    display: flex;
+    flex-direction: column;
+    background-color: #93b6eb;
+    padding: 10px 10px 15px 10px;
+    width: 90%;
+    border-radius: 16px;
+    gap: 12px;
+    align-items: center;
+  }
 
-    .dashboardIntroSection{
-        display: flex;
-        flex-direction: column;
-        background-color: #93B6EB;
-        padding: 10px 10px 15px 10px;
-        width: 90%;
-        border-radius: 16px;
-        gap: 12px;
-        align-items: center;
-    }
+  .dashboardSubtitle {
+    color: #456ead;
+    font-family: "Hind";
+    font-size: 16px;
+    width: 100%;
+    margin-top: 0;
+  }
 
-    .dashboardSubtitle{
-        color: #456EAD;
-        font-family: "Hind";
-        font-size: 16px;
-        width: 100%;
-        margin-top: 0;
-    }
+  .highlightedQuizzesContainer {
+    display: flex;
+    width: 100%;
+    gap: 16px;
+    overflow-x: scroll;
+  }
 
-    .highlightedQuizzesContainer{
-        display: flex;
-        width: 100%;
-        gap: 16px;
-        overflow-x: scroll;
-    }
+  .preventiveExaminationsContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+  }
 
-    .preventiveExaminationsContainer{
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        align-items: center;
+  .rewardCardsContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+  }
 
-    }
+  .partnersContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    margin-top: 8px;
+  }
+  .partnersContainer img {
+    filter: invert(50%);
+  }
 
-    .rewardCardsContainer{
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        align-items: center;
-    }
-
-    .partnersContainer{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 24px;
-        margin-top: 8px;
-    }
-    .partnersContainer img{
-        filter: invert(50%);
-    }
-
-    .sponsorsContainer{
-        display: flex;
-        flex-direction: row;
-        width: 90%;
-        gap: 16px;
-        flex-wrap: wrap;
-        justify-content: space-evenly;
-        align-items: center;
-    }
-
-    
-
-    
-
-    
-
-    
+  .sponsorsContainer {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+  }
 }

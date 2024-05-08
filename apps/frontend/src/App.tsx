@@ -4,12 +4,13 @@ import { Routes, Route } from "react-router-dom";
 import ScoreProvider from "./providers/ScoreProvider";
 import RewardsPage from "./Pages/RewardsPage";
 import DashboardPage from "./Pages/DashboardPage";
+import Quiz from "./Pages/QuizPage";
+import QuizSuccessWithoutStreak from "./components/Quiz/Success/QuizSuccessWithoutStreak";
 
 function App() {
   return (
     <>
-      <AuthPage />
-      <RewardsPage />
+      <QuizSuccessWithoutStreak />
       <DashboardPage />
       <ScoreProvider>
         <Routes>

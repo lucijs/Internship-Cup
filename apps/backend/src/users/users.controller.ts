@@ -45,6 +45,9 @@ export class UsersController {
     return this.usersService.create(createUserDto);
   }
 
+  @Post()
+  @ApiCreatedResponse()
+
   @Get()
   @ApiCreatedResponse({ type: UserEntity, isArray: true })
   findAll() {
