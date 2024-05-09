@@ -11,7 +11,11 @@ export class RewardsService {
   }
 
   findAll() {
-    return this.prisma.reward.findMany();
+    return this.prisma.reward.findMany({
+      include: {
+        category: true,
+      },
+    });
   }
 
   findOne(id: number) {

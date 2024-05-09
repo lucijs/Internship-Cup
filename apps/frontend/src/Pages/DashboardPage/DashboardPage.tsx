@@ -42,7 +42,10 @@ interface Reward {
   title: string;
   description: string;
   message: string;
-  categoryId: number;
+  categories: {
+    categoryId: number;
+    name: string;
+  };
   points: number;
 }
 
@@ -217,8 +220,8 @@ const DashboardPage = () => {
           {rewardsData.map((reward) => (
             <RewardCard
               key={reward.rewardId}
-              category={reward.categoryId.toString()}
-              description={reward.description}
+              category={reward.title}
+              description={reward.title}
             />
           ))}
 
