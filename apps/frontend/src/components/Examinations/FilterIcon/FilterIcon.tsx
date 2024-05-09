@@ -15,7 +15,7 @@ const FilterIcon = () => {
             d="M23.2444 5.25L16.8054 13.5H15.9999V15V24.3912L13.9999 22.3912V22.3375V15V13.5H13.1945L6.75545 5.25H23.2444Z"
             fill="black"
             stroke="black"
-            stroke-width="3"
+            strokeWidth="3"
           />
         </svg>
       </div>
