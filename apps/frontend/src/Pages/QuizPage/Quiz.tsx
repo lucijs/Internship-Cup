@@ -112,6 +112,8 @@ const Quiz = () => {
       const today = new Date();
       const date = localStorage.getItem("lastStreak");
       const points = localStorage.getItem("points");
+      console.log(today.toDateString());
+      console.log(date);
       if (points !== null)
         localStorage.setItem("points", String(+points + addedPoints));
       if (today.toDateString() === date) {
