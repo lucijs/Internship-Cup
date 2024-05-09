@@ -121,12 +121,14 @@ const Quiz = () => {
         console.log(date);
         if (points !== null)
           localStorage.setItem("points", String(+points + addedPoints));
+        const streaks = localStorage.getItem("streaks");
         if (today.toDateString() === date) {
           setDisplayedItem(<QuizSuccessWithoutStreak points={addedPoints} />);
         } else {
-          setDisplayedItem(<AcquiredStreak points={addedPoints} />);
-          const streaks = localStorage.getItem("streaks");
-          localStorage.setItem("streaks", String(+!streaks! + 1));
+          setDisplayedItem(
+            <AcquiredStreak points={addedPoints} streaks={+!streaks + 1} />
+          );
+          localStorage.setItem("streaks", String(+!streaks + 1));
           localStorage.setItem("lastStreak", new Date().toDateString());
         }
       }

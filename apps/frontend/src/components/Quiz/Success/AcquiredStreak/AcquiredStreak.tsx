@@ -2,8 +2,13 @@ import { Button } from "@mui/material";
 import StreaksDisplay from "../../StreaksDisplay";
 import classes from "./index.module.css";
 
-const AcquiredStreak = ({ points }: { points: number }) => {
-  const streaks = 3;
+const AcquiredStreak = ({
+  points,
+  streaks,
+}: {
+  points: number;
+  streaks: number;
+}) => {
   //ovo mora bit iz user-a, kad se registrira
   const registrationDate = new Date();
   return (

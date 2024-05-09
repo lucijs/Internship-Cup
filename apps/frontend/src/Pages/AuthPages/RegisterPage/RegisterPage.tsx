@@ -12,6 +12,12 @@ import { api } from "../../../api";
 const RegisterPage = () => {
   interface RegisterResponse {
     token: string;
+    userId: Number;
+    name: string;
+    surname: string;
+    lastStreakDate: Date | null;
+    points: number;
+    streaks: number;
   }
 
   const [registrationData, setRegistrationData] = useState({
@@ -55,6 +61,12 @@ const RegisterPage = () => {
 
       console.log("User registered successfully:", response);
       localStorage.setItem("token", response["token"]);
+      localStorage.setItem("id", String(response["userId"]));
+      localStorage.setItem("name", response["name"]);
+      localStorage.setItem("surname", response["surname"]);
+      localStorage.setItem("lastStreak", String(response["lastStreakDate"]));
+      localStorage.setItem("points", String(response["points"]));
+      localStorage.setItem("streaks", String(response["streaks"]));
       window.location.href = "/dashboard";
     } catch (error) {
       console.error("Error in registration process: ", error);

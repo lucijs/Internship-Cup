@@ -70,7 +70,7 @@ export class UsersService {
       userId: user.userId,
       name: user.name,
       surname: user.surname,
-      streaks: user.userId,
+      streaks: user.streak,
       points: user.points,
       lastStreakDate: user.lastStreakDate,
     };
