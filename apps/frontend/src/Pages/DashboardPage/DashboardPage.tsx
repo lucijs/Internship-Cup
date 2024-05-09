@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import DailyAdvice from "../../components/Dashboard/DailyAdvice";
 import HighlightedQuiz from "../../components/Dashboard/HighlightedQuiz";
 import PointsCard from "../../components/Dashboard/PointsCard";
-import PreventiveExamination from "../../components/Dashboard/PreventiveExamination";
 import RewardCard from "../../components/Dashboard/RewardCard";
 import StreakCard from "../../components/Dashboard/StreakCard";
 import Navbar from "../../components/Other/Navbar";
@@ -27,6 +26,7 @@ interface Examination {
     institutionId: number;
     name: string;
   };
+  time: string;
 }
 
 interface Quiz {
@@ -127,6 +127,16 @@ const DashboardPage = () => {
     });
     return output;
   };
+
+  const transformTimeFormat = (dateTime: string) => {
+    const dateFormat = dateTime.split("T")[0];
+    const timeFormat = dateTime.split("T")[1];
+    const hours = timeFormat.split(":")[0];
+    const day = dateFormat.split("-")[2];
+    const month = dateFormat.split("-")[1];
+    const result = `${day}.${month}. u ${hours}h`;
+    return result;
+  };
   return (
     <>
       <div className={classes.dashboardPageWrapper}>
@@ -171,7 +181,7 @@ const DashboardPage = () => {
                 ", " +
                 cityNames[examination.institution.institutionId]
               }
-              time=""
+              time={transformTimeFormat(examination.time)}
             />
           ))}
         </div>

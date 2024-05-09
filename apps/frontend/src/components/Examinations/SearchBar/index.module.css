@@ -27,5 +27,9 @@
         border: none;
         outline: none;
     }
+    .searchBar svg{
+        position: relative;
+        top: 3px;
+    }
 
 }

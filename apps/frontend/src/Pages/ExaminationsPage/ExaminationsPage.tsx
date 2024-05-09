@@ -22,29 +22,13 @@ interface Examination {
     institutionId: number;
     name: string;
   };
+  time: string;
 }
 
 const ExaminationsPage = () => {
   const [examinationsData, setExaminationsData] = useState<Examination[]>([]);
   const [cityNames, setCityNames] = useState<{ [key: number]: string }>({});
   const [searchValue, setSearchValue] = useState("");
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const res = await fetch("/backend/examinations");
-  //       if (!res.ok) throw new Error("Failed to fetch examinations");
-
-  //       const data = await res.json();
-  //       console.log(data[0].categories[0].category.name);
-  //       setExaminationsData(data);
-  //     } catch (error) {
-  //       console.error("Error fetching examinations:", error);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -58,20 +42,6 @@ const ExaminationsPage = () => {
     };
     fetchData();
   }, []);
-
-  // const getCityName = async (id: number) => {
-  //   try {
-  //     const res = await fetch(`/backend/institutions/cities/${id}`);
-  //     if (!res.ok) throw new Error("Failed to fetch institution city");
-
-  //     const data = await res.json();
-
-  //     return data[0].name;
-  //   } catch (error) {
-  //     console.error("Error fetching institution city: ", error);
-  //     return "";
-  //   }
-  // };
 
   const getCityName = async (id: number) => {
     try {
@@ -113,6 +83,16 @@ const ExaminationsPage = () => {
     return output;
   };
 
+  const transformTimeFormat = (dateTime: string) => {
+    const dateFormat = dateTime.split("T")[0];
+    const timeFormat = dateTime.split("T")[1];
+    const hours = timeFormat.split(":")[0];
+    const day = dateFormat.split("-")[2];
+    const month = dateFormat.split("-")[1];
+    const result = `${day}.${month}. u ${hours}h`;
+    return result;
+  };
+
   return (
     <>
       <div className={classes.examinationsPageWrapper}>
@@ -147,7 +127,7 @@ const ExaminationsPage = () => {
                     ", " +
                     cityNames[examination.institution.institutionId]
                   }
-                  time=""
+                  time={transformTimeFormat(examination.time)}
                 />
               ))}
           </div>

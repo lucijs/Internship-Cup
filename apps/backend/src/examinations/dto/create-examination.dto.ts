@@ -11,6 +11,9 @@ export class CreateExaminationDto {
   institutionId: number;
 
   @ApiProperty()
+  time: Date;
+
+  @ApiProperty()
   price: number;
 
   @ApiProperty()
