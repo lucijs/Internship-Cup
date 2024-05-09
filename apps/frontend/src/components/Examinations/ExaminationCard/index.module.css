@@ -40,6 +40,6 @@
     }
     .examinationCard svg{
         position: relative;
-        bottom: 2px;
+        top: 3px;
     }
 }

@@ -12,6 +12,9 @@ export class ExaminationEntity implements Examination {
   institutionId: number;
 
   @ApiProperty()
+  time: Date;
+
+  @ApiProperty()
   price: number;
 
   @ApiProperty()
