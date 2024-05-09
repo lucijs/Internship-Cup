@@ -10,7 +10,6 @@ const HighlightedQuiz = ({
   img: string;
   quizId: number;
 }) => {
-  console.log(quizId);
   return (
     <Link className={classes.highlightedQuiz} to={`/quiz/${quizId}`}>
       <div className={classes.highlightedQuizUpper}>
