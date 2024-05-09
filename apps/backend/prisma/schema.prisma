@@ -10,7 +10,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url= env("DATABASE_URL")
+  url      = env("DATABASE_URL")
 }
 
 model City {
@@ -58,11 +58,11 @@ model Ad_City {
 model Category {
   categoryId   Int                    @id @default(autoincrement())
   name         String                 @unique
-  img String
+  img          String
   ads          Ad_Category[]
   quizzes      Quiz_Category[]
   examinations Examination_Category[]
-  rewards Reward[]
+  rewards      Reward[]
 }
 
 model Ad_Category {
@@ -75,14 +75,14 @@ model Ad_Category {
 }
 
 model Quiz {
-  quizId     Int             @id @default(autoincrement())
-  name       String          @unique
-  description String
-  text String
+  quizId       Int             @id @default(autoincrement())
+  name         String          @unique
+  description  String
+  text         String
   earnedPoints Int
-  categories Quiz_Category[]
-  users      Quiz_User[]
-  questions QuizQuestion[]
+  categories   Quiz_Category[]
+  users        Quiz_User[]
+  questions    QuizQuestion[]
 }
 
 model Quiz_Category {
@@ -99,6 +99,7 @@ model Examination {
   name          String
   institutionId Int
   institution   Institution            @relation(fields: [institutionId], references: [institutionId])
+  time          DateTime
   price         Float
   discount      Int
   description   String?
@@ -116,7 +117,7 @@ model Examination_Category {
 }
 
 model Code {
-  codeId            Int     @id @default(autoincrement())
+  codeId            Int    @id @default(autoincrement())
   autenticationCode String
 }
 
@@ -125,21 +126,21 @@ model User {
   name           String
   surname        String
   dateOfBirth    DateTime
-  dateRegister DateTime@default(now())
+  dateRegister   DateTime    @default(now())
   points         Int
   streak         Int
   email          String      @unique
   password       String
   lastStreakDate DateTime?
   quizzes        Quiz_User[]
-  streaks Streak[]
+  streaks        Streak[]
 }
 
 model Streak {
-  streakId Int         @id @default(autoincrement())
-  dateCreated DateTime@default(now())
-  userId Int
-  user User @relation(fields: [userId], references: [userId])
+  streakId    Int      @id @default(autoincrement())
+  dateCreated DateTime @default(now())
+  userId      Int
+  user        User     @relation(fields: [userId], references: [userId])
 }
 
 model Quiz_User {
@@ -153,28 +154,28 @@ model Quiz_User {
 }
 
 model QuizQuestion {
-  questionId Int    @id @default(autoincrement())
-  question   String
-  possibleAnswers     String[]
+  questionId      Int      @id @default(autoincrement())
+  question        String
+  possibleAnswers String[]
   correctAnswer1  String[]
-  correctAnswer2 String[]
-  type String
-  quizId Int
-  quiz Quiz @relation(fields: [quizId], references: [quizId])
+  correctAnswer2  String[]
+  type            String
+  quizId          Int
+  quiz            Quiz     @relation(fields: [quizId], references: [quizId])
 }
 
-model DailyMessage{
+model DailyMessage {
   dailyMessageId Int    @id @default(autoincrement())
-  message String @unique
+  message        String @unique
 }
 
-model Reward{
-  rewardId  Int @id @default(autoincrement())
-  title String @unique
+model Reward {
+  rewardId    Int      @id @default(autoincrement())
+  title       String   @unique
   description String
-  message String
-  img String
-  categoryId Int
-  points Int
-  category Category @relation(fields: [categoryId], references: [categoryId])
+  message     String
+  img         String
+  categoryId  Int
+  points      Int
+  category    Category @relation(fields: [categoryId], references: [categoryId])
 }

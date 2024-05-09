@@ -184,6 +184,7 @@ async function main() {
     data: {
       name: 'Besplatan pregled oralnog zdravlja',
       institutionId: 1,
+      time: new Date('2024-06-01T18:00:00'),
       price: 0,
       discount: 0,
       description: 'Detaljni pregled usne šupljine',
@@ -195,6 +196,7 @@ async function main() {
     data: {
       name: 'Besplatan oftamološki pregled',
       institutionId: 2,
+      time: new Date('2024-06-01T18:00:00'),
       price: 0,
       discount: 0,
       description:
@@ -207,6 +209,7 @@ async function main() {
     data: {
       name: 'Besplatni sistematski pregled',
       institutionId: 1,
+      time: new Date('2024-06-01T18:00:00'),
       price: 0,
       discount: 0,
       description:

@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import DailyAdvice from "../../components/Dashboard/DailyAdvice";
 import HighlightedQuiz from "../../components/Dashboard/HighlightedQuiz";
 import PointsCard from "../../components/Dashboard/PointsCard";
-import PreventiveExamination from "../../components/Dashboard/PreventiveExamination";
 import RewardCard from "../../components/Dashboard/RewardCard";
 import StreakCard from "../../components/Dashboard/StreakCard";
 import Navbar from "../../components/Other/Navbar";

@@ -29,23 +29,6 @@ const ExaminationsPage = () => {
   const [cityNames, setCityNames] = useState<{ [key: number]: string }>({});
   const [searchValue, setSearchValue] = useState("");
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const res = await fetch("/backend/examinations");
-  //       if (!res.ok) throw new Error("Failed to fetch examinations");
-
-  //       const data = await res.json();
-  //       console.log(data[0].categories[0].category.name);
-  //       setExaminationsData(data);
-  //     } catch (error) {
-  //       console.error("Error fetching examinations:", error);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, []);
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -58,20 +41,6 @@ const ExaminationsPage = () => {
     };
     fetchData();
   }, []);
-
-  // const getCityName = async (id: number) => {
-  //   try {
-  //     const res = await fetch(`/backend/institutions/cities/${id}`);
-  //     if (!res.ok) throw new Error("Failed to fetch institution city");
-
-  //     const data = await res.json();
-
-  //     return data[0].name;
-  //   } catch (error) {
-  //     console.error("Error fetching institution city: ", error);
-  //     return "";
-  //   }
-  // };
 
   const getCityName = async (id: number) => {
     try {
