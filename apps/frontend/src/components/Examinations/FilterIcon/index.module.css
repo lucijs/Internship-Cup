@@ -7,4 +7,8 @@
         border-radius: 11px;
         padding: 6px;
     }
+    .filterIcon svg{
+        position: relative;
+        top: 3px;
+    }
 } 

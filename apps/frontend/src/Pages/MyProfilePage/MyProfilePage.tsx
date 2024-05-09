@@ -4,8 +4,31 @@ import ResolvedQuizzesAndBenefitsCard from "../../components/MyProfile/Cards/Res
 import StreakCard from "../../components/MyProfile/Cards/StreakCard";
 import PersonalInfo from "../../components/MyProfile/PersonalInfo";
 import classes from "./index.module.css";
+import { api } from "../../api";
+import { useState } from "react";
 
 const MyProfilePage = () => {
+  interface User {
+    userId: number;
+    name: string;
+    surname: string;
+    dateOfBirth: Date;
+    points: number;
+    streak: number;
+    lastStreakDate: Date;
+    dateRegister: Date;
+  }
+
+  const [userData, setUserData] = useState<User>();
+  const fetchDataForUser = async (id: number) => {
+    try {
+      const data = await api.get<never, User>(`/users/${id}`);
+      setUserData(data);
+    } catch (error) {
+      console.error("Error fetching the user: ", error);
+    }
+  };
+
   return (
     <>
       <div className={classes.myProfilePage}>
@@ -15,7 +38,8 @@ const MyProfilePage = () => {
             width="141"
             height="188"
             viewBox="0 0 141 188"
-            fill="none">
+            fill="none"
+          >
             <path
               d="M119.945 96.7223C123.103 90.2315 127.497 81.7209 130.043 76.3267C131.235 73.8006 132.941 73.8369 133.847 76.4792L137.494 92.0648C137.77 93.2405 137.932 94.4399 137.98 95.6465L138.565 110.512L137.908 130.982L137.35 144.106C137.263 146.163 136.665 148.166 135.611 149.935L133.911 152.791C132.725 154.781 130.579 156.001 128.262 156.001C126.851 156.001 125.477 155.547 124.344 154.706L119.522 151.127C117.87 149.901 116.896 147.965 116.896 145.907V144.695C116.896 143.236 116.154 141.878 114.926 141.091C113.698 140.303 112.956 138.945 112.956 137.487V136.944C112.956 136.018 113.2 135.109 113.663 134.307L115.03 131.938C116.256 129.815 116.961 127.43 117.085 124.981L118.16 103.772C118.284 101.325 118.873 98.9259 119.945 96.7223Z"
               fill="#FF5858"
