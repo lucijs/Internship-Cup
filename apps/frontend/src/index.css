@@ -71,4 +71,5 @@
   border: 0px;
   box-sizing: border-box;
   width: 100%;
+  background: var(--Bijela, #f2f2f2);
 }

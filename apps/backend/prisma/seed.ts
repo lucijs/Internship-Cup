@@ -43,7 +43,7 @@ async function main() {
         'Stanica',
         'Minerali',
       ],
-      correctAnswer1: ['Nutrijenti'],
+      correctAnswer1: ['Minerali'],
       correctAnswer2: ['Vitamin D'],
       type: 'fill in',
       quizId: 1,
@@ -87,6 +87,8 @@ async function main() {
     },
   });
 
+  //probat stavit da je ovo <svg xmlns="http://www.w3.org/2000/svg" width="107" height="110" viewBox="0 0 107 110" fill="none"><g clip-path="url(#clip0_281_2514)"><path d="M109.578 28.6242L100.769 29.2628L109.159 19.5617C109.639 19.0067 110.005 18.3625 110.236 17.6661C110.467 16.9696 110.559 16.2344 110.506 15.5025C110.452 14.7707 110.256 14.0564 109.927 13.4005C109.598 12.7447 109.142 12.16 108.587 11.68C108.032 11.2 107.388 10.8341 106.692 10.603C105.995 10.372 105.26 10.2803 104.528 10.3334C103.796 10.3865 103.082 10.5831 102.426 10.9122C101.77 11.2413 101.186 11.6964 100.706 12.2514L92.3162 21.9525L91.6776 13.1436C91.5706 11.6681 90.8819 10.2955 89.7629 9.32776C88.6439 8.36004 87.1863 7.87647 85.7107 7.98344C84.2352 8.09041 82.8626 8.77915 81.8949 9.89816C80.9271 11.0172 80.4436 12.4748 80.5505 13.9503L81.4244 26.0046C75.4017 23.7976 68.8501 23.4751 62.6398 25.0799C56.4295 26.6847 50.8544 30.141 46.6549 34.9895C29.1929 54.8095 18.2955 99.0925 17.0812 104.2C16.546 105.658 16.3848 107.227 16.6121 108.764C16.8395 110.3 17.4481 111.755 18.3826 112.996C19.3171 114.237 20.5475 115.224 21.9615 115.866C23.3755 116.509 24.928 116.788 26.4773 116.676C27.7945 116.578 29.0762 116.202 30.2377 115.574C33.6985 114.195 55.9507 105.162 74.6895 92.8603L74.9298 92.7031C82.5361 87.6914 89.5441 82.1406 94.4578 76.3733C98.6593 71.5141 101.281 65.49 101.972 59.1036C102.664 52.7171 101.394 46.2715 98.3305 40.6251L110.385 39.7513C111.86 39.6443 113.233 38.9555 114.201 37.8365C115.168 36.7175 115.652 35.2599 115.545 33.7844C115.438 32.3089 114.749 30.9363 113.63 29.9685C112.511 29.0008 111.054 28.5172 109.578 28.6242ZM85.9961 69.073L85.9575 69.1178C82.4757 73.2292 77.642 77.2708 72.2225 81.0753L60.6817 71.0946C59.5607 70.1252 58.1006 69.6408 56.6225 69.748C55.1444 69.8551 53.7694 70.5451 52.8 71.666C51.8306 72.787 51.3462 74.2471 51.4533 75.7252C51.5605 77.2033 52.2504 78.5783 53.3714 79.5477L62.4311 87.3826C48.8977 95.4339 34.5139 101.72 28.5744 104.201C31.0335 94.599 39.5356 63.8843 51.5978 46.7256L66.863 59.927C67.9839 60.8965 69.4441 61.3809 70.9222 61.2737C72.4003 61.1665 73.7753 60.4766 74.7447 59.3557C75.7141 58.2347 76.1985 56.7746 76.0913 55.2965C75.9842 53.8184 75.2942 52.4434 74.1733 51.474L59.286 38.5993C63.4113 35.8811 68.3811 34.7479 73.2771 35.4092C78.173 36.0705 82.6641 38.4815 85.9205 42.1967C89.1769 45.912 90.9785 50.6804 90.9924 55.6207C91.0063 60.5611 89.2316 65.3395 85.9961 69.073Z" fill="#5C93C9"/></g><defs><clipPath id="clip0_281_2514"><rect width="119" height="119" fill="white" transform="translate(0 8.60437) rotate(-4.14644)"/></clipPath></defs></svg>
+
   const quiz2 = await prisma.quiz.upsert({
     where: { name: 'Oživljavanje' },
     update: {},
@@ -104,6 +106,7 @@ async function main() {
       categoryId: 2,
     },
   });
+
   const question4 = await prisma.quizQuestion.create({
     data: {
       question: 'Nadopuni tekst',
@@ -262,6 +265,180 @@ async function main() {
     data: {
       institutionId: 2,
       cityId: 2,
+    },
+  });
+
+  const category5 = await prisma.category.upsert({
+    where: { name: 'Mozak' },
+    update: {},
+    create: {
+      name: 'Mozak',
+      img: '../src/assets/categoryIcons/icon _Cognitive_.png',
+    },
+  });
+
+  const quiz3 = await prisma.quiz.upsert({
+    where: { name: 'Um je bitan' },
+    update: {},
+    create: {
+      name: 'Um je bitan',
+      earnedPoints: 15,
+      description: 'Um je bitan: Kviz o živčanom sustavu',
+      text: 'Središnji živčani sustav, sastavljen od mozga i leđne moždine, ključan je za obradu informacija i upravljanje tjelesnim funkcijama. Mozak, kao centralna instanca, kontrolira pokrete, osjećaje, pamćenje i učenje. Sinapsa, mjesto komunikacije između neurona, omogućuje prijenos signala putem kemijskih ili električnih impulsa. Aksoni su produžeci neurona koji prenose impulse drugim stanicama, dok dendriti primaju signale od drugih neurona. Neuroni, temeljne građevne jedinice živčanog sustava, omogućuju prijenos i obradu informacija te kontrolu tjelesnih funkcija poput pamćenja i percepcije.',
+    },
+  });
+
+  const quizCategory3 = await prisma.quiz_Category.create({
+    data: {
+      quizId: 3,
+      categoryId: 5,
+    },
+  });
+
+  const question7 = await prisma.quizQuestion.create({
+    data: {
+      question:
+        'Koji od sljedećih organa nije dio središnjeg živčanog sustava?',
+      possibleAnswers: ['Kralježnični živci', 'Leđna moždina', 'Srce', 'Mozak'],
+      correctAnswer1: ['Srce'],
+      type: 'multiple choice',
+      quizId: 3,
+    },
+  });
+
+  const question8 = await prisma.quizQuestion.create({
+    data: {
+      question: 'Nadopuni tekst',
+      possibleAnswers: [
+        'Kada se poticaj prenosi s jednog neurona na drugi, to se događa na mjestu koje se naziva ',
+        '',
+        'sinapsa',
+        'akson',
+        'neuron',
+      ],
+      correctAnswer1: ['sinapsa'],
+      type: 'fill in one',
+      quizId: 3,
+    },
+  });
+
+  const question9 = await prisma.quizQuestion.create({
+    data: {
+      question:
+        'Rasporedite pojmove prema njihovim funkcijama u živčanom sustavu.',
+      possibleAnswers: [
+        'Prima signal',
+        'Prenosi signal',
+        'Dendriti',
+        'Aksoni',
+        'Neuroni',
+        'Sinapsa',
+      ],
+      correctAnswer1: ['Aksoni', 'Dendriti'],
+      correctAnswer2: ['Neuroni', 'Sinapsa'],
+      type: 'match',
+      quizId: 3,
+    },
+  });
+
+  const dailyMessage1 = await prisma.dailyMessage.create({
+    data: {
+      message: 'Smiji se uvijek, to je najbolji način da pobijediš sve bolesti',
+    },
+  });
+
+  const dailyMessage2 = await prisma.dailyMessage.create({
+    data: {
+      message:
+        'Zdravlje nije trka, već dugotrajan maraton - napravite pauzu kad vam je potrebno.',
+    },
+  });
+
+  const dailyMessage3 = await prisma.dailyMessage.create({
+    data: {
+      message:
+        'Dobro zdravlje počinje malim koracima - možda danas probajte neku novu voćku ili povrće',
+    },
+  });
+
+  const dailyMessage4 = await prisma.dailyMessage.create({
+    data: {
+      message:
+        'Oslobodite stres uz osmijeh - smijeh je odlična vježba za lice i dušu.',
+    },
+  });
+
+  const dailyMessage5 = await prisma.dailyMessage.create({
+    data: {
+      message:
+        'Ponekad je najbolji lijek za umorni dan dobra knjiga i šalica toplog čaja.',
+    },
+  });
+
+  const dailyMessage6 = await prisma.dailyMessage.create({
+    data: {
+      message:
+        'Ne zaboravite na svoj san - dobar san je ključan za obnavljanje energije i oporavak tijela.',
+    },
+  });
+
+  const dailyMessage7 = await prisma.dailyMessage.create({
+    data: {
+      message:
+        'Pustite omiljenu pjesmu i plešite kao da vas nitko ne gleda - pokret je dobar za srce i dušu.',
+    },
+  });
+  const dailyMessage11 = await prisma.dailyMessage.create({
+    data: {
+      message:
+        'Dopustite sebi vrijeme za uživanje u prirodi - svjež zrak i zelenilo mogu čuda učiniti za vaše zdravlje.',
+    },
+  });
+
+  const dailyMessage8 = await prisma.dailyMessage.create({
+    data: {
+      message:
+        'Neka vaša mantra bude "naprijed, ali polako" - pritisak za brzim rezultatima može biti kontraproduktivan.',
+    },
+  });
+
+  const dailyMessage9 = await prisma.dailyMessage.create({
+    data: {
+      message:
+        'Zdravlje nije samo o prehrani i vježbanju - njegujte i svoje mentalno zdravlje kroz meditaciju ili jednostavno opuštanje.',
+    },
+  });
+
+  const dailyMessage10 = await prisma.dailyMessage.create({
+    data: {
+      message:
+        'Zdrav način života je ravnoteža između onoga što morate, onoga što želite i onoga što vas čini sretnim.',
+    },
+  });
+
+  const reward1 = await prisma.reward.create({
+    data: {
+      categoryId: 1,
+      title: '15% popusta pri sljedećoj kupnji u bio&bio trgovinama',
+      description:
+        'Odi u sljedeću kupnju bez brige te uživaj u kvalitetnoj i raznovrsnoj prehrani.',
+      message:
+        'Odi u sljedeću kupnju bez brige, istražujući svježe namirnice i raznolike opcije za zdravu prehranu. Provedi svoje vrijeme u kupovini sa smirenošću, uživajući u odabiru visokokvalitetnih namirnica koje će ti donijeti blagostanje. Iskoristi svoj sljedeći odlazak u kupovinu kao priliku za istraživanje novih recepata i nutritivnih bogatstava za uravnoteženu prehranu',
+      points: 200,
+      img: '../src/assets/qrcode',
+    },
+  });
+
+  const reward2 = await prisma.reward.create({
+    data: {
+      categoryId: 1,
+      title: '20% popusta u bio&bio trgovini',
+      description:
+        'Aktiviraj kod i iskoristi 20% popusta u bilo kojoj bio&bio trgovini.',
+      message:
+        'Razveseli sebi i svojoj porodici kvalitetnim organskim proizvodima po sniženim cijenama. Osim toga, opusti se uz omiljenu knjigu i šalicu tople čaja. Isprobaj nove recepte i otkrij ukusne i zdrave obroke koje možeš pripremiti kod kuće.',
+      points: 250,
+      img: '../src/assets/qrcode',
     },
   });
 }

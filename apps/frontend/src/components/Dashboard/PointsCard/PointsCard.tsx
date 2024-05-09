@@ -1,6 +1,7 @@
 import classes from "./index.module.css";
 
 const PointsCard = () => {
+  const points = localStorage.getItem("points");
   return (
     <>
       <div className={classes.pointsCard}>
@@ -21,7 +22,7 @@ const PointsCard = () => {
           </svg>
         </span>
 
-        <span className={classes.pointsCardLower}>1038</span>
+        <span className={classes.pointsCardLower}>{points}</span>
       </div>
     </>
   );

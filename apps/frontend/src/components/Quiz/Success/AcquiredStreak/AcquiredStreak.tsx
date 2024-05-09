@@ -2,8 +2,7 @@ import { Button } from "@mui/material";
 import StreaksDisplay from "../../StreaksDisplay";
 import classes from "./index.module.css";
 
-const AcquiredStreak = () => {
-  //ovo mora bit od korisnika koliko ima streak-ova
+const AcquiredStreak = ({ points }: { points: number }) => {
   const streaks = 3;
   //ovo mora bit iz user-a, kad se registrira
   const registrationDate = new Date();
@@ -12,7 +11,7 @@ const AcquiredStreak = () => {
       <div className={classes.title}>
         Kviz je uspješno dovršen!
         <div className={classes.subtitle}>
-          Tri dana u nizu, svaka čast! Osvajaš 10 bodova!{" "}
+          Tri dana u nizu, svaka čast! Osvajaš {points} bodova!{" "}
         </div>
       </div>
       <div className={classes.streaks}>

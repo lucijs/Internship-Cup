@@ -56,7 +56,7 @@ export class UsersService {
         streak: 0,
         email: email,
         password: hashedPassword,
-        lastStreakDate: new Date(),
+        lastStreakDate: null,
       },
     });
 
@@ -72,7 +72,7 @@ export class UsersService {
       surname: user.surname,
       streaks: user.userId,
       points: user.points,
-      lastStreak: user.lastStreakDate,
+      lastStreakDate: user.lastStreakDate,
     };
   }
 
@@ -102,7 +102,7 @@ export class UsersService {
       surname: user.surname,
       streaks: user.userId,
       points: user.points,
-      lastStreak: user.lastStreakDate,
+      lastStreakDate: user.lastStreakDate,
     };
   }
 

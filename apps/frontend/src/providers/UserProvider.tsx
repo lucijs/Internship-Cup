@@ -6,24 +6,28 @@ import {
   useState,
 } from "react";
 
-interface UserContext {
-  userId: number;
-  userName: string;
-  userSurname: string;
+interface User {
+  id: number;
+  name: string;
+  surname: string;
   streaks: number;
   points: number;
   lastStreak: Date | null;
+}
+
+interface UserContext {
+  user: User;
   addUser: ({
-    userId,
-    userName,
-    userSurname,
+    id,
+    name,
+    surname,
     streaks,
     points,
     lastStreak,
   }: {
-    userId: number;
-    userName: string;
-    userSurname: string;
+    id: number;
+    name: string;
+    surname: string;
     streaks: number;
     points: number;
     lastStreak: Date | null;
@@ -33,12 +37,14 @@ interface UserContext {
 }
 
 const defaultContext: UserContext = {
-  userId: 0,
-  userName: "",
-  userSurname: "",
-  streaks: 0,
-  points: 0,
-  lastStreak: null,
+  user: {
+    id: 0,
+    name: "",
+    surname: "",
+    streaks: 0,
+    points: 0,
+    lastStreak: new Date(),
+  },
   addUser: () => {},
   addPoints: () => {},
   addStreak: () => {},
@@ -47,51 +53,48 @@ const defaultContext: UserContext = {
 const UserContext = createContext(defaultContext);
 
 const UserProvider = ({ children }: { children: ReactNode }) => {
-  const [userId, setUserId] = useState(defaultContext.userId);
-  const [userName, setUserName] = useState(defaultContext.userName);
-  const [userSurname, setUserSurname] = useState(defaultContext.userSurname);
-  const [points, setPoints] = useState(defaultContext.points);
-  const [streaks, setStreaks] = useState(defaultContext.streaks);
-  const [lastStreak, setLastStreak] = useState(defaultContext.lastStreak);
+  const [user, setUser] = useState(defaultContext.user);
 
   const yesterday = new Date();
   yesterday.setDate(yesterday.getDate() - 1);
 
   const addUser = ({
-    userId,
-    userName,
-    userSurname,
+    id,
+    name,
+    surname,
     streaks,
     points,
     lastStreak,
   }: {
-    userId: number;
-    userName: string;
-    userSurname: string;
+    id: number;
+    name: string;
+    surname: string;
     streaks: number;
     points: number;
     lastStreak: Date | null;
   }) => {
-    setUserId(() => userId);
-    setUserName(() => userName);
-    setUserSurname(() => userSurname);
-    setPoints(points);
-    setLastStreak(lastStreak);
-    setStreaks(streaks);
+    setUser({
+      id,
+      name,
+      surname,
+      streaks,
+      points,
+      lastStreak,
+    });
   };
 
   const addPoints = (numberOfPoints: number) => {
-    setPoints((prev) => prev + numberOfPoints);
+    //setPoints((prev) => prev + numberOfPoints);
   };
 
   const addStreak = () => {
-    setStreaks((prev) => prev + 1);
-    setLastStreak(() => new Date());
+    // setStreaks((prev) => prev + 1);
+    // setLastStreak(new Date());
   };
 
   useEffect(() => {
-    console.log("ulazi");
-    if (lastStreak !== null)
+    /*console.log(lastStreak);
+    if (lastStreak !== undefined && lastStreak)
       if (
         !(
           lastStreak.getFullYear() === yesterday.getFullYear() &&
@@ -99,18 +102,13 @@ const UserProvider = ({ children }: { children: ReactNode }) => {
           lastStreak.getDate() === yesterday.getDate()
         )
       )
-        setStreaks(() => 0);
-  }, [lastStreak]);
+        setStreaks(() => 0);*/
+  });
 
   return (
     <UserContext.Provider
       value={{
-        userId,
-        userName,
-        userSurname,
-        lastStreak,
-        streaks,
-        points,
+        user,
         addUser,
         addPoints,
         addStreak,

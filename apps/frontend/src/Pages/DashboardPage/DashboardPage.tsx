@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import DailyAdvice from "../../components/Dashboard/DailyAdvice";
 import HighlightedQuiz from "../../components/Dashboard/HighlightedQuiz";
 import PointsCard from "../../components/Dashboard/PointsCard";
@@ -5,15 +6,131 @@ import PreventiveExamination from "../../components/Dashboard/PreventiveExaminat
 import RewardCard from "../../components/Dashboard/RewardCard";
 import StreakCard from "../../components/Dashboard/StreakCard";
 import Navbar from "../../components/Other/Navbar";
-import { useUser } from "../../providers/UserProvider";
 import classes from "./index.module.css";
+import { api } from "../../api";
+import { Category, Institution } from "@prisma/client";
+import ExaminationCard from "../../components/Examinations/ExaminationCard";
+
+interface category {
+  categoryId: number;
+  name: string;
+  img: string;
+}
+
+interface Examination {
+  examinationId: number;
+  categories: {
+    category: category;
+  }[];
+  name: string;
+  institution: {
+    institutionId: number;
+    name: string;
+  };
+}
+
+interface Quiz {
+  quizId: number;
+  categories: {
+    category: category;
+  }[];
+  description: string;
+}
 
 const DashboardPage = () => {
-  const { userName } = useUser();
+  const name = localStorage.getItem("name");
+  const [examinationsData, setExaminationsData] = useState<Examination[]>([]);
+  const [cityNames, setCityNames] = useState<{ [key: number]: string }>({});
+  const [quizzes, setQuizes] = useState<Quiz[]>([]);
+  const [quizCategories, setQuizCategories] = useState<{
+    [key: number]: string;
+  }>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await api.get<never, Examination[]>("/examinations");
+
+        setExaminationsData(response);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+
+    const fetchDataQuizes = async () => {
+      try {
+        const response = await api.get<never, Quiz[]>("/quizzes");
+
+        setQuizes(response);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchDataQuizes();
+  }, []);
+
+  const getCityName = async (id: number) => {
+    try {
+      const response = await api.get<never, Institution[]>(
+        `/institutions/cities/${id}`
+      );
+      return response[0].name;
+    } catch (error) {
+      console.log(error);
+      return "";
+    }
+  };
+
+  useEffect(() => {
+    const getQuizCategory = async () => {
+      try {
+        let images: { [key: number]: string } = {};
+        for (const quiz of quizzes) {
+          const response = await api.get<never, Category[]>(
+            `quizzes/categories/${quiz.quizId}`
+          );
+          images[quiz.quizId] = response[0].img;
+        }
+        setQuizCategories(images);
+      } catch {
+        return "";
+      }
+    };
+    getQuizCategory();
+  }, [quizzes]);
+
+  useEffect(() => {
+    const fetchCityNames = async () => {
+      const names: { [key: number]: string } = {};
+      for (const examination of examinationsData) {
+        const cityName = await getCityName(
+          examination.institution.institutionId
+        );
+        names[examination.institution.institutionId] = cityName;
+      }
+      setCityNames(names);
+    };
+
+    fetchCityNames();
+  }, [examinationsData]);
+
+  const write = (array: { category: category }[]) => {
+    quizzes.map((quiz) => console.log(quiz.description));
+    let output: string = "";
+    array.map((element) => {
+      if (output === "") {
+        output = element.category.name;
+      } else {
+        output += " ," + element.category.name;
+      }
+    });
+    return output;
+  };
   return (
     <>
       <div className={classes.dashboardPageWrapper}>
-        <h2>Pozdrav, {userName}! 👋</h2>
+        <h2>Pozdrav, {name}! 👋</h2>
 
         <div className={classes.dashboardIntroSection}>
           <DailyAdvice />
@@ -29,32 +146,34 @@ const DashboardPage = () => {
         <h4 className={classes.dashboardSubtitle}>ISTAKNUTI KVIZOVI</h4>
 
         <div className={classes.highlightedQuizzesContainer}>
-          <HighlightedQuiz
-            message="Um je bitan"
-            quizDescription="Kviz o živčanom sustavu"
-          />
-          <HighlightedQuiz
-            message="Probava 101"
-            quizDescription="Što se zapravo događa u tvom trbuhu? "
-          />
-          <HighlightedQuiz
-            message="Činjenice o krvnom tlaku"
-            quizDescription="koliko znaš?"
-          />
-          <HighlightedQuiz
-            message="Um je bitan"
-            quizDescription="Kviz o živčanom sustavu"
-          />
-          <HighlightedQuiz
-            message="Um je bitan"
-            quizDescription="Kviz o živčanom sustavu"
-          />
+          {quizzes.map((quiz) => (
+            <HighlightedQuiz
+              quizId={quiz.quizId}
+              key={quiz.quizId}
+              img={quizCategories[quiz.quizId]}
+              quizDescription={quiz.description}
+            />
+          ))}
         </div>
 
         <h4 className={classes.dashboardSubtitle}>NOVI PREVENTIVNI PREGLEDI</h4>
 
         <div className={classes.preventiveExaminationsContainer}>
-          <PreventiveExamination />
+          {examinationsData.map((examination) => (
+            <ExaminationCard
+              key={examination.examinationId}
+              category={
+                examination.categories ? write(examination.categories) : ""
+              }
+              description={examination.name}
+              location={
+                examination.institution.name +
+                ", " +
+                cityNames[examination.institution.institutionId]
+              }
+              time=""
+            />
+          ))}
         </div>
 
         <h4 className={classes.dashboardSubtitle}>POGODNOSTI NAŠIH PARTNERA</h4>

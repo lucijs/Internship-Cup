@@ -4,8 +4,8 @@ import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
 import { QuizEntity } from './entities/quize.entity';
 import { UserAuthGuard } from 'src/users/user-auth.guard';
 
-@ApiTags('Quizes')
-@Controller('quizes')
+@ApiTags('Quizzes')
+@Controller('quizzes')
 export class QuizesController {
   constructor(private readonly quizesService: QuizesService) {}
 
