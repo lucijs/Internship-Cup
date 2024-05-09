@@ -62,6 +62,7 @@ model Category {
   ads          Ad_Category[]
   quizzes      Quiz_Category[]
   examinations Examination_Category[]
+  rewards Reward[]
 }
 
 model Ad_Category {
@@ -167,4 +168,13 @@ model DailyMessage{
   message String @unique
 }
 
-
+model Reward{
+  rewardId  Int @id @default(autoincrement())
+  title String @unique
+  description String
+  message String
+  img String
+  categoryId Int
+  points Int
+  category Category @relation(fields: [categoryId], references: [categoryId])
+}

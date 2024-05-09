@@ -340,6 +340,107 @@ async function main() {
       quizId: 3,
     },
   });
+
+  const dailyMessage1 = await prisma.dailyMessage.create({
+    data: {
+      message: 'Smiji se uvijek, to je najbolji način da pobijediš sve bolesti',
+    },
+  });
+
+  const dailyMessage2 = await prisma.dailyMessage.create({
+    data: {
+      message:
+        'Zdravlje nije trka, već dugotrajan maraton - napravite pauzu kad vam je potrebno.',
+    },
+  });
+
+  const dailyMessage3 = await prisma.dailyMessage.create({
+    data: {
+      message:
+        'Dobro zdravlje počinje malim koracima - možda danas probajte neku novu voćku ili povrće',
+    },
+  });
+
+  const dailyMessage4 = await prisma.dailyMessage.create({
+    data: {
+      message:
+        'Oslobodite stres uz osmijeh - smijeh je odlična vježba za lice i dušu.',
+    },
+  });
+
+  const dailyMessage5 = await prisma.dailyMessage.create({
+    data: {
+      message:
+        'Ponekad je najbolji lijek za umorni dan dobra knjiga i šalica toplog čaja.',
+    },
+  });
+
+  const dailyMessage6 = await prisma.dailyMessage.create({
+    data: {
+      message:
+        'Ne zaboravite na svoj san - dobar san je ključan za obnavljanje energije i oporavak tijela.',
+    },
+  });
+
+  const dailyMessage7 = await prisma.dailyMessage.create({
+    data: {
+      message:
+        'Pustite omiljenu pjesmu i plešite kao da vas nitko ne gleda - pokret je dobar za srce i dušu.',
+    },
+  });
+  const dailyMessage11 = await prisma.dailyMessage.create({
+    data: {
+      message:
+        'Dopustite sebi vrijeme za uživanje u prirodi - svjež zrak i zelenilo mogu čuda učiniti za vaše zdravlje.',
+    },
+  });
+
+  const dailyMessage8 = await prisma.dailyMessage.create({
+    data: {
+      message:
+        'Neka vaša mantra bude "naprijed, ali polako" - pritisak za brzim rezultatima može biti kontraproduktivan.',
+    },
+  });
+
+  const dailyMessage9 = await prisma.dailyMessage.create({
+    data: {
+      message:
+        'Zdravlje nije samo o prehrani i vježbanju - njegujte i svoje mentalno zdravlje kroz meditaciju ili jednostavno opuštanje.',
+    },
+  });
+
+  const dailyMessage10 = await prisma.dailyMessage.create({
+    data: {
+      message:
+        'Zdrav način života je ravnoteža između onoga što morate, onoga što želite i onoga što vas čini sretnim.',
+    },
+  });
+
+  const reward1 = await prisma.reward.create({
+    data: {
+      categoryId: 1,
+      title: '15% popusta pri sljedećoj kupnji u bio&bio trgovinama',
+      description:
+        'Odi u sljedeću kupnju bez brige te uživaj u kvalitetnoj i raznovrsnoj prehrani.',
+      message:
+        'Odi u sljedeću kupnju bez brige, istražujući svježe namirnice i raznolike opcije za zdravu prehranu. Provedi svoje vrijeme u kupovini sa smirenošću, uživajući u odabiru visokokvalitetnih namirnica koje će ti donijeti blagostanje. Iskoristi svoj sljedeći odlazak u kupovinu kao priliku za istraživanje novih recepata i nutritivnih bogatstava za uravnoteženu prehranu',
+      points: 200,
+      img: '../src/assets/qrcode',
+    },
+  });
+
+  const reward2 = await prisma.reward.create({
+    data: {
+      categoryId: 1,
+      title: '20% popusta u bio&bio trgovini',
+      description:
+        'Aktiviraj kod i iskoristi 20% popusta u bilo kojoj bio&bio trgovini.',
+      message:
+        'Razveseli sebi i svojoj porodici kvalitetnim organskim proizvodima po sniženim cijenama. Osim toga, opusti se uz omiljenu knjigu i šalicu tople čaja. Isprobaj nove recepte i otkrij ukusne i zdrave obroke koje možeš pripremiti kod kuće.',
+      points: 250,
+      img: '../src/assets/qrcode',
+    },
+  });
 }
 
 main()
