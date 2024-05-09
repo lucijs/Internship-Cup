@@ -10,14 +10,16 @@ import MyProfilePage from "./Pages/MyProfilePage";
 import ExaminationsPage from "./Pages/ExaminationsPage";
 
 function App() {
-  const { userId } = useUser();
   return (
     <>
-      <DashboardPage />
       <UserProvider>
         <ScoreProvider>
           <Routes>
             <Route path="/users" element={<AuthPage />} />
+            <Route path="/dashboard" element={<DashboardPage />} />
+            <Route path="quiz" element={<Quiz id={2} />} />
+            <Route path="/my-profile" element={<MyProfilePage />} />
+            <Route path="/examinations" element={<ExaminationsPage />} />
           </Routes>
         </ScoreProvider>
       </UserProvider>

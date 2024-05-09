@@ -5,9 +5,9 @@
     /* width: 159px;
         height: 150px; */
     width: 47%;
-
     border-radius: 16px;
     background: var(--Bijela, #f2f2f2);
+    position: relative;
   }
   .pointsCardUpper {
     display: flex;
@@ -28,7 +28,7 @@
     font-family: "Martel Sans Bold";
     font-size: 48px;
     text-align: center;
-    /* position: relative;
-        bottom: 20px; */
+    position: relative;
+    bottom: 20px;
   }
 }

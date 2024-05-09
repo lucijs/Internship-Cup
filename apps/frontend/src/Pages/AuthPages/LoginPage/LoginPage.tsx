@@ -6,16 +6,19 @@ import SubmitButton from "../../../components/Auth/SubmitButton";
 import classes from "./index.module.css";
 import { useUser } from "../../../providers/UserProvider";
 import { api } from "../../../api";
-
-const LoginPage = ({ onRegisterClick }: { onRegisterClick: () => void }) => {
- 
-
+import { Link } from "react-router-dom";
 
 const LoginPage = ({ onRegisterClick }: { onRegisterClick: () => void }) => {
   interface LoginResponse {
     token: string;
+    userId: Number;
+    name: string;
+    surname: string;
+    lastStreakDate: Date | null;
+    points: number;
+    streaks: number;
   }
-   const { addUser } = useUser();
+  const { addUser } = useUser();
   const [loginData, setLoginData] = useState({ name: "", password: "" });
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -26,22 +29,28 @@ const LoginPage = ({ onRegisterClick }: { onRegisterClick: () => void }) => {
   const handleSubmit = async () => {
     try {
       const response = await sendLoginInfo();
-
-
-      addUser({
-        userId: responseData["userId"],
-        userName: responseData["name"],
-        userSurname: responseData["surname"],
-        lastStreak: responseData["lastStreakDate"],
-        points: responseData["points"],
-        streaks: responseData["streaks"],
-      });
-      console.log("User successfully logged in: ", response);
+      console.log(response);
+      console.log("ime", response["name"]);
       localStorage.setItem("token", response["token"]);
-      window.location.href = "/dashboard"
+      localStorage.setItem("id", String(response["userId"]));
+      localStorage.setItem("name", response["name"]);
+      localStorage.setItem("surname", response["surname"]);
+      localStorage.setItem("lastStreak", String(response["lastStreakDate"]));
+      localStorage.setItem("points", String(response["points"]));
+      localStorage.setItem("streaks", String(response["streaks"]));
+      console.log("ime", response["userId"]);
+      addUser({
+        id: 2,
+        name: response["name"],
+        surname: response["surname"],
+        lastStreak: response["lastStreakDate"],
+        points: +response["points"],
+        streaks: +response["streaks"],
+      });
     } catch (error) {
       console.error("Error in login process: ", error);
     }
+    window.location.href = "/dashboard";
   };
 
   const sendLoginInfo = async () => {

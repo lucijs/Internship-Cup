@@ -22,7 +22,7 @@ const Quiz = ({ id }: { id: number }) => {
   const [questionDisplay, setQuestionDisplay] = useState(<></>);
   const [title, setTitle] = useState("");
   const { score, isCorrect, toggleMode } = useScore();
-  const { lastStreak, addPoints, addStreak } = useUser();
+  const { user, addPoints, addStreak } = useUser();
   const [addedPoints, setAddedPoints] = useState(0);
 
   useEffect(() => {
@@ -32,8 +32,8 @@ const Quiz = ({ id }: { id: number }) => {
 
   const fetchQuizData = (id: number) => {
     Promise.all([
-      api.get<never, any>(`quizes/${id}`),
-      api.get<never, any>(`quizes/categories/${id}`),
+      api.get<never, any>(`quizzes/${id}`),
+      api.get<never, any>(`quizzes/categories/${id}`),
     ]).then(([quizData, categoryData]) => {
       setAddedPoints(quizData["earnedPoints"]);
       setDisplayedItem(
@@ -45,8 +45,7 @@ const Quiz = ({ id }: { id: number }) => {
                 width="40"
                 height="40"
                 viewBox="0 0 40 40"
-                fill="none"
-              >
+                fill="none">
                 <g clipPath="url(#clip0_281_1666)">
                   <circle cx="20" cy="20" r="20" fill="#F2F2F2" />
                   <path
@@ -79,8 +78,7 @@ const Quiz = ({ id }: { id: number }) => {
             <div className={classes.buttonStartQuizContainer}>
               <Button
                 onClick={handleStartQuiz}
-                className={classes.buttonStartQuiz}
-              >
+                className={classes.buttonStartQuiz}>
                 {buttonText}
               </Button>
             </div>
@@ -107,7 +105,7 @@ const Quiz = ({ id }: { id: number }) => {
     } else {
       const today = new Date();
       addPoints(addedPoints);
-      if (today.toDateString() === lastStreak?.toDateString()) {
+      if (today.toDateString() === user["lastStreak"]?.toDateString()) {
         setDisplayedItem(<QuizSuccessWithoutStreak />);
       } else {
         setDisplayedItem(<AcquiredStreak />);
@@ -229,8 +227,7 @@ const Quiz = ({ id }: { id: number }) => {
           <div className={classes.furthestBackgroundCard}></div>
           <Button
             onClick={handleStartQuiz}
-            className={classes.buttonNextQuestion}
-          >
+            className={classes.buttonNextQuestion}>
             {buttonText}
           </Button>
         </>

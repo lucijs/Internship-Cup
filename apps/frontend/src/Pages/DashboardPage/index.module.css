@@ -29,9 +29,11 @@
   }
 
   .preventiveExaminationsContainer {
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    gap: 17px;
+    margin-bottom: 32px;
   }
 
   .dashboardIntroSection {
@@ -39,7 +41,7 @@
     flex-direction: column;
     background-color: #93b6eb;
     padding: 10px 10px 15px 10px;
-    width: 90%;
+    width: 95%;
     border-radius: 16px;
     gap: 12px;
     align-items: center;
