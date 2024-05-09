@@ -43,7 +43,7 @@ async function main() {
         'Stanica',
         'Minerali',
       ],
-      correctAnswer1: ['Nutrijenti'],
+      correctAnswer1: ['Minerali'],
       correctAnswer2: ['Vitamin D'],
       type: 'fill in',
       quizId: 1,

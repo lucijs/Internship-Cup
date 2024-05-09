@@ -1,14 +1,18 @@
+import { Link } from "react-router-dom";
 import classes from "./index.module.css";
+import Quiz from "../../../Pages/QuizPage";
 
 const HighlightedQuiz = ({
   quizDescription,
   img,
+  quizId,
 }: {
   quizDescription: string;
   img: string;
+  quizId: number;
 }) => {
   return (
-    <div className={classes.highlightedQuiz}>
+    <Link className={classes.highlightedQuiz} to={`/quiz/${quizId}`}>
       <div className={classes.highlightedQuizUpper}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -24,10 +28,7 @@ const HighlightedQuiz = ({
           />
         </svg>
 
-        <img
-          src={"../src/assets/categoryIcons/first-aid 1.png"}
-          id={classes.highlightedQuizBrain}
-        />
+        <img src={img} id={classes.highlightedQuizBrain} />
 
         <svg
           id={classes.highlightedQuizQuestionMark}
@@ -50,7 +51,7 @@ const HighlightedQuiz = ({
       <div className={classes.highlightedQuizLower}>
         <h4>{quizDescription}</h4>
       </div>
-    </div>
+    </Link>
   );
 };
 

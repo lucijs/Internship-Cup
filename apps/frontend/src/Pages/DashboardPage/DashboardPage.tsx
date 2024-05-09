@@ -75,7 +75,6 @@ const DashboardPage = () => {
       const response = await api.get<never, Institution[]>(
         `/institutions/cities/${id}`
       );
-      console.log(response);
       return response[0].name;
     } catch (error) {
       console.log(error);
@@ -84,12 +83,12 @@ const DashboardPage = () => {
   };
 
   useEffect(() => {
-    const getQuizCategory = async (id: number) => {
+    const getQuizCategory = async () => {
       try {
         let images: { [key: number]: string } = {};
         for (const quiz of quizzes) {
           const response = await api.get<never, Category[]>(
-            `quizes/categories/${id}`
+            `quizzes/categories/${quiz.quizId}`
           );
           images[quiz.quizId] = response[0].img;
         }
@@ -98,7 +97,7 @@ const DashboardPage = () => {
         return "";
       }
     };
-    getQuizCategory;
+    getQuizCategory();
   }, [quizzes]);
 
   useEffect(() => {
@@ -148,6 +147,7 @@ const DashboardPage = () => {
         <div className={classes.highlightedQuizzesContainer}>
           {quizzes.map((quiz) => (
             <HighlightedQuiz
+              quizId={quiz.quizId}
               key={quiz.quizId}
               img={quizCategories[quiz.quizId]}
               quizDescription={quiz.description}

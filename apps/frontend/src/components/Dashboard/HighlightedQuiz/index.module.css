@@ -23,6 +23,10 @@
     padding: 10px;
   }
 
+  a {
+    text-decoration: none;
+  }
+
   #highlightedQuizQuestionMark {
     position: relative;
     top: 15px;

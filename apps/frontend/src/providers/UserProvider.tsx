@@ -81,9 +81,6 @@ const UserProvider = ({ children }: { children: ReactNode }) => {
       points,
       lastStreak,
     });
-    console.log(name);
-    console.log(lastStreak);
-    console.log(id);
   };
 
   const addPoints = (numberOfPoints: number) => {
@@ -96,8 +93,6 @@ const UserProvider = ({ children }: { children: ReactNode }) => {
   };
 
   useEffect(() => {
-    console.log(user["surname"]);
-    console.log(user["id"]);
     /*console.log(lastStreak);
     if (lastStreak !== undefined && lastStreak)
       if (

@@ -1,7 +1,7 @@
 import { Button } from "@mui/material";
 import classes from "./index.module.css";
 
-const QuizSuccessWithoutStreak = () => {
+const QuizSuccessWithoutStreak = ({ points }: { points: number }) => {
   //treba povezat na kontekst da od tamo primi podatke
   const streaks = 3;
   return (
@@ -15,7 +15,7 @@ const QuizSuccessWithoutStreak = () => {
         <div className={classes.resault}>
           <div>Osvojeni bodovi</div>
           <div className={classes.points}>
-            <div>+10</div>
+            <div>+{points}</div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="32"
