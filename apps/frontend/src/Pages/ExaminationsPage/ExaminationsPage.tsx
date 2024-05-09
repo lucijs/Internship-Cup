@@ -48,7 +48,6 @@ const ExaminationsPage = () => {
       const response = await api.get<never, Institution[]>(
         `/institutions/cities/${id}`
       );
-      console.log(response);
       return response[0].name;
     } catch (error) {
       console.log(error);

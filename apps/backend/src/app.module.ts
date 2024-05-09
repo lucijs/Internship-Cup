@@ -13,6 +13,7 @@ import { ExaminationsModule } from './examinations/examinations.module';
 import { QuizQuestionsModule } from './quiz_questions/quiz_questions.module';
 import { UsersModule } from './users/users.module';
 import { DailyMessagesModule } from './daily-messages/daily-messages.module';
+import { RewardsModule } from './rewards/rewards.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { DailyMessagesModule } from './daily-messages/daily-messages.module';
     UsersModule,
     QuizQuestionsModule,
     DailyMessagesModule,
+    RewardsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
