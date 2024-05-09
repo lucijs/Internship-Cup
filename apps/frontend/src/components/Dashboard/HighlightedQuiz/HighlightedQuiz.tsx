@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import classes from "./index.module.css";
+import { useEffect } from "react";
 
 const HighlightedQuiz = ({
   quizDescription,
