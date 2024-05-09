@@ -116,6 +116,7 @@ const DashboardPage = () => {
   }, [examinationsData]);
 
   const write = (array: { category: category }[]) => {
+    quizzes.map((quiz) => console.log(quiz.description));
     let output: string = "";
     array.map((element) => {
       if (output === "") {

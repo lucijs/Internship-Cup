@@ -161,3 +161,10 @@ model QuizQuestion {
   quizId Int
   quiz Quiz @relation(fields: [quizId], references: [quizId])
 }
+
+model DailyMessage{
+  dailyMessageId Int    @id @default(autoincrement())
+  message String @unique
+}
+
+

@@ -12,7 +12,7 @@ import Fail from "../../components/Quiz/Fail";
 import AcquiredStreak from "../../components/Quiz/Success/AcquiredStreak";
 import QuizSuccessWithoutStreak from "../../components/Quiz/Success/QuizSuccessWithoutStreak";
 import { api } from "../../api";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const Quiz = () => {
   const { paramsId } = useParams();
@@ -112,7 +112,8 @@ const Quiz = () => {
       const today = new Date();
       const date = localStorage.getItem("lastStreak");
       const points = localStorage.getItem("points");
-      localStorage.setItem("points", String(+!points! + addedPoints));
+      if (points !== null)
+        localStorage.setItem("points", String(+points + addedPoints));
       if (today.toDateString() === date) {
         setDisplayedItem(<QuizSuccessWithoutStreak points={addedPoints} />);
       } else {

@@ -162,8 +162,8 @@ const MatchingQuestion = ({
                 fill="none">
                 <mask id="path-1-inside-1_281_1716" fill="white">
                   <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
+                    fillRule="evenodd"
+                    clipRule="evenodd"
                     d="M16 0C7.16344 0 0 7.16344 0 16V25V28.8615V54H144V28.8615V25V16C144 7.16344 136.837 0 128 0H16Z"
                   />
                 </mask>
@@ -185,8 +185,8 @@ const MatchingQuestion = ({
                 fill="none">
                 <mask id="path-1-inside-1_281_1716" fill="white">
                   <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
+                    fillRule="evenodd"
+                    clipRule="evenodd"
                     d="M16 0C7.16344 0 0 7.16344 0 16V25V28.8615V54H144V28.8615V25V16C144 7.16344 136.837 0 128 0H16Z"
                   />
                 </mask>
