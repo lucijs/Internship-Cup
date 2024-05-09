@@ -286,7 +286,7 @@ async function main() {
     create: {
       name: 'Um je bitan',
       earnedPoints: 15,
-      description: 'Um je bitan: Kviz o živčanom sustavu',
+      description: 'Um je bitan: Živčanom sustavu',
       text: 'Središnji živčani sustav, sastavljen od mozga i leđne moždine, ključan je za obradu informacija i upravljanje tjelesnim funkcijama. Mozak, kao centralna instanca, kontrolira pokrete, osjećaje, pamćenje i učenje. Sinapsa, mjesto komunikacije između neurona, omogućuje prijenos signala putem kemijskih ili električnih impulsa. Aksoni su produžeci neurona koji prenose impulse drugim stanicama, dok dendriti primaju signale od drugih neurona. Neuroni, temeljne građevne jedinice živčanog sustava, omogućuju prijenos i obradu informacija te kontrolu tjelesnih funkcija poput pamćenja i percepcije.',
     },
   });
@@ -408,7 +408,7 @@ async function main() {
   const dailyMessage9 = await prisma.dailyMessage.create({
     data: {
       message:
-        'Zdravlje nije samo o prehrani i vježbanju - njegujte i svoje mentalno zdravlje kroz meditaciju ili jednostavno opuštanje.',
+        'Zdravlje nije samo o prehrani i vježbanju - njegujte i svoje mentalno zdravlje.',
     },
   });
 

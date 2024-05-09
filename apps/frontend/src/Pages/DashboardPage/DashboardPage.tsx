@@ -50,7 +50,6 @@ const DashboardPage = () => {
     const fetchData = async () => {
       try {
         const response = await api.get<never, Examination[]>("/examinations");
-
         setExaminationsData(response);
       } catch (error) {
         console.log(error);
@@ -61,7 +60,6 @@ const DashboardPage = () => {
     const fetchDataQuizes = async () => {
       try {
         const response = await api.get<never, Quiz[]>("/quizzes");
-
         setQuizes(response);
       } catch (error) {
         console.log(error);
@@ -116,7 +114,6 @@ const DashboardPage = () => {
   }, [examinationsData]);
 
   const write = (array: { category: category }[]) => {
-    quizzes.map((quiz) => console.log(quiz.description));
     let output: string = "";
     array.map((element) => {
       if (output === "") {
@@ -137,6 +134,7 @@ const DashboardPage = () => {
     const result = `${day}.${month}. u ${hours}h`;
     return result;
   };
+
   return (
     <>
       <div className={classes.dashboardPageWrapper}>

@@ -1,6 +1,29 @@
+import React, { useEffect, useState } from "react";
 import classes from "./index.module.css";
+import { api } from "../../../api";
+import { DailyMessage } from "@prisma/client";
 
 const DailyAdvice = () => {
+  const [message, setMessage] = useState("");
+  const [fetched, setFetched] = useState(false);
+
+  const fetchData = async () => {
+    try {
+      const data = await api.get<never, DailyMessage[]>(`daily-messages`);
+      const id = Math.floor(Math.random() * data.length);
+      setMessage(data[id].message);
+      setFetched(true);
+    } catch (error) {
+      console.error("Error fetching the user: ", error);
+    }
+  };
+
+  useEffect(() => {
+    if (!fetched) {
+      fetchData();
+    }
+  }, [fetched]);
+
   return (
     <div className={classes.dailyAdviceWrapper}>
       <div className={classes.dailyAdviceUpper}>
@@ -25,9 +48,7 @@ const DailyAdvice = () => {
         </svg>
       </div>
 
-      <blockquote>
-        Smij se uvijek, to je najbolji način da pobijediš sve bolesti
-      </blockquote>
+      <blockquote>{message}</blockquote>
     </div>
   );
 };

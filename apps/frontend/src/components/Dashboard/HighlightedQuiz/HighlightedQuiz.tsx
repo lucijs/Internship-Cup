@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import classes from "./index.module.css";
+import { useEffect } from "react";
 
 const HighlightedQuiz = ({
   quizDescription,
@@ -10,7 +11,6 @@ const HighlightedQuiz = ({
   img: string;
   quizId: number;
 }) => {
-  console.log(quizId);
   return (
     <Link className={classes.highlightedQuiz} to={`/quiz/${quizId}`}>
       <div className={classes.highlightedQuizUpper}>
