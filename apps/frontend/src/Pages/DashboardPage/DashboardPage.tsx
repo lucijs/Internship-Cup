@@ -37,9 +37,19 @@ interface Quiz {
   description: string;
 }
 
+interface Reward {
+  rewardId: number;
+  title: string;
+  description: string;
+  message: string;
+  categoryId: number;
+  points: number;
+}
+
 const DashboardPage = () => {
   const name = localStorage.getItem("name");
   const [examinationsData, setExaminationsData] = useState<Examination[]>([]);
+  const [rewardsData, setRewardsData] = useState<Reward[]>([]);
   const [cityNames, setCityNames] = useState<{ [key: number]: string }>({});
   const [quizzes, setQuizes] = useState<Quiz[]>([]);
   const [quizCategories, setQuizCategories] = useState<{
@@ -113,6 +123,18 @@ const DashboardPage = () => {
     fetchCityNames();
   }, [examinationsData]);
 
+  useEffect(() => {
+    const fetchRewardsData = async () => {
+      try {
+        const rewards = await getRewardsData();
+        setRewardsData(rewards);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchRewardsData();
+  }, []);
+
   const write = (array: { category: category }[]) => {
     let output: string = "";
     array.map((element) => {
@@ -133,6 +155,11 @@ const DashboardPage = () => {
     const month = dateFormat.split("-")[1];
     const result = `${day}.${month}. u ${hours}h`;
     return result;
+  };
+
+  const getRewardsData = async () => {
+    const response = await api.get<never, Reward[]>("/rewards");
+    return response;
   };
 
   return (
@@ -187,14 +214,18 @@ const DashboardPage = () => {
         <h4 className={classes.dashboardSubtitle}>POGODNOSTI NAŠIH PARTNERA</h4>
 
         <div className={classes.rewardCardsContainer}>
-          <RewardCard
-            category="Prehrana"
-            description="15% popusta pri sljedećoj kupnji u bio&bio trgovinama"
-          />
-          <RewardCard
+          {rewardsData.map((reward) => (
+            <RewardCard
+              key={reward.rewardId}
+              category={reward.categoryId.toString()}
+              description={reward.description}
+            />
+          ))}
+
+          {/* <RewardCard
             category="Trening"
             description="Akcija 3 + 2 gratis mjeseca pretplate u Marjan teretanama "
-          />
+          /> */}
         </div>
 
         <h3 className={classes.dashboardTitles}>

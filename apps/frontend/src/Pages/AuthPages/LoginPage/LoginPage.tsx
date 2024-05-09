@@ -6,7 +6,6 @@ import SubmitButton from "../../../components/Auth/SubmitButton";
 import classes from "./index.module.css";
 import { useUser } from "../../../providers/UserProvider";
 import { api } from "../../../api";
-import { Link } from "react-router-dom";
 
 const LoginPage = ({ onRegisterClick }: { onRegisterClick: () => void }) => {
   interface LoginResponse {
