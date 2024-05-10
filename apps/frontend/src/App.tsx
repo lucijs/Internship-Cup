@@ -8,6 +8,7 @@ import UserProvider from "./providers/UserProvider";
 import MyProfilePage from "./Pages/MyProfilePage";
 import ExaminationsPage from "./Pages/ExaminationsPage";
 import ClickedProvider from "./providers/ClickedProvider";
+import ServerNotFoundPage from "./Pages/ServerNotFoundPage";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
               <Route path="/quiz/:id" element={<Quiz />} />
               <Route path="/my-profile" element={<MyProfilePage />} />
               <Route path="/examinations" element={<ExaminationsPage />} />
+              <Route path="*" element={<ServerNotFoundPage />} />
             </Routes>
           </ScoreProvider>
         </UserProvider>
