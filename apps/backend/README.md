@@ -32,6 +32,10 @@
 $ npm install
 ```
 
+```
+$ npx prisma migrate dev --schema=./apps/backend/prisma/schema.prisma
+```
+
 ## Running the app
 
 ```bash
