@@ -49,11 +49,18 @@ const LoginPage = ({ onRegisterClick }: { onRegisterClick: () => void }) => {
 
       if (
         response["lastStreakDate"] !== null &&
-        new Date(response["lastStreakDate"]).getFullYear() ===
+        ((new Date(response["lastStreakDate"]).getFullYear() ===
           yesterday.getFullYear() &&
-        new Date(response["lastStreakDate"]).getMonth() ===
-          yesterday.getMonth() &&
-        new Date(response["lastStreakDate"]).getDate() === yesterday.getDate()
+          new Date(response["lastStreakDate"]).getMonth() ===
+            yesterday.getMonth() &&
+          new Date(response["lastStreakDate"]).getDate() ===
+            yesterday.getDate()) ||
+          (new Date(response["lastStreakDate"]).getFullYear() ===
+            new Date().getFullYear() &&
+            new Date(response["lastStreakDate"]).getMonth() ===
+              new Date().getMonth() &&
+            new Date(response["lastStreakDate"]).getDate() ===
+              new Date().getDate()))
       ) {
         localStorage.setItem("streaks", String(response["streaks"]));
       } else {

@@ -14,8 +14,17 @@ const StreaksDisplay = ({ dateRegistered }: { dateRegistered: Date }) => {
 
   const dateArray: Date[] = [];
 
+  let streaks: number;
+
+  const streaksFromLocalStorage = localStorage.getItem("streaks");
+  if (streaksFromLocalStorage !== null) {
+    streaks = +streaksFromLocalStorage;
+  } else {
+    streaks = 4;
+  }
+
   const threeDaysAgo = new Date(dateRegistered.getTime());
-  threeDaysAgo.setDate(dateRegistered.getDate() - 4);
+  threeDaysAgo.setDate(dateRegistered.getDate() - streaks);
 
   const threeDaysLater = new Date(new Date().getTime());
   threeDaysLater.setDate(new Date().getDate() + 3);
@@ -41,7 +50,7 @@ const StreaksDisplay = ({ dateRegistered }: { dateRegistered: Date }) => {
         {dateArray.map((date, index) => (
           <DailyStreak
             key={index}
-            type="streak"
+            type={date > new Date() ? "futureStreak" : "streak"}
             date={dateOfTheMonth(date)}
             day={dayOfTheWeek(date)}
           />
