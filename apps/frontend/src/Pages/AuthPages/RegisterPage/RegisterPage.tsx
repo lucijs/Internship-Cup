@@ -129,7 +129,11 @@ const RegisterPage = () => {
           />
           <SubmitButton
             buttonText="Stvori račun"
-            handleSubmit={gdpr ? handleSubmit : () => console.log("error")}
+            handleSubmit={
+              gdpr
+                ? handleSubmit
+                : () => setErrorMessage("GDPR checkbox nije označen")
+            }
           />
         </div>
       </div>
