@@ -203,17 +203,17 @@ const MyProfilePage = () => {
         <div className={classes.statsSection}>
           <div className={classes.statsSectionUpper}>
             <StreakCard streakNumber={userData ? userData?.streak : 0} />
-            <PointsCard />
+            <PointsCard pointsNumber={userData ? userData.points : 0} />
           </div>
 
           <div className={classes.statsSectionLower}>
             <ResolvedQuizzesAndBenefitsCard
               cardText="Riješeni kvizovi"
-              numberValue={192}
+              numberValue={2}
             />
             <ResolvedQuizzesAndBenefitsCard
               cardText="Iskorištene pogodnosti"
-              numberValue={50}
+              numberValue={12}
             />
           </div>
         </div>
