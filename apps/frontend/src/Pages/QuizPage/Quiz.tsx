@@ -1,5 +1,5 @@
 import { Button, MobileStepper } from "@mui/material";
-import { Category, QuizQuestion } from "@prisma/client";
+import { Category, QuizQuestion, User } from "@prisma/client";
 import { useEffect, useState } from "react";
 import FillInQuestion from "../../components/Questions/DnDQuestion/FillInQuestion";
 import MultipleChoice from "../../components/Questions/MultipleChoice";
@@ -19,7 +19,6 @@ const Quiz = () => {
   if (id === undefined || id === null) {
     history.back();
   } else {
-    console.log(+id);
     const [displayedItem, setDisplayedItem] = useState(<div></div>);
     const [activeStep, setActiveStep] = useState(0);
     const [buttonText, setButtonText] = useState("Započni kviz");
@@ -43,7 +42,6 @@ const Quiz = () => {
         api.get<never, any>(`quizzes/${+id}`),
         api.get<never, any>(`quizzes/categories/${+id}`),
       ]).then(([quizData, categoryData]) => {
-        console.log(categoryData);
         setAddedPoints(quizData["earnedPoints"]);
         setDisplayedItem(
           <div>
@@ -104,10 +102,47 @@ const Quiz = () => {
         .get<never, QuizQuestion[]>(`quizQuestions/quizId/${id}`)
         .then((data) => {
           const dataArray = Array.isArray(data) ? data : [data];
-          console.log(dataArray[0]);
           handleQuestion(dataArray[0]);
           setQuestions(dataArray);
         });
+    };
+
+    const getUser = async ({
+      id,
+      points,
+      streaks,
+      lastStreakDate,
+    }: {
+      id: number;
+      points: number;
+      streaks: number;
+      lastStreakDate: Date;
+    }) => {
+      await api.get<never, any>(`users/${+id}`).then((user) => {
+        updateUser({ user, points, streaks, lastStreakDate });
+      });
+    };
+
+    const updateUser = async ({
+      user,
+      points,
+      streaks,
+      lastStreakDate,
+    }: {
+      user: User;
+      points: number;
+      streaks: number;
+      lastStreakDate: Date;
+    }) => {
+      if (localStorage.length !== 0) {
+        const updatedUser: User = {
+          ...user,
+          points,
+          streak: streaks,
+          lastStreakDate,
+        };
+        const response = await api.patch(`users/${user.userId}`, updatedUser);
+      }
     };
 
     const handleEndQuiz = () => {
@@ -115,22 +150,57 @@ const Quiz = () => {
         setDisplayedItem(<Fail />);
       } else {
         const today = new Date();
-        const date = localStorage.getItem("lastStreak");
+        const date = localStorage.getItem("lastStreakDate");
         const points = localStorage.getItem("points");
-        console.log(today.toDateString());
-        console.log(date);
+        const streaks = localStorage.getItem("streaks");
+        const id = localStorage.getItem("id");
+
         if (points !== null)
           localStorage.setItem("points", String(+points + addedPoints));
-        if (today.toDateString() === date) {
-          setDisplayedItem(<QuizSuccessWithoutStreak points={addedPoints} />);
-        } else {
-          setDisplayedItem(<AcquiredStreak points={addedPoints} />);
-          const streaks = localStorage.getItem("streaks");
-          localStorage.setItem("streaks", String(+!streaks! + 1));
-          localStorage.setItem("lastStreak", new Date().toDateString());
-        }
-      }
 
+        if (
+          date !== null &&
+          today.getFullYear() === new Date(date).getFullYear() &&
+          today.getMonth() === new Date(date).getMonth() &&
+          today.getDate() === new Date(date).getDate()
+        ) {
+          setDisplayedItem(<QuizSuccessWithoutStreak points={addedPoints} />);
+          localStorage.setItem("streaks", String(+!streaks));
+
+          if (
+            id !== null &&
+            points !== null &&
+            streaks !== null &&
+            date !== null
+          )
+            getUser({
+              id: +id,
+              points: +points + addedPoints,
+              streaks: +streaks,
+              lastStreakDate: new Date(),
+            });
+        } else {
+          setDisplayedItem(
+            <AcquiredStreak points={addedPoints} streaks={+!streaks + 1} />
+          );
+          localStorage.setItem("streaks", String(+!streaks + 1));
+
+          if (
+            id !== null &&
+            points !== null &&
+            streaks !== null &&
+            date !== null
+          )
+            getUser({
+              id: +id,
+              points: +points + addedPoints,
+              streaks: +streaks + 1,
+              lastStreakDate: new Date(),
+            });
+        }
+
+        localStorage.setItem("lastStreakDate", new Date().toISOString());
+      }
       setActiveStep(6);
     };
 

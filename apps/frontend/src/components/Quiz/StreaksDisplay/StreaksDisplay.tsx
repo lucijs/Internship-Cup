@@ -1,4 +1,3 @@
-import { useState } from "react";
 import classes from "./index.module.css";
 import DailyStreak from "../../Other/DailyStreak";
 
@@ -15,15 +14,21 @@ const StreaksDisplay = ({ dateRegistered }: { dateRegistered: Date }) => {
 
   const dateArray: Date[] = [];
 
-  // Dodaj 3 dana pre trenutnog datuma
-  const threeDaysAgo = new Date(dateRegistered.getTime());
-  threeDaysAgo.setDate(dateRegistered.getDate() - 4);
+  let streaks: number;
 
-  // Dodaj 3 dana posle trenutnog datuma
+  const streaksFromLocalStorage = localStorage.getItem("streaks");
+  if (streaksFromLocalStorage !== null) {
+    streaks = +streaksFromLocalStorage;
+  } else {
+    streaks = 4;
+  }
+
+  const threeDaysAgo = new Date(dateRegistered.getTime());
+  threeDaysAgo.setDate(dateRegistered.getDate() - streaks);
+
   const threeDaysLater = new Date(new Date().getTime());
   threeDaysLater.setDate(new Date().getDate() + 3);
 
-  // Petlja za iteriranje kroz datume i dodavanje u niz
   for (
     let currentDate = new Date(threeDaysAgo);
     currentDate <= threeDaysLater;
@@ -38,9 +43,6 @@ const StreaksDisplay = ({ dateRegistered }: { dateRegistered: Date }) => {
   const dateOfTheMonth = (date: Date) => {
     return date.getDate().toString();
   };
-  const checkForAStreak = (date: Date) => {
-    //dohvatit postoji  li streak za taj dan
-  };
 
   return (
     <div className={classes.container}>
@@ -48,7 +50,7 @@ const StreaksDisplay = ({ dateRegistered }: { dateRegistered: Date }) => {
         {dateArray.map((date, index) => (
           <DailyStreak
             key={index}
-            type="streak"
+            type={date > new Date() ? "futureStreak" : "streak"}
             date={dateOfTheMonth(date)}
             day={dayOfTheWeek(date)}
           />

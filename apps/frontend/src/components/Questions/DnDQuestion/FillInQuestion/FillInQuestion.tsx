@@ -66,7 +66,6 @@ const FillInQuestion = ({
 
   function handleDragStart(event: any) {
     setDrag(event.active.id);
-    console.log(event.active.id);
   }
 
   function handleDragEnd({ over }: { over: Over | null }) {

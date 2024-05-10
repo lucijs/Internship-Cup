@@ -4,6 +4,14 @@ import LoginPage from "./LoginPage";
 import RegisterPage from "./RegisterPage";
 
 const AuthPage = () => {
+  localStorage.removeItem("token");
+  localStorage.removeItem("id");
+  localStorage.removeItem("name");
+  localStorage.removeItem("surname");
+  localStorage.removeItem("lastStreakDate");
+  localStorage.removeItem("points");
+  localStorage.removeItem("streaks");
+
   const [value, setValue] = useState(1);
   const [display, setDisplay] = useState(<></>);
 
@@ -29,8 +37,7 @@ const AuthPage = () => {
               ? `${classes.selected} ${classes.widthRegister}`
               : `${classes.unselected} ${classes.marginRight}`
           }
-          onClick={handleRegistration}
-        >
+          onClick={handleRegistration}>
           Registracija
         </div>
         <div
@@ -39,8 +46,7 @@ const AuthPage = () => {
               ? `${classes.selected} ${classes.widthLogin}`
               : `${classes.unselected} ${classes.marginLeft}`
           }
-          onClick={handleLogIn}
-        >
+          onClick={handleLogIn}>
           Prijava
         </div>
       </div>

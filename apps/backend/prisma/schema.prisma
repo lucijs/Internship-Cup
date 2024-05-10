@@ -133,14 +133,6 @@ model User {
   password       String
   lastStreakDate DateTime?
   quizzes        Quiz_User[]
-  streaks        Streak[]
-}
-
-model Streak {
-  streakId    Int      @id @default(autoincrement())
-  dateCreated DateTime @default(now())
-  userId      Int
-  user        User     @relation(fields: [userId], references: [userId])
 }
 
 model Quiz_User {
