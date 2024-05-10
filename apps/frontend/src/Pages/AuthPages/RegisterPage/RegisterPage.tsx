@@ -22,6 +22,7 @@ const RegisterPage = () => {
     password: "",
     confirmationPassword: "",
   });
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -58,6 +59,7 @@ const RegisterPage = () => {
       window.location.href = "/dashboard";
     } catch (error) {
       console.error("Error in registration process: ", error);
+      setErrorMessage(error ? error.toString() : "");
     }
   };
 
@@ -119,6 +121,7 @@ const RegisterPage = () => {
           name="confirmationPassword"
         />
         <div className={classes.belowRegisterForm}>
+          <p className={classes.errorMessage}>{errorMessage}</p>
           <CheckBoxField text="Slažem se s Uvjetima usluge i Politikom privatnosti." />
           <SubmitButton buttonText="Stvori račun" handleSubmit={handleSubmit} />
         </div>

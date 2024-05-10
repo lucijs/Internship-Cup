@@ -20,14 +20,6 @@ const MyProfilePage = () => {
   }
 
   const [userData, setUserData] = useState<User>();
-  const fetchDataForUser = async (id: number) => {
-    try {
-      const data = await api.get<never, User>(`/users/${id}`);
-      setUserData(data);
-    } catch (error) {
-      console.error("Error fetching the user: ", error);
-    }
-  };
 
   useEffect(() => {
     const fetchDataForUser = async (id: number) => {
@@ -40,9 +32,7 @@ const MyProfilePage = () => {
     };
 
     const userId = localStorage.getItem("id");
-    if (userId) {
-      fetchDataForUser(Number(userId));
-    }
+    if (userId) fetchDataForUser(Number(userId));
   }, []);
 
   const getDateFormat = (dateTime: string) => {
