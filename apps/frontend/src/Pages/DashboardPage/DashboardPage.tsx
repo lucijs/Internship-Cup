@@ -39,6 +39,11 @@ interface Quiz {
 
 const DashboardPage = () => {
   const name = localStorage.getItem("name");
+
+  if (name === null || name == undefined) {
+    window.location.href = "/users";
+  }
+
   const [examinationsData, setExaminationsData] = useState<Examination[]>([]);
   const [cityNames, setCityNames] = useState<{ [key: number]: string }>({});
   const [quizzes, setQuizes] = useState<Quiz[]>([]);
