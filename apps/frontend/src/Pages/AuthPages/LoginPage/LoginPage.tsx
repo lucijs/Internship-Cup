@@ -67,11 +67,11 @@ const LoginPage = ({ onRegisterClick }: { onRegisterClick: () => void }) => {
       } else {
         localStorage.setItem("streaks", String(0));
       }
+      window.location.href = "/dashboard";
     } catch (error) {
       console.error("Error in login process: ", error);
       setErrorMessage(error ? error.toString() : "");
     }
-    window.location.href = "/dashboard";
   };
 
   const sendLoginInfo = async () => {

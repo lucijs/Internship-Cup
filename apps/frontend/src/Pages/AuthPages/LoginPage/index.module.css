@@ -15,6 +15,7 @@
     width: 100%;
     align-items: center;
     animation: fadeIn 0.5s ease-in;
+    padding-bottom: 200px;
   }
   .loginFormWrapper {
     display: flex;
