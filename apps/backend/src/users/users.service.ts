@@ -36,6 +36,12 @@ export class UsersService {
     if (!confirmationPassword)
       throw new BadRequestException("Missing 'confirmation password' field");
 
+    if (!email.includes('@') || !email.includes('.'))
+      throw new BadRequestException('Invalid email format');
+
+    if (password.length < 8)
+      throw new BadRequestException('Password is too short');
+
     const existingUser = await this.prisma.user.findUnique({
       where: { email },
     });

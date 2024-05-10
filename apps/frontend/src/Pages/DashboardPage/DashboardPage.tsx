@@ -42,7 +42,7 @@ interface Reward {
   title: string;
   description: string;
   message: string;
-  categories: {
+  category: {
     categoryId: number;
     name: string;
   };
@@ -161,7 +161,8 @@ const DashboardPage = () => {
   };
 
   const getRewardsData = async () => {
-    const response = await api.get<never, Reward[]>("/rewards");
+    const response = await api.get<never, Reward[]>("rewards");
+    console.log(response);
     return response;
   };
 
@@ -220,7 +221,7 @@ const DashboardPage = () => {
           {rewardsData.map((reward) => (
             <RewardCard
               key={reward.rewardId}
-              category={reward.title}
+              category={reward.category["name"]}
               description={reward.title}
             />
           ))}
