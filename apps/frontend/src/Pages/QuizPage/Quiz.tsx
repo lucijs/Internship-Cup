@@ -111,12 +111,44 @@ const Quiz = () => {
         });
     };
 
-    const getUser = async () => {
-      const id = localStorage.getItem("id");
-      await api.get<never, any>(`users/${+!id}`).then((response) => {
-        setUser(response);
-        console.log(response);
+    const getUser = async ({
+      id,
+      points,
+      streaks,
+      lastStreakDate,
+    }: {
+      id: number;
+      points: number;
+      streaks: number;
+      lastStreakDate: Date;
+    }) => {
+      await api.get<never, any>(`users/${+id}`).then((user) => {
+        updateUser({ user, points, streaks, lastStreakDate });
+        console.log(user);
       });
+    };
+
+    const updateUser = async ({
+      user,
+      points,
+      streaks,
+      lastStreakDate,
+    }: {
+      user: User;
+      points: number;
+      streaks: number;
+      lastStreakDate: Date;
+    }) => {
+      if (localStorage.length !== 0) {
+        const updatedUser: User = {
+          ...user,
+          points,
+          streak: streaks,
+          lastStreakDate,
+        };
+        const response = await api.patch(`users/${user.userId}`, updatedUser);
+        console.log("uspješno", response);
+      }
     };
 
     const handleEndQuiz = () => {
@@ -124,7 +156,7 @@ const Quiz = () => {
         setDisplayedItem(<Fail />);
       } else {
         const today = new Date();
-        const date = localStorage.getItem("lastStreak");
+        const date = localStorage.getItem("lastStreakDate");
         const points = localStorage.getItem("points");
         const streaks = localStorage.getItem("streaks");
         const id = localStorage.getItem("id");
@@ -132,17 +164,48 @@ const Quiz = () => {
         if (points !== null)
           localStorage.setItem("points", String(+points + addedPoints));
 
-        if (today.toDateString() === date) {
+        if (
+          date !== null &&
+          today.getFullYear() === new Date(date).getFullYear() &&
+          today.getMonth() === new Date(date).getMonth() &&
+          today.getDate() === new Date(date).getDate()
+        ) {
           setDisplayedItem(<QuizSuccessWithoutStreak points={addedPoints} />);
+          localStorage.setItem("streaks", String(+!streaks));
+
+          if (
+            id !== null &&
+            points !== null &&
+            streaks !== null &&
+            date !== null
+          )
+            getUser({
+              id: +id,
+              points: +points + addedPoints,
+              streaks: +streaks,
+              lastStreakDate: new Date(date),
+            });
         } else {
           setDisplayedItem(
             <AcquiredStreak points={addedPoints} streaks={+!streaks + 1} />
           );
-        }
-        localStorage.setItem("streaks", String(+!streaks + 1));
-        localStorage.setItem("lastStreak", new Date().toDateString());
+          localStorage.setItem("streaks", String(+!streaks + 1));
 
-        api.patch(`users/${id}`);
+          if (
+            id !== null &&
+            points !== null &&
+            streaks !== null &&
+            date !== null
+          )
+            getUser({
+              id: +id,
+              points: +points + addedPoints,
+              streaks: +streaks + 1,
+              lastStreakDate: new Date(date),
+            });
+        }
+
+        localStorage.setItem("lastStreakDate", new Date().toISOString());
       }
       setActiveStep(6);
     };

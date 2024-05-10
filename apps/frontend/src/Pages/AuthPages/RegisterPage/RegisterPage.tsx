@@ -64,7 +64,10 @@ const RegisterPage = () => {
       localStorage.setItem("id", String(response["userId"]));
       localStorage.setItem("name", response["name"]);
       localStorage.setItem("surname", response["surname"]);
-      localStorage.setItem("lastStreak", String(response["lastStreakDate"]));
+      localStorage.setItem(
+        "lastStreakDate",
+        String(response["lastStreakDate"])
+      );
       localStorage.setItem("points", String(response["points"]));
       localStorage.setItem("streaks", String(response["streaks"]));
       window.location.href = "/dashboard";

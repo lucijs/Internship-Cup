@@ -4,9 +4,7 @@ import EmailInputField from "../../../components/Auth/InputFields/EmailInputFiel
 import PasswordInputField from "../../../components/Auth/InputFields/PasswordInputField";
 import SubmitButton from "../../../components/Auth/SubmitButton";
 import classes from "./index.module.css";
-import { useUser } from "../../../providers/UserProvider";
 import { api } from "../../../api";
-import { Link } from "react-router-dom";
 
 const LoginPage = ({ onRegisterClick }: { onRegisterClick: () => void }) => {
   interface LoginResponse {
@@ -18,7 +16,7 @@ const LoginPage = ({ onRegisterClick }: { onRegisterClick: () => void }) => {
     points: number;
     streaks: number;
   }
-  const { addUser } = useUser();
+
   const [loginData, setLoginData] = useState({ name: "", password: "" });
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -29,24 +27,38 @@ const LoginPage = ({ onRegisterClick }: { onRegisterClick: () => void }) => {
   const handleSubmit = async () => {
     try {
       const response = await sendLoginInfo();
-      console.log(response);
-      console.log("ime", response["name"]);
+      const yesterday = new Date(
+        new Date().getFullYear(),
+        new Date().getMonth(),
+        new Date().getDate() - 1,
+        0,
+        0,
+        0,
+        0
+      );
+      console.log(yesterday);
       localStorage.setItem("token", response["token"]);
       localStorage.setItem("id", String(response["userId"]));
       localStorage.setItem("name", response["name"]);
       localStorage.setItem("surname", response["surname"]);
-      localStorage.setItem("lastStreak", String(response["lastStreakDate"]));
+      localStorage.setItem(
+        "lastStreakDate",
+        String(response["lastStreakDate"])
+      );
       localStorage.setItem("points", String(response["points"]));
-      localStorage.setItem("streaks", String(response["streaks"]));
-      console.log("ime", response["userId"]);
-      addUser({
-        id: 2,
-        name: response["name"],
-        surname: response["surname"],
-        lastStreak: response["lastStreakDate"],
-        points: +response["points"],
-        streaks: +response["streaks"],
-      });
+
+      if (
+        response["lastStreakDate"] !== null &&
+        new Date(response["lastStreakDate"]).getFullYear() ===
+          yesterday.getFullYear() &&
+        new Date(response["lastStreakDate"]).getMonth() ===
+          yesterday.getMonth() &&
+        new Date(response["lastStreakDate"]).getDate() === yesterday.getDate()
+      ) {
+        localStorage.setItem("streaks", String(response["streaks"]));
+      } else {
+        localStorage.setItem("streaks", String(0));
+      }
     } catch (error) {
       console.error("Error in login process: ", error);
     }
