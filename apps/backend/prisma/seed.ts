@@ -276,7 +276,7 @@ async function main() {
     update: {},
     create: {
       name: 'Mozak',
-      img: '../src/assets/categoryIcons/icon _Cognitive.png',
+      img: '../src/assets/categoryIcons/brain.png',
     },
   });
 

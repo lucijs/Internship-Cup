@@ -68,7 +68,6 @@ const DashboardPage = () => {
     const fetchData = async () => {
       try {
         const response = await api.get<never, Examination[]>("/examinations");
-        setExaminationsData(response);
       } catch (error) {
         console.log(error);
       }
