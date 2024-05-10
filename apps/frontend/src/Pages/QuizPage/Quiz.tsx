@@ -183,7 +183,7 @@ const Quiz = () => {
               id: +id,
               points: +points + addedPoints,
               streaks: +streaks,
-              lastStreakDate: new Date(date),
+              lastStreakDate: new Date(),
             });
         } else {
           setDisplayedItem(
@@ -201,7 +201,7 @@ const Quiz = () => {
               id: +id,
               points: +points + addedPoints,
               streaks: +streaks + 1,
-              lastStreakDate: new Date(date),
+              lastStreakDate: new Date(),
             });
         }
 
