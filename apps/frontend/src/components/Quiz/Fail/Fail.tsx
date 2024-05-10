@@ -1,5 +1,6 @@
 import { Button } from "@mui/material";
 import classes from "./index.module.css";
+import { Link } from "react-router-dom";
 
 const Fail = () => {
   return (
@@ -204,7 +205,9 @@ const Fail = () => {
           />
         </svg>
       </div>
-      <Button className={classes.button}>Povratak na kvizove</Button>
+      <Link to="/dashboard">
+        <Button className={classes.button}>Povratak na kvizove</Button>
+      </Link>
     </div>
   );
 };

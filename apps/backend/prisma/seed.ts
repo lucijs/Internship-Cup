@@ -276,7 +276,7 @@ async function main() {
     update: {},
     create: {
       name: 'Mozak',
-      img: '../src/assets/categoryIcons/icon _Cognitive_.png',
+      img: '../src/assets/categoryIcons/icon _Cognitive.png',
     },
   });
 
@@ -327,8 +327,7 @@ async function main() {
 
   const question9 = await prisma.quizQuestion.create({
     data: {
-      question:
-        'Rasporedite pojmove prema njihovim funkcijama u živčanom sustavu.',
+      question: 'Spoji pojam i njegovu funkciju',
       possibleAnswers: [
         'Prima signal',
         'Prenosi signal',
@@ -360,7 +359,7 @@ async function main() {
   const dailyMessage3 = await prisma.dailyMessage.create({
     data: {
       message:
-        'Dobro zdravlje počinje malim koracima - možda danas probajte neku novu voćku ili povrće',
+        'Dobro zdravlje počinje malim koracima - probajte neku novu voćku ili povrće',
     },
   });
 
@@ -381,27 +380,27 @@ async function main() {
   const dailyMessage6 = await prisma.dailyMessage.create({
     data: {
       message:
-        'Ne zaboravite na svoj san - dobar san je ključan za obnavljanje energije i oporavak tijela.',
+        'Ne zaboravite na svoj san - san je ključan za obnavljanje energije i oporavak tijela.',
     },
   });
 
   const dailyMessage7 = await prisma.dailyMessage.create({
     data: {
       message:
-        'Pustite omiljenu pjesmu i plešite kao da vas nitko ne gleda - pokret je dobar za srce i dušu.',
+        'Pustite omiljenu pjesmu i plešite kao da vas nitko ne gleda - dobaro za srce i dušu.',
     },
   });
   const dailyMessage11 = await prisma.dailyMessage.create({
     data: {
       message:
-        'Dopustite sebi vrijeme za uživanje u prirodi - svjež zrak i zelenilo mogu čuda učiniti za vaše zdravlje.',
+        'Pronađite vrijeme za uživanje u prirodi - svjež zrak i zelenilo čine čuda za zdravlje.',
     },
   });
 
   const dailyMessage8 = await prisma.dailyMessage.create({
     data: {
       message:
-        'Neka vaša mantra bude "naprijed, ali polako" - pritisak za brzim rezultatima može biti kontraproduktivan.',
+        'Neka vaša mantra bude "naprijed, ali polako" - očekivanje brzih rezultata je kontraproduktivno.',
     },
   });
 
@@ -415,7 +414,7 @@ async function main() {
   const dailyMessage10 = await prisma.dailyMessage.create({
     data: {
       message:
-        'Zdrav način života je ravnoteža između onoga što morate, onoga što želite i onoga što vas čini sretnim.',
+        'Zdrav način života je ravnoteža između onoga što morate, što želite i  što vas čini sretnim.',
     },
   });
 
