@@ -50,7 +50,6 @@ const ExaminationsPage = () => {
       );
       return response[0].name;
     } catch (error) {
-      console.log(error);
       return "";
     }
   };
@@ -130,18 +129,6 @@ const ExaminationsPage = () => {
                 />
               ))}
           </div>
-
-          {/*
-            <div className={classes.examinationsContainer}>
-              <ExaminationCard
-                category="Stomatologija"
-                description="Besplatan pregled oralnog zdravlja"
-                location="gornji grad, Osijek"
-                time="22.5. (Srijeda) u 8h"
-              />
-              
-            </div>
-          */}
         </div>
       </div>
 

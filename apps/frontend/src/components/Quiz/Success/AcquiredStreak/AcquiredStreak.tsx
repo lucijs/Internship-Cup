@@ -1,10 +1,18 @@
 import { Button } from "@mui/material";
 import StreaksDisplay from "../../StreaksDisplay";
 import classes from "./index.module.css";
+import { useScore } from "../../../../providers/ScoreProvider";
+import { Link } from "react-router-dom";
 
-const AcquiredStreak = ({ points }: { points: number }) => {
-  const streaks = 3;
-  //ovo mora bit iz user-a, kad se registrira
+const AcquiredStreak = ({
+  points,
+  streaks,
+}: {
+  points: number;
+  streaks: number;
+}) => {
+  const { reset } = useScore();
+
   const registrationDate = new Date();
   return (
     <div className={classes.body}>
@@ -29,7 +37,9 @@ const AcquiredStreak = ({ points }: { points: number }) => {
         <div className={classes.streaksAmount}>{streaks}</div>
       </div>
       <StreaksDisplay dateRegistered={registrationDate} />
-      <Button className={classes.button}>Skupi bodove</Button>
+      <Link to="/dashboard" onClick={reset}>
+        <Button className={classes.button}>Skupi bodove</Button>
+      </Link>
     </div>
   );
 };

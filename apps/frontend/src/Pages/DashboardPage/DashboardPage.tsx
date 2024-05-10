@@ -51,6 +51,11 @@ interface Reward {
 
 const DashboardPage = () => {
   const name = localStorage.getItem("name");
+
+  if (name === null || name == undefined) {
+    window.location.href = "/users";
+  }
+
   const [examinationsData, setExaminationsData] = useState<Examination[]>([]);
   const [rewardsData, setRewardsData] = useState<Reward[]>([]);
   const [cityNames, setCityNames] = useState<{ [key: number]: string }>({});

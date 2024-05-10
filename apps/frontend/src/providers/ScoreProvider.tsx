@@ -11,6 +11,7 @@ interface ScoreContext {
   isCorrect: boolean;
   isChanged: boolean;
   toggleMode: (value: boolean) => void;
+  reset: () => void;
 }
 
 const defaultContext: ScoreContext = {
@@ -18,6 +19,7 @@ const defaultContext: ScoreContext = {
   isCorrect: false,
   isChanged: false,
   toggleMode: () => {},
+  reset: () => {},
 };
 
 const ScoreContext = createContext(defaultContext);
@@ -30,18 +32,21 @@ const ScoreProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     if (isCorrect) {
       setScore((prev) => prev + 1);
-      console.log("triba bi bit za jedan veci");
     }
   }, [isChanged]);
 
   const toggleMode = (value: boolean) => {
     setIsCorrect(value);
-    console.log("triba bi bit true");
     setIsChanged((prev) => !prev);
   };
 
+  const reset = () => {
+    setScore(0);
+  };
+
   return (
-    <ScoreContext.Provider value={{ score, isChanged, isCorrect, toggleMode }}>
+    <ScoreContext.Provider
+      value={{ score, isChanged, reset, isCorrect, toggleMode }}>
       {children}
     </ScoreContext.Provider>
   );

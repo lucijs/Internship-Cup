@@ -13,11 +13,11 @@ export class RegisterDto {
   @ApiProperty()
   dateOfBirth: Date;
 
-  // @ApiProperty()
-  // points: number;
+  @ApiProperty()
+  points: number;
 
-  // @ApiProperty()
-  // streak: number;
+  @ApiProperty()
+  streak: number;
 
   @ApiProperty()
   email: string;
@@ -25,8 +25,8 @@ export class RegisterDto {
   @ApiProperty()
   password: string;
 
-  // @ApiProperty()
-  // lastStreakDate: Date;
+  @ApiProperty()
+  lastStreakDate: Date;
 
   @ApiProperty()
   confirmationPassword: string;

@@ -1,16 +1,17 @@
 import { Button } from "@mui/material";
 import classes from "./index.module.css";
+import { useScore } from "../../../../providers/ScoreProvider";
+import { Link } from "react-router-dom";
 
 const QuizSuccessWithoutStreak = ({ points }: { points: number }) => {
-  //treba povezat na kontekst da od tamo primi podatke
-  const streaks = 3;
+  const { reset, score } = useScore();
   return (
     <div className={classes.body}>
       <div className={classes.title}>Kviz je uspješno dovršen!</div>
       <div className={classes.container}>
         <div className={classes.resault}>
           <div>Rezultat</div>
-          <div>{streaks}/3</div>
+          <div>{score}/3</div>
         </div>
         <div className={classes.resault}>
           <div>Osvojeni bodovi</div>
@@ -193,7 +194,9 @@ const QuizSuccessWithoutStreak = ({ points }: { points: number }) => {
           />
         </svg>
       </div>
-      <Button className={classes.button}>Skupi bodove</Button>
+      <Link to="/dashboard" onClick={reset}>
+        <Button className={classes.button}>Skupi bodove</Button>
+      </Link>
     </div>
   );
 };
