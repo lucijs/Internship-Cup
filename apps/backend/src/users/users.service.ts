@@ -2,12 +2,14 @@ import {
   BadRequestException,
   ForbiddenException,
   Injectable,
+  UseGuards,
 } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { compare, hash } from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
+import { UserAuthGuard } from './user-auth.guard';
 
 @Injectable()
 export class UsersService {
@@ -27,23 +29,26 @@ export class UsersService {
     password: string,
     confirmationPassword: string,
   ) {
-    if (!name) throw new BadRequestException("Missing 'name' field");
-    if (!surname) throw new BadRequestException("Missing 'surname' field");
+    if (!name) throw new BadRequestException("Nedostaje polje 'ime'");
+    if (!surname) throw new BadRequestException("Nedostaje polje 'prezime'");
     if (!dateOfBirth)
-      throw new BadRequestException("Missing 'date of birth' field");
-    if (!email) throw new BadRequestException("Missing 'email' field");
-    if (!password) throw new BadRequestException("Missing 'password' field");
+      throw new BadRequestException("Nedostaje polje 'datum rođenja'");
+    if (!email) throw new BadRequestException("Nedostaje polje 'email'");
+    if (!email.includes('@') || !email.includes('.'))
+      throw new BadRequestException('Nevaljan email');
+    if (!password) throw new BadRequestException("Nedostaje polje 'lozinka'");
+    if (password.length < 8)
+      throw new BadRequestException('Lozinka je prekratka');
     if (!confirmationPassword)
-      throw new BadRequestException("Missing 'confirmation password' field");
+      throw new BadRequestException("Nedostaje polje 'potvrda lozinke'");
+    if (password != confirmationPassword)
+      throw new BadRequestException('Lozinke se ne podudaraju');
 
     const existingUser = await this.prisma.user.findUnique({
       where: { email },
     });
 
-    if (existingUser) throw new BadRequestException('User already exists');
-
-    if (password != confirmationPassword)
-      throw new BadRequestException('Passwords do not match.');
+    if (existingUser) throw new BadRequestException('Korisnik već postoji');
 
     const hashedPassword = await hash(password, 10);
 
@@ -77,18 +82,18 @@ export class UsersService {
   }
 
   async login(email: string, password: string) {
-    if (!email) throw new BadRequestException("Missing 'email' field");
-    if (!password) throw new BadRequestException("Missing 'password' field");
+    if (!email) throw new BadRequestException("Nedostaje polje 'email'");
+    if (!password) throw new BadRequestException("Nedostaje polje 'lozinka'");
 
     const user = await this.prisma.user.findUnique({
       where: { email },
     });
 
-    if (!user) throw new BadRequestException('User does not exist!');
+    if (!user) throw new BadRequestException('Korisnik ne postoji');
 
     const isPasswordValid = await compare(password, user.password);
 
-    if (!isPasswordValid) throw new ForbiddenException('Password not valid');
+    if (!isPasswordValid) throw new ForbiddenException('Pogrešna lozinka');
 
     const payload = {
       id: user.userId,

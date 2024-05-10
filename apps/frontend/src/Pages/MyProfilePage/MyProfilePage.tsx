@@ -5,7 +5,7 @@ import StreakCard from "../../components/MyProfile/Cards/StreakCard";
 import PersonalInfo from "../../components/MyProfile/PersonalInfo";
 import classes from "./index.module.css";
 import { api } from "../../api";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const MyProfilePage = () => {
   interface User {
@@ -24,6 +24,39 @@ const MyProfilePage = () => {
   if (name === null || name == undefined) {
     window.location.href = "/users";
   }
+  const [userData, setUserData] = useState<User>();
+
+  useEffect(() => {
+    const fetchDataForUser = async (id: number) => {
+      try {
+        const data = await api.get<never, User>(`/users/${id}`);
+        setUserData(data);
+      } catch (error) {
+        console.error("Error fetching the user: ", error);
+      }
+    };
+
+    const userId = localStorage.getItem("id");
+    if (userId) fetchDataForUser(Number(userId));
+  }, []);
+
+  const getDateFormat = (dateTime: string) => {
+    const onlyDate = dateTime.split("T")[0];
+    const day = onlyDate.split("-")[2];
+    const month = onlyDate.split("-")[1];
+    const year = onlyDate.split("-")[0];
+    const result = `${day}.${month}.${year}.`;
+    return result;
+  };
+
+  const getAge = (dateOfBirth: string) => {
+    const todayYear = new Date().getFullYear();
+    const dateFormat = dateOfBirth.split("T")[0];
+    const yearOfBirth = +dateFormat.split("-")[0];
+    const age = todayYear - yearOfBirth;
+    if (age === 0) return 1;
+    return age;
+  };
 
   return (
     <>
@@ -149,23 +182,32 @@ const MyProfilePage = () => {
         </div>
 
         <div className={classes.personalInfoWrapper}>
-          <PersonalInfo />
+          {userData ? (
+            <PersonalInfo
+              name={userData?.name}
+              surname={userData?.surname}
+              age={getAge(userData.dateOfBirth.toString())}
+              memberSince={getDateFormat(userData.dateRegister.toString())}
+            />
+          ) : (
+            ""
+          )}
         </div>
 
         <div className={classes.statsSection}>
           <div className={classes.statsSectionUpper}>
-            <StreakCard />
-            <PointsCard />
+            <StreakCard streakNumber={userData ? userData?.streak : 0} />
+            <PointsCard pointsNumber={userData ? userData.points : 0} />
           </div>
 
           <div className={classes.statsSectionLower}>
             <ResolvedQuizzesAndBenefitsCard
               cardText="Riješeni kvizovi"
-              numberValue={192}
+              numberValue={2}
             />
             <ResolvedQuizzesAndBenefitsCard
               cardText="Iskorištene pogodnosti"
-              numberValue={50}
+              numberValue={12}
             />
           </div>
         </div>

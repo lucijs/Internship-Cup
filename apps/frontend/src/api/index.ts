@@ -31,7 +31,6 @@ api.interceptors.response.use(
   (error: ErrorResponse) => {
     if (error.response.status === 401) {
       window.location.href = `/users`;
-      alert(error.response.data.message || error.message || "Forbidden access");
     }
     return Promise.reject(
       error.response.data.message || error.message || "Forbidden access"

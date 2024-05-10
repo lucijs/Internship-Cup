@@ -1,9 +1,8 @@
 import classes from "./index.module.css";
 
-const StreakCard = () => {
+const StreakCard = ({ streakNumber }: { streakNumber: number }) => {
   return (
     <>
-      {" "}
       <div className={classes.streakCard}>
         <h4>STREAK</h4>
         <span>
@@ -19,7 +18,7 @@ const StreakCard = () => {
               fill="#326A3E"
             />
           </svg>
-          152
+          {streakNumber}
         </span>
         <h4>DANA</h4>
       </div>

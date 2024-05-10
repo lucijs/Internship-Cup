@@ -18,6 +18,7 @@ const LoginPage = ({ onRegisterClick }: { onRegisterClick: () => void }) => {
   }
 
   const [loginData, setLoginData] = useState({ name: "", password: "" });
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -68,6 +69,7 @@ const LoginPage = ({ onRegisterClick }: { onRegisterClick: () => void }) => {
       }
     } catch (error) {
       console.error("Error in login process: ", error);
+      setErrorMessage(error ? error.toString() : "");
     }
     window.location.href = "/dashboard";
   };
@@ -102,6 +104,7 @@ const LoginPage = ({ onRegisterClick }: { onRegisterClick: () => void }) => {
         </div>
 
         <div className={classes.belowLoginForm}>
+          <p className={classes.errorMessage}>{errorMessage}</p>
           <SubmitButton buttonText="Prijavi se" handleSubmit={handleSubmit} />
           <p className={classes.registerHereText}>
             Nemaš račun?{" "}

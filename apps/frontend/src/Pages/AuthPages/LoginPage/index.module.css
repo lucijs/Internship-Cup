@@ -39,4 +39,9 @@
   .registerHereText span {
     text-decoration: underline;
   }
+  .errorMessage{
+    font-family: "Hind";
+    color: red;
+    margin: 0;
+  }
 }

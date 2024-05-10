@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  UseGuards,
+} from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
@@ -6,6 +14,7 @@ import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
 import { UserEntity } from './entities/user.entity';
 import { RegisterDto } from './dto/register.dto';
 import { LoginDto } from './dto/login.dto';
+import { UserAuthGuard } from './user-auth.guard';
 
 @ApiTags('Users')
 @Controller('users')
@@ -51,6 +60,7 @@ export class UsersController {
     return this.usersService.findAll();
   }
 
+  @UseGuards(UserAuthGuard)
   @Get(':id')
   @ApiCreatedResponse({ type: UserEntity })
   findOne(@Param('id') id: string) {
