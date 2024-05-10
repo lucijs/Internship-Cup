@@ -23,6 +23,7 @@ const RegisterPage = () => {
     confirmationPassword: "",
   });
   const [errorMessage, setErrorMessage] = useState("");
+  const [gdpr, setGdpr] = useState(false);
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -122,8 +123,14 @@ const RegisterPage = () => {
         />
         <div className={classes.belowRegisterForm}>
           <p className={classes.errorMessage}>{errorMessage}</p>
-          <CheckBoxField text="Slažem se s Uvjetima usluge i Politikom privatnosti." />
-          <SubmitButton buttonText="Stvori račun" handleSubmit={handleSubmit} />
+          <CheckBoxField
+            text="Slažem se s Uvjetima usluge i Politikom privatnosti."
+            setState={setGdpr}
+          />
+          <SubmitButton
+            buttonText="Stvori račun"
+            handleSubmit={gdpr ? handleSubmit : () => console.log("error")}
+          />
         </div>
       </div>
     </>
