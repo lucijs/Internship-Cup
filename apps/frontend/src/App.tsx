@@ -17,6 +17,7 @@ function App() {
         <UserProvider>
           <ScoreProvider>
             <Routes>
+              <Route path="/" element={<DashboardPage />} />
               <Route path="/users" element={<AuthPage />} />
               <Route path="/dashboard" element={<DashboardPage />} />
               <Route path="/quiz/:id" element={<Quiz />} />
