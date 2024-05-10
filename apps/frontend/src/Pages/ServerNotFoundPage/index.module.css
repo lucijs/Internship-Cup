@@ -1,51 +1,58 @@
 .serverNotFoundPage{
-    display: flex;
-    flex-direction: column;
-    background-color: #F2F2F2;
-    align-items: center;
-    padding-top: 20px;
-    padding-bottom: 300px;
+    display: none;
+}
+@media only screen and (min-width: 350px) and (max-width: 550px) {
+    .serverNotFoundPage{
+        display: flex;
+        flex-direction: column;
+        background-color: #F2F2F2;
+        align-items: center;
+        padding-top: 20px;
+        padding-bottom: 300px;
+    }
+    
+    .serverNotFoundPage svg{
+        position: relative;
+        right: 50%;
+        margin-bottom: 200px;
+    }
+    
+    .serverNotFoundPage h1{
+        color: #083968;
+        text-align: center;
+        font-family: "Martel Sans";
+        font-size: 40px;
+        font-weight: 800;
+        line-height: 40px; /* 100% */
+        margin-top: 70px;
+    }
+    
+    .serverNotFoundPage p{
+        color: #083968;
+        text-align: center;
+        font-family: "Hind Medium";
+        font-size: 16px;
+    }
+    
+    .serverNotFoundPage button{
+        margin-top: 110px;
+        display: flex;
+        width: 334px;
+        padding: 12px 8px;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        border-radius: 16px;
+        background: #F5B943;
+        color: var(--Naranasta-Naranasta-botun-tekst, #997329);
+    
+        /* Mobile/Label/semibold-16 */
+        font-family: Hind;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 144%; /* 23.04px */
+    }
 }
 
-.serverNotFoundPage svg{
-    position: relative;
-    right: 50%;
-    margin-bottom: 200px;
-}
 
-.serverNotFoundPage h1{
-    color: #083968;
-    text-align: center;
-    font-family: "Martel Sans";
-    font-size: 40px;
-    font-weight: 800;
-    line-height: 40px; /* 100% */
-    margin-top: 70px;
-}
-
-.serverNotFoundPage p{
-    color: #083968;
-    text-align: center;
-    font-family: "Hind Medium";
-    font-size: 16px;
-}
-
-.serverNotFoundPage button{
-    margin-top: 110px;
-    display: flex;
-    width: 334px;
-    padding: 12px 8px;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    border-radius: 16px;
-    background: #F5B943;
-    color: var(--Naranasta-Naranasta-botun-tekst, #997329);
-
-    /* Mobile/Label/semibold-16 */
-    font-family: Hind;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 144%; /* 23.04px */
-}
