@@ -41,7 +41,6 @@ const ScoreProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const reset = () => {
-    console.log("usa");
     setScore(0);
   };
 

@@ -5,7 +5,6 @@ const MultipleChoice = ({
   question,
   possibleAnswers,
   correctAnswer1,
-  correctAnswer2,
   toggleMode,
 }: {
   question: string;

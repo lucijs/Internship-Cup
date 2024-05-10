@@ -19,16 +19,14 @@ const Quiz = () => {
   if (id === undefined || id === null) {
     history.back();
   } else {
-    console.log(+id);
     const [displayedItem, setDisplayedItem] = useState(<div></div>);
     const [activeStep, setActiveStep] = useState(0);
     const [buttonText, setButtonText] = useState("Započni kviz");
     const [questions, setQuestions] = useState<QuizQuestion[] | null>(null);
     const [questionDisplay, setQuestionDisplay] = useState(<></>);
     const [title, setTitle] = useState("");
-    const { score, toggleMode, reset } = useScore();
+    const { score, toggleMode } = useScore();
     const [addedPoints, setAddedPoints] = useState(0);
-    const [user, setUser] = useState<User | null>(null);
 
     useEffect(() => {
       fetchQuizData(+id);
@@ -44,7 +42,6 @@ const Quiz = () => {
         api.get<never, any>(`quizzes/${+id}`),
         api.get<never, any>(`quizzes/categories/${+id}`),
       ]).then(([quizData, categoryData]) => {
-        console.log(categoryData);
         setAddedPoints(quizData["earnedPoints"]);
         setDisplayedItem(
           <div>
@@ -105,7 +102,6 @@ const Quiz = () => {
         .get<never, QuizQuestion[]>(`quizQuestions/quizId/${id}`)
         .then((data) => {
           const dataArray = Array.isArray(data) ? data : [data];
-          console.log(dataArray[0]);
           handleQuestion(dataArray[0]);
           setQuestions(dataArray);
         });
@@ -124,7 +120,6 @@ const Quiz = () => {
     }) => {
       await api.get<never, any>(`users/${+id}`).then((user) => {
         updateUser({ user, points, streaks, lastStreakDate });
-        console.log(user);
       });
     };
 
@@ -147,7 +142,6 @@ const Quiz = () => {
           lastStreakDate,
         };
         const response = await api.patch(`users/${user.userId}`, updatedUser);
-        console.log("uspješno", response);
       }
     };
 

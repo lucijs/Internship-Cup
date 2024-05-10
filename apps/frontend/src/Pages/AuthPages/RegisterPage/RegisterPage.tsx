@@ -59,7 +59,6 @@ const RegisterPage = () => {
 
       const response = await sendRegistrationData();
 
-      console.log("User registered successfully:", response);
       localStorage.setItem("token", response["token"]);
       localStorage.setItem("id", String(response["userId"]));
       localStorage.setItem("name", response["name"]);
